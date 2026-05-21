@@ -1,0 +1,19 @@
+{
+  "name": "Paradigm Shift",
+  "tier": "pro",
+  "source_url": "https://html5up.net/paradigm-shift",
+  "demo_url": "https://html5up.net/paradigm-shift/demo/",
+  "download_url": "https://html5up.net/paradigm-shift/download",
+  "license": "CC-BY 3.0",
+  "author": "AJ (html5up.net / @ajlkn)",
+  "stars": null,
+  "stack": ["HTML5", "CSS3", "JavaScript", "jQuery"],
+  "mood": "modern-split",
+  "colors": ["blanc #FFFFFF", "dark charcoal", "accent coloré"],
+  "why_this_tier": "Template récent HTML5UP avec layout split innovant. Alternance texte/image par sections avec transitions fluides. Design moderne et sophistiqué sans Three.js, justifie le tier PRO.",
+  "recommended_sectors": ["Corporate", "Santé", "Consulting B2B", "Startup", "Services"],
+  "sections": ["Hero split", "Sections alternées image/texte", "Features", "CTA", "Contact"],
+  "animations": ["Split scroll transitions", "Fade-in sections", "Hover effects"],
+  "added_date": "2026-05-21",
+  "batch": 1
+}

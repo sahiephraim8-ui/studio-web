@@ -1,0 +1,19 @@
+{
+  "name": "Parallelism",
+  "tier": "premium",
+  "source_url": "https://html5up.net/parallelism",
+  "demo_url": "https://html5up.net/parallelism/demo/",
+  "download_url": "https://html5up.net/parallelism/download",
+  "license": "CC-BY 3.0",
+  "author": "AJ (html5up.net / @ajlkn)",
+  "stars": null,
+  "stack": ["HTML5", "CSS3", "JavaScript", "jQuery", "Canvas WebGL"],
+  "mood": "dark-futuriste",
+  "colors": ["noir profond #1c1d26", "blanc #FFFFFF", "formes colorées animées"],
+  "why_this_tier": "Fond animé en canvas avec formes géométriques flottantes type WebGL. Design dark et futuriste très distinctif. Les animations canvas de fond créent un effet premium impossible à ignorer.",
+  "recommended_sectors": ["Tech", "Corporate premium", "Startup innovative", "Finance", "Services B2B haut de gamme"],
+  "sections": ["Hero plein écran canvas animé", "Navigation flottante", "Contenu superposé fond actif"],
+  "animations": ["Canvas shapes animées en fond", "Formes géométriques flottantes", "Transitions smooth"],
+  "added_date": "2026-05-21",
+  "batch": 1
+}

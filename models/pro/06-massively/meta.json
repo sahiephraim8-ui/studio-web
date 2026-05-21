@@ -1,0 +1,19 @@
+{
+  "name": "Massively",
+  "tier": "pro",
+  "source_url": "https://html5up.net/massively",
+  "demo_url": "https://html5up.net/massively/demo/",
+  "download_url": "https://html5up.net/massively/download",
+  "license": "CC-BY 3.0",
+  "author": "AJ (html5up.net / @ajlkn)",
+  "stars": null,
+  "stack": ["HTML5", "CSS3", "JavaScript", "jQuery"],
+  "mood": "dark-magazine",
+  "colors": ["noir profond #1c1d26", "blanc #FFFFFF", "accent rose-rouge"],
+  "why_this_tier": "Design dark style magazine avec hero parallax et transitions au scroll. Visuellement très impactant. Nécessite plus de personnalisation pour client mais résultat premium garanti.",
+  "recommended_sectors": ["Commerce", "Media", "Corporate premium", "Evénementiel", "Restaurant haut de gamme"],
+  "sections": ["Hero fullscreen parallax", "Articles grille", "Pagination", "Sidebar", "Footer complet"],
+  "animations": ["Parallax scroll", "Fade-in sections", "Hover effects articles"],
+  "added_date": "2026-05-21",
+  "batch": 1
+}

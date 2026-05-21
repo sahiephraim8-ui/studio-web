@@ -1,0 +1,18 @@
+{
+  "name": "Strongly Typed",
+  "tier": "essentiel",
+  "source_url": "https://html5up.net/strongly-typed",
+  "demo_url": "https://html5up.net/strongly-typed/demo/",
+  "download_url": "https://html5up.net/strongly-typed/download",
+  "license": "CC-BY 3.0",
+  "author": "AJ (html5up.net / @ajlkn)",
+  "stars": null,
+  "stack": ["HTML5", "CSS3", "JavaScript"],
+  "mood": "minimal-typographic",
+  "colors": ["blanc pur #FFFFFF", "noir #242943", "vert accent #49bf9d"],
+  "why_this_tier": "Design très propre à forte typographie, minimaliste. Convient pour des services professionnels B2B, tech ou corporate qui veulent afficher compétence et sobriété.",
+  "recommended_sectors": ["Services B2B", "Tech", "Consulting", "Juridique", "Comptabilité"],
+  "sections": ["Hero full-width", "Features 3 colonnes", "CTA", "About", "Footer propre"],
+  "added_date": "2026-05-21",
+  "batch": 1
+}

@@ -1,0 +1,189 @@
+{
+  "last_updated": "2026-05-21",
+  "total_templates": 15,
+  "sources": ["html5up.net", "github.com/uisual/freebies", "github.com/MAGGIx1404/webgl-portfolio"],
+  "essentiel": [
+    {
+      "id": "01-stellar",
+      "name": "Stellar",
+      "mood": "clean-minimal",
+      "license": "CC-BY 3.0",
+      "source_url": "https://html5up.net/stellar",
+      "demo_url": "https://html5up.net/stellar/demo/",
+      "download_url": "https://html5up.net/stellar/download",
+      "stack": ["HTML5", "CSS3", "JavaScript"],
+      "recommended_sectors": ["Corporate", "Services B2B", "Santé", "ONG"]
+    },
+    {
+      "id": "02-editorial",
+      "name": "Editorial",
+      "mood": "corporate-sidebar",
+      "license": "CC-BY 3.0",
+      "source_url": "https://html5up.net/editorial",
+      "demo_url": "https://html5up.net/editorial/demo/",
+      "download_url": "https://html5up.net/editorial/download",
+      "stack": ["HTML5", "CSS3", "JavaScript"],
+      "recommended_sectors": ["Corporate", "BTP", "Services B2B", "Assurances"]
+    },
+    {
+      "id": "03-strongly-typed",
+      "name": "Strongly Typed",
+      "mood": "minimal-typographic",
+      "license": "CC-BY 3.0",
+      "source_url": "https://html5up.net/strongly-typed",
+      "demo_url": "https://html5up.net/strongly-typed/demo/",
+      "download_url": "https://html5up.net/strongly-typed/download",
+      "stack": ["HTML5", "CSS3", "JavaScript"],
+      "recommended_sectors": ["Services B2B", "Tech", "Consulting", "Juridique"]
+    },
+    {
+      "id": "04-landed",
+      "name": "Landed",
+      "mood": "corporate-clean",
+      "license": "CC-BY 3.0",
+      "source_url": "https://html5up.net/landed",
+      "demo_url": "https://html5up.net/landed/demo/",
+      "download_url": "https://html5up.net/landed/download",
+      "stack": ["HTML5", "CSS3", "JavaScript"],
+      "recommended_sectors": ["BTP", "Assurances", "Commerce", "Corporate"]
+    },
+    {
+      "id": "05-uisual",
+      "name": "Uisual Freebies",
+      "mood": "ultra-minimal",
+      "license": "MIT",
+      "source_url": "https://github.com/uisual/freebies",
+      "demo_url": "https://uisual.com/",
+      "download_url": "https://github.com/uisual/freebies/archive/refs/heads/master.zip",
+      "stack": ["HTML5", "CSS3"],
+      "stars": 461,
+      "recommended_sectors": ["Startup", "SaaS", "Corporate générique", "Portfolio"]
+    }
+  ],
+  "pro": [
+    {
+      "id": "06-massively",
+      "name": "Massively",
+      "mood": "dark-magazine",
+      "license": "CC-BY 3.0",
+      "source_url": "https://html5up.net/massively",
+      "demo_url": "https://html5up.net/massively/demo/",
+      "download_url": "https://html5up.net/massively/download",
+      "stack": ["HTML5", "CSS3", "JavaScript", "jQuery"],
+      "animations": ["Parallax scroll", "Fade-in sections"],
+      "recommended_sectors": ["Commerce", "Media", "Corporate premium", "Restaurant"]
+    },
+    {
+      "id": "07-forty",
+      "name": "Forty",
+      "mood": "bold-corporate",
+      "license": "CC-BY 3.0",
+      "source_url": "https://html5up.net/forty",
+      "demo_url": "https://html5up.net/forty/demo/",
+      "download_url": "https://html5up.net/forty/download",
+      "stack": ["HTML5", "CSS3", "JavaScript", "jQuery"],
+      "animations": ["Hover reveal tiles", "Scroll fade-in"],
+      "recommended_sectors": ["Corporate", "BTP", "Services B2B", "Immobilier"]
+    },
+    {
+      "id": "08-story",
+      "name": "Story",
+      "mood": "cinematic-scroll",
+      "license": "CC-BY 3.0",
+      "source_url": "https://html5up.net/story",
+      "demo_url": "https://html5up.net/story/demo/",
+      "download_url": "https://html5up.net/story/download",
+      "stack": ["HTML5", "CSS3", "JavaScript", "jQuery", "ScrollEx"],
+      "animations": ["Scroll fullscreen sections", "Parallax images"],
+      "recommended_sectors": ["Tourisme", "Immobilier", "Restaurant", "Corporate narratif"]
+    },
+    {
+      "id": "09-phantom",
+      "name": "Phantom",
+      "mood": "dark-gallery",
+      "license": "CC-BY 3.0",
+      "source_url": "https://html5up.net/phantom",
+      "demo_url": "https://html5up.net/phantom/demo/",
+      "download_url": "https://html5up.net/phantom/download",
+      "stack": ["HTML5", "CSS3", "JavaScript", "jQuery"],
+      "animations": ["Hover overlay tiles", "Page transitions"],
+      "recommended_sectors": ["Commerce luxe", "Portfolio agence", "Immobilier", "Mode"]
+    },
+    {
+      "id": "10-paradigm-shift",
+      "name": "Paradigm Shift",
+      "mood": "modern-split",
+      "license": "CC-BY 3.0",
+      "source_url": "https://html5up.net/paradigm-shift",
+      "demo_url": "https://html5up.net/paradigm-shift/demo/",
+      "download_url": "https://html5up.net/paradigm-shift/download",
+      "stack": ["HTML5", "CSS3", "JavaScript", "jQuery"],
+      "animations": ["Split scroll transitions", "Fade-in sections"],
+      "recommended_sectors": ["Corporate", "Santé", "Consulting B2B", "Startup"]
+    }
+  ],
+  "premium": [
+    {
+      "id": "11-parallelism",
+      "name": "Parallelism",
+      "mood": "dark-futuriste",
+      "license": "CC-BY 3.0",
+      "source_url": "https://html5up.net/parallelism",
+      "demo_url": "https://html5up.net/parallelism/demo/",
+      "download_url": "https://html5up.net/parallelism/download",
+      "stack": ["HTML5", "CSS3", "JavaScript", "jQuery", "Canvas WebGL"],
+      "animations": ["Canvas shapes animées fond", "Formes géométriques flottantes"],
+      "recommended_sectors": ["Tech", "Corporate premium", "Finance", "Services B2B"]
+    },
+    {
+      "id": "12-dimension",
+      "name": "Dimension",
+      "mood": "dark-elegant-overlay",
+      "license": "CC-BY 3.0",
+      "source_url": "https://html5up.net/dimension",
+      "demo_url": "https://html5up.net/dimension/demo/",
+      "download_url": "https://html5up.net/dimension/download",
+      "stack": ["HTML5", "CSS3", "JavaScript", "jQuery"],
+      "animations": ["Overlay apparition animée", "Blur backdrop filter"],
+      "recommended_sectors": ["Corporate haut de gamme", "Assurances premium", "Consulting luxe"]
+    },
+    {
+      "id": "13-aerial",
+      "name": "Aerial",
+      "mood": "fullscreen-parallax-luxe",
+      "license": "CC-BY 3.0",
+      "source_url": "https://html5up.net/aerial",
+      "demo_url": "https://html5up.net/aerial/demo/",
+      "download_url": "https://html5up.net/aerial/download",
+      "stack": ["HTML5", "CSS3", "JavaScript", "jQuery"],
+      "animations": ["Slideshow automatique fullscreen", "Parallax scroll fond", "Crossfade images"],
+      "recommended_sectors": ["Tourisme luxe", "Immobilier premium", "BTP Signature", "Hôtellerie"]
+    },
+    {
+      "id": "14-spectral",
+      "name": "Spectral",
+      "mood": "dark-futuriste-gradient",
+      "license": "CC-BY 3.0",
+      "source_url": "https://html5up.net/spectral",
+      "demo_url": "https://html5up.net/spectral/demo/",
+      "download_url": "https://html5up.net/spectral/download",
+      "stack": ["HTML5", "CSS3", "JavaScript", "jQuery", "Scrollex"],
+      "animations": ["Scrollex reveal sections", "Gradient animé fond", "Fade/slide scroll"],
+      "recommended_sectors": ["Tech", "Finance premium", "Assurances haut de gamme", "Corporate innovant"]
+    },
+    {
+      "id": "15-webgl-portfolio",
+      "name": "WebGL Portfolio",
+      "mood": "webgl-cinematic",
+      "license": "non-spécifiée — référence uniquement",
+      "source_url": "https://github.com/MAGGIx1404/webgl-portfolio",
+      "demo_url": "https://www.chiaraluzzana.com/",
+      "download_url": "https://github.com/MAGGIx1404/webgl-portfolio/archive/refs/heads/master.zip",
+      "stack": ["HTML5", "CSS3", "JavaScript", "Three.js", "GSAP", "Locomotive Scroll"],
+      "stars": 175,
+      "animations": ["WebGL distortion hover", "Locomotive smooth scroll", "GSAP transitions", "Three.js fond"],
+      "recommended_sectors": ["Portfolio agence", "Corporate signature", "Services luxe"],
+      "note": "⚠️ Pas de license explicite — inspiration/référence seulement"
+    }
+  ]
+}

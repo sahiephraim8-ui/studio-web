@@ -1,0 +1,19 @@
+{
+  "name": "Forty",
+  "tier": "pro",
+  "source_url": "https://html5up.net/forty",
+  "demo_url": "https://html5up.net/forty/demo/",
+  "download_url": "https://html5up.net/forty/download",
+  "license": "CC-BY 3.0",
+  "author": "AJ (html5up.net / @ajlkn)",
+  "stars": null,
+  "stack": ["HTML5", "CSS3", "JavaScript", "jQuery"],
+  "mood": "bold-corporate",
+  "colors": ["bleu marine #242943", "blanc #FFFFFF", "rose/saumon accent"],
+  "why_this_tier": "Grille de tuiles visuelles avec hover effect révélateur d'infos. Style corporate haut de gamme, multi-section. Très adaptable. Navigation claire et design autoritaire.",
+  "recommended_sectors": ["Corporate", "BTP", "Services B2B", "Immobilier", "Assurances"],
+  "sections": ["Hero plein écran", "Grille tiles hover", "Services", "CTA", "Contact", "Footer"],
+  "animations": ["Hover reveal tiles", "Scroll fade-in", "Transitions pages"],
+  "added_date": "2026-05-21",
+  "batch": 1
+}

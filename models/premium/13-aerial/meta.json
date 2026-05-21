@@ -1,0 +1,19 @@
+{
+  "name": "Aerial",
+  "tier": "premium",
+  "source_url": "https://html5up.net/aerial",
+  "demo_url": "https://html5up.net/aerial/demo/",
+  "download_url": "https://html5up.net/aerial/download",
+  "license": "CC-BY 3.0",
+  "author": "AJ (html5up.net / @ajlkn)",
+  "stars": null,
+  "stack": ["HTML5", "CSS3", "JavaScript", "jQuery"],
+  "mood": "fullscreen-parallax-luxe",
+  "colors": ["images fullscreen changeantes", "overlay sombre", "blanc texte"],
+  "why_this_tier": "Fond fullscreen avec slideshow de photos en parallax automatique. Contenu centré minimaliste sur fond vivant. L'effet visuel du fond qui change crée une impression premium et cinématique.",
+  "recommended_sectors": ["Tourisme luxe", "Immobilier premium", "BTP Signature", "Hôtellerie", "Commerce luxe"],
+  "sections": ["Hero fullscreen slideshow fond", "Contenu centré minimal", "CTA élégant"],
+  "animations": ["Slideshow automatique fullscreen", "Parallax scroll fond", "Crossfade images"],
+  "added_date": "2026-05-21",
+  "batch": 1
+}

@@ -1,0 +1,20 @@
+{
+  "name": "WebGL Portfolio (MAGGIx1404)",
+  "tier": "premium",
+  "source_url": "https://github.com/MAGGIx1404/webgl-portfolio",
+  "demo_url": "https://www.chiaraluzzana.com/",
+  "download_url": "https://github.com/MAGGIx1404/webgl-portfolio/archive/refs/heads/master.zip",
+  "license": "non-spécifiée — usage en inspiration/référence uniquement",
+  "author": "MAGGIx1404 (GitHub)",
+  "stars": 175,
+  "stack": ["HTML5", "CSS3", "JavaScript", "Three.js", "GSAP", "Locomotive Scroll"],
+  "mood": "webgl-cinematic",
+  "colors": ["fond sombre", "effets WebGL dynamiques", "typographie bold"],
+  "why_this_tier": "Three.js + GSAP + Locomotive Scroll en vanilla HTML/CSS/JS. Effets WebGL sur images au hover, smooth scroll cinématique, transitions pages premium. Référence absolue du niveau PREMIUM. 175 étoiles.",
+  "recommended_sectors": ["Portfolio agence", "Corporate signature", "Services luxe", "Assurances premium"],
+  "sections": ["Hero WebGL plein écran", "Portfolio grille WebGL hover", "À propos animé", "Contact élégant"],
+  "animations": ["WebGL distortion images hover", "Locomotive smooth scroll", "GSAP page transitions", "Three.js effets fond"],
+  "added_date": "2026-05-21",
+  "batch": 1,
+  "note": "⚠️ Pas de license explicite — utiliser comme référence/inspiration, ne pas redistribuer tel quel"
+}
