@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEKTON Construction — BTP & Génie Civil Premium</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --yellow: #EAB308;
+    --yellow-light: #FDE047;
+    --yellow-dark: #CA8A04;
+    --black: #09090B;
+    --steel: #1C1C1E;
+    --steel-light: #2C2C2E;
+    --white: #FAFAFA;
+    --gray: #71717A;
+    --gray-light: #A1A1AA;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(9,9,11,0.9);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(234,179,8,0.2);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between; height: 72px;
+    transition: background 0.3s;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; }
+  .nav-logo .logo-mark {
+    width: 40px; height: 40px;
+    background: var(--yellow);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 1rem; color: var(--black);
+  }
+  .nav-logo .brand { font-weight: 800; font-size: 1.1rem; color: var(--white); letter-spacing: 1px; }
+  .nav-logo .brand em { color: var(--yellow); font-style: normal; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { color: var(--gray-light); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--yellow); }
+  .nav-cta {
+    background: var(--yellow); color: var(--black);
+    padding: 10px 22px; border-radius: 6px; text-decoration: none;
+    font-size: 0.87rem; font-weight: 700; transition: all 0.2s; letter-spacing: 0.5px;
+  }
+  .nav-cta:hover { background: var(--yellow-light); transform: translateY(-2px); }
+  .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .nav-toggle span { width: 24px; height: 2px; background: var(--white); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh; display: flex; align-items: center;
+    position: relative; overflow: hidden; padding: 100px 5% 80px;
+    background: var(--black);
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent, transparent 40px,
+      rgba(234,179,8,0.03) 40px, rgba(234,179,8,0.03) 41px
+    );
+  }
+  .hero-glow {
+    position: absolute; top: -20%; right: -10%; width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(234,179,8,0.15) 0%, transparent 70%);
+    border-radius: 50%; z-index: 0;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 780px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(234,179,8,0.1); border: 1px solid rgba(234,179,8,0.3);
+    padding: 8px 18px; border-radius: 4px; margin-bottom: 32px;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--yellow);
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 900; line-height: 1.05;
+    color: var(--white); margin-bottom: 28px; overflow: hidden;
+  }
+  .hero-title .line { display: block; overflow: hidden; }
+  .hero-title .accent { color: var(--yellow); }
+  .hero-desc { font-size: 1.1rem; color: var(--gray-light); line-height: 1.8; margin-bottom: 48px; max-width: 560px; }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 64px; }
+  .btn-primary {
+    background: var(--yellow); color: var(--black);
+    padding: 15px 36px; border-radius: 6px; text-decoration: none;
+    font-weight: 800; font-size: 0.95rem; letter-spacing: 0.5px; transition: all 0.3s;
+  }
+  .btn-primary:hover { background: var(--yellow-light); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(234,179,8,0.3); }
+  .btn-ghost {
+    border: 1.5px solid rgba(250,250,250,0.25); color: var(--white);
+    padding: 15px 36px; border-radius: 6px; text-decoration: none;
+    font-weight: 600; font-size: 0.95rem; transition: all 0.3s;
+  }
+  .btn-ghost:hover { border-color: var(--yellow); color: var(--yellow); }
+  .hero-metrics { display: flex; gap: 48px; flex-wrap: wrap; }
+  .metric { }
+  .metric-num { font-size: 2.2rem; font-weight: 900; color: var(--yellow); line-height: 1; }
+  .metric-label { font-size: 0.8rem; color: var(--gray); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* SECTIONS */
+  section { padding: 100px 5%; }
+  .section-tag { font-size: 0.72rem; letter-spacing: 4px; text-transform: uppercase; color: var(--yellow); font-weight: 700; margin-bottom: 12px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700; color: var(--white); margin-bottom: 16px; }
+  .section-sub { font-size: 0.98rem; color: var(--gray-light); max-width: 540px; line-height: 1.7; }
+  .section-header { margin-bottom: 64px; }
+  .section-header.centered { text-align: center; }
+  .section-header.centered .section-sub { margin: 0 auto; }
+
+  /* SERVICES */
+  #services { background: var(--steel); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; background: rgba(234,179,8,0.1); }
+  .service-card {
+    background: var(--steel); padding: 40px 32px;
+    transition: all 0.4s; cursor: default; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px;
+    background: var(--yellow); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { background: var(--steel-light); transform: translateY(-4px); }
+  .service-icon { font-size: 2.5rem; margin-bottom: 20px; }
+  .service-name { font-weight: 800; font-size: 1.05rem; color: var(--white); margin-bottom: 12px; }
+  .service-desc { color: var(--gray-light); font-size: 0.87rem; line-height: 1.7; }
+  .service-card:hover .service-icon { transform: scale(1.1); display: inline-block; transition: transform 0.3s; }
+
+  /* PROJETS */
+  #projets { background: var(--black); }
+  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: auto; gap: 16px; }
+  .project-card {
+    position: relative; overflow: hidden; border-radius: 8px;
+    background: var(--steel); cursor: pointer;
+  }
+  .project-card:nth-child(1) { grid-column: span 2; }
+  .project-img { width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease; }
+  .project-card:nth-child(1) .project-img { height: 340px; }
+  .project-card:hover .project-img { transform: scale(1.06); }
+  .project-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(9,9,11,0.95) 0%, rgba(9,9,11,0.3) 60%, transparent 100%);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 24px;
+    transform: translateY(20px); transition: transform 0.4s ease;
+  }
+  .project-card:hover .project-overlay { transform: translateY(0); }
+  .project-cat { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); font-weight: 700; margin-bottom: 6px; }
+  .project-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+  .project-meta { color: var(--gray-light); font-size: 0.8rem; }
+
+  /* EQUIPE */
+  #equipe { background: var(--steel); }
+  .team-split { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .team-text { }
+  .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .team-card {
+    background: var(--black); border-radius: 12px; padding: 24px; text-align: center;
+    border: 1px solid rgba(234,179,8,0.1); transition: border-color 0.3s;
+  }
+  .team-card:hover { border-color: rgba(234,179,8,0.4); }
+  .team-avatar { width: 70px; height: 70px; border-radius: 50%; margin: 0 auto 14px; object-fit: cover; border: 3px solid var(--yellow); }
+  .team-name { font-weight: 700; color: var(--white); font-size: 0.95rem; }
+  .team-role { color: var(--yellow); font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+  .team-exp { color: var(--gray); font-size: 0.8rem; margin-top: 6px; }
+
+  /* STATS */
+  #stats-section { background: var(--black); border-top: 1px solid rgba(234,179,8,0.15); border-bottom: 1px solid rgba(234,179,8,0.15); padding: 80px 5%; }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 40px; text-align: center; }
+  .stat-num { font-size: clamp(2.5rem, 4vw, 3.8rem); font-weight: 900; color: var(--yellow); line-height: 1; font-family: 'Playfair Display', serif; }
+  .stat-label { color: var(--gray-light); font-size: 0.85rem; margin-top: 8px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* TEMOIGNAGES */
+  #temoignages { background: var(--steel); }
+  .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .testi-card {
+    background: var(--black); border-radius: 12px; padding: 32px;
+    border-left: 4px solid var(--yellow);
+  }
+  .testi-text { color: var(--gray-light); font-size: 0.95rem; line-height: 1.8; margin-bottom: 24px; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 14px; }
+  .testi-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid var(--yellow); }
+  .testi-name { font-weight: 700; color: var(--white); font-size: 0.93rem; }
+  .testi-company { color: var(--yellow); font-size: 0.75rem; font-weight: 600; }
+
+  /* CTA */
+  #cta {
+    background: var(--yellow); padding: 80px 5%; text-align: center;
+  }
+  #cta .section-title { color: var(--black); font-size: clamp(2rem, 4vw, 3rem); }
+  #cta p { color: rgba(9,9,11,0.7); font-size: 1rem; max-width: 480px; margin: 16px auto 40px; }
+  .btn-dark {
+    background: var(--black); color: var(--yellow);
+    padding: 16px 40px; border-radius: 6px; text-decoration: none;
+    font-weight: 800; font-size: 1rem; transition: all 0.3s; display: inline-block;
+  }
+  .btn-dark:hover { background: var(--steel); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.3); }
+
+  /* FOOTER */
+  footer { background: #030303; padding: 60px 5% 30px; border-top: 1px solid rgba(234,179,8,0.15); }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-brand .brand-name { font-weight: 900; font-size: 1.4rem; color: var(--white); }
+  .footer-brand .brand-name em { color: var(--yellow); font-style: normal; }
+  .footer-brand p { color: var(--gray); font-size: 0.88rem; line-height: 1.7; margin-top: 14px; max-width: 280px; }
+  .footer-col h4 { color: var(--white); font-weight: 700; margin-bottom: 18px; font-size: 0.9rem; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a { color: var(--gray); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--yellow); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-bottom p { color: var(--gray); font-size: 0.8rem; }
+  .footer-social { display: flex; gap: 10px; }
+  .social-btn { width: 36px; height: 36px; border-radius: 4px; background: var(--steel); display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--white); text-decoration: none; transition: background 0.2s; }
+  .social-btn:hover { background: var(--yellow); color: var(--black); }
+  .certifications { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+  .cert { background: rgba(234,179,8,0.1); border: 1px solid rgba(234,179,8,0.25); padding: 5px 12px; border-radius: 4px; font-size: 0.72rem; color: var(--yellow); font-weight: 700; letter-spacing: 1px; }
+
+  /* WHATSAPP */
+  .whatsapp-btn {
+    position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+    width: 58px; height: 58px; border-radius: 50%;
+    background: #25D366; display: flex; align-items: center; justify-content: center;
+    text-decoration: none; box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+    animation: waPulse 2.5s ease-in-out infinite;
+  }
+  .whatsapp-btn svg { width: 28px; height: 28px; fill: #fff; }
+  @keyframes waPulse {
+    0%, 100% { box-shadow: 0 6px 20px rgba(37,211,102,0.4), 0 0 0 0 rgba(37,211,102,0.4); }
+    50% { box-shadow: 0 6px 20px rgba(37,211,102,0.4), 0 0 0 14px rgba(37,211,102,0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .projects-grid { grid-template-columns: 1fr 1fr; }
+    .project-card:nth-child(1) { grid-column: span 2; }
+    .team-split { grid-template-columns: 1fr; gap: 40px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .nav-toggle { display: flex; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card:nth-child(1) { grid-column: span 1; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-metrics { gap: 28px; }
+    .services-grid { grid-template-columns: 1fr; background: transparent; gap: 2px; }
+  }
+  @media (max-width: 480px) {
+    section { padding: 70px 4%; }
+    .hero-ctas { flex-direction: column; }
+    .team-grid { grid-template-columns: 1fr; }
+    .testi-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-logo">
+    <div class="logo-mark">T</div>
+    <div>
+      <div class="brand"><em>TEKTON</em> Construction</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projets">Réalisations</a></li>
+    <li><a href="#equipe">Équipe</a></li>
+    <li><a href="#temoignages">Références</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Demander un devis</a>
+  <div class="nav-toggle"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge">⚡ BTP · Génie Civil · Infrastructure</div>
+    <h1 class="hero-title" id="heroTitle">
+      <span class="line" id="line1">Nous bâtissons</span>
+      <span class="line" id="line2">l'<span class="accent">Afrique</span></span>
+      <span class="line" id="line3">de demain</span>
+    </h1>
+    <p class="hero-desc" id="heroDesc">TEKTON Construction est votre partenaire BTP de référence en Côte d'Ivoire. Génie civil, énergie, infrastructures routières et bâtiments industriels : nous livrons vos projets dans les délais, avec une excellence d'exécution sans compromis.</p>
+    <div class="hero-ctas" id="heroCtas">
+      <a href="#projets" class="btn-primary">Voir nos réalisations</a>
+      <a href="#contact" class="btn-ghost">Obtenir un devis</a>
+    </div>
+    <div class="hero-metrics" id="heroMetrics">
+      <div class="metric">
+        <div class="metric-num">180+</div>
+        <div class="metric-label">Projets livrés</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">22 ans</div>
+        <div class="metric-label">D'expérience</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">3 500+</div>
+        <div class="metric-label">Ouvriers formés</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header centered">
+    <p class="section-tag">Nos expertises</p>
+    <h2 class="section-title">6 domaines d'excellence</h2>
+    <p class="section-sub">De la conception à la livraison, TEKTON maîtrise toute la chaîne de valeur BTP.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🏗️</div>
+      <div class="service-name">Génie Civil & Structures</div>
+      <p class="service-desc">Ponts, viaducs, barrages, ouvrages d'art. Nous concevons et construisons les infrastructures structurantes de demain avec les matériaux les plus avancés.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛣️</div>
+      <div class="service-name">Routes & Autoroutes</div>
+      <p class="service-desc">Conception, terrassement, revêtement et entretien de routes nationales, voies express et pistes rurales à travers tout le territoire ivoirien.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">⚡</div>
+      <div class="service-name">Énergie & Électricité</div>
+      <p class="service-desc">Lignes HTA/BT, postes de transformation, éclairage public, énergies renouvelables (solaire off-grid et on-grid) pour collectivités et industries.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏭</div>
+      <div class="service-name">Bâtiments Industriels</div>
+      <p class="service-desc">Usines, entrepôts, hangars, plateformes logistiques. Construction en charpente métallique ou béton armé pour l'industrie et la grande distribution.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💧</div>
+      <div class="service-name">Hydraulique & VRD</div>
+      <p class="service-desc">Réseaux d'eau potable, assainissement, drainage pluvial. Nous assurons l'accès à l'eau et la gestion des eaux pour les projets urbains et ruraux.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏢</div>
+      <div class="service-name">Promotion Immobilière</div>
+      <p class="service-desc">Résidences premium, immeubles de bureaux, cités universitaires. Une vision complète du projet immobilier : de l'étude à la remise des clés.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETS -->
+<section id="projets">
+  <div class="section-header">
+    <p class="section-tag">Portfolio</p>
+    <h2 class="section-title">Nos réalisations phares</h2>
+    <p class="section-sub">180+ projets livrés partout en Afrique de l'Ouest. Quelques exemples marquants.</p>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <img src="https://placehold.co/800x340/1C1C1E/EAB308?text=Autoroute+Abidjan-Yamoussoukro" class="project-img" alt="Autoroute">
+      <div class="project-overlay">
+        <div class="project-cat">Infrastructure routière</div>
+        <div class="project-name">Autoroute Abidjan–Yamoussoukro</div>
+        <div class="project-meta">212 km · 18 mois · Maître d'ouvrage : AGEROUTE</div>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="https://placehold.co/400x280/09090B/EAB308?text=Centrale+Solaire" class="project-img" alt="Centrale solaire">
+      <div class="project-overlay">
+        <div class="project-cat">Énergie renouvelable</div>
+        <div class="project-name">Centrale solaire 50 MWc</div>
+        <div class="project-meta">Bouaké · 14 mois · 18 500 foyers alimentés</div>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="https://placehold.co/400x280/1C1C1E/EAB308?text=Pont+mixte" class="project-img" alt="Pont">
+      <div class="project-overlay">
+        <div class="project-cat">Génie civil</div>
+        <div class="project-name">Pont mixte sur le Bandama</div>
+        <div class="project-meta">340 m · Daloa · BNETD</div>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="https://placehold.co/400x280/09090B/EAB308?text=Zone+Industrielle" class="project-img" alt="Zone industrielle">
+      <div class="project-overlay">
+        <div class="project-cat">Bâtiment industriel</div>
+        <div class="project-name">Zone industrielle San Pedro</div>
+        <div class="project-meta">45 ha · 36 hangars · INVEST-CI</div>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="https://placehold.co/400x280/1C1C1E/EAB308?text=Résidence+Premium" class="project-img" alt="Résidence">
+      <div class="project-overlay">
+        <div class="project-cat">Promotion immobilière</div>
+        <div class="project-name">Résidence Les Palmiers</div>
+        <div class="project-meta">248 logements · Cocody · 24 mois</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPE -->
+<section id="equipe">
+  <div class="team-split">
+    <div class="team-text">
+      <p class="section-tag">Notre équipe</p>
+      <h2 class="section-title">Ingénieurs & Experts terrain</h2>
+      <p class="section-sub" style="margin-bottom:24px">Une équipe pluridisciplinaire de 320 ingénieurs, techniciens et chefs de chantier certifiés. Formation continue, sécurité prioritaire, excellence opérationnelle.</p>
+      <p class="section-sub">Nos équipes sont certifiées OHSAS 18001 pour la sécurité au travail et ISO 9001 pour la qualité d'exécution. Chaque chantier est supervisé par un ingénieur senior avec 10+ ans d'expérience.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <img src="https://placehold.co/70x70/EAB308/09090B?text=AK" class="team-avatar" alt="Amara Konaté">
+        <div class="team-name">Amara Konaté</div>
+        <div class="team-role">Directeur Général</div>
+        <div class="team-exp">25 ans d'expérience</div>
+      </div>
+      <div class="team-card">
+        <img src="https://placehold.co/70x70/1C1C1E/EAB308?text=SB" class="team-avatar" alt="Sylvie Boni">
+        <div class="team-name">Sylvie Boni</div>
+        <div class="team-role">Directrice Technique</div>
+        <div class="team-exp">Génie Civil, 18 ans</div>
+      </div>
+      <div class="team-card">
+        <img src="https://placehold.co/70x70/EAB308/09090B?text=JT" class="team-avatar" alt="Jean-Marc Touré">
+        <div class="team-name">Jean-Marc Touré</div>
+        <div class="team-role">Chef de Projets BTP</div>
+        <div class="team-exp">Infrastructure, 14 ans</div>
+      </div>
+      <div class="team-card">
+        <img src="https://placehold.co/70x70/1C1C1E/EAB308?text=FC" class="team-avatar" alt="Fatoumata Coulibaly">
+        <div class="team-name">Fatoumata Coulibaly</div>
+        <div class="team-role">Ingénieure Énergie</div>
+        <div class="team-exp">Énergies renouvelables, 10 ans</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats-section">
+  <div class="stats-grid">
+    <div>
+      <div class="stat-num"><span class="counter" data-target="180">0</span>+</div>
+      <div class="stat-label">Projets livrés</div>
+    </div>
+    <div>
+      <div class="stat-num"><span class="counter" data-target="22">0</span> ans</div>
+      <div class="stat-label">D'expérience</div>
+    </div>
+    <div>
+      <div class="stat-num"><span class="counter" data-target="3500">0</span>+</div>
+      <div class="stat-label">Ouvriers formés</div>
+    </div>
+    <div>
+      <div class="stat-num"><span class="counter" data-target="98">0</span>%</div>
+      <div class="stat-label">Délais respectés</div>
+    </div>
+  </div>
+</section>
+
+<!-- TEMOIGNAGES -->
+<section id="temoignages">
+  <div class="section-header centered">
+    <p class="section-tag">Références clients</p>
+    <h2 class="section-title">Ce que disent nos maîtres d'ouvrage</h2>
+    <p class="section-sub">Des partenaires institutionnels et privés qui nous font confiance sur leurs projets les plus ambitieux.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <p class="testi-text">"TEKTON a livré notre pont dans les délais malgré les contraintes techniques exceptionnelles. Leur expertise en génie civil est indiscutable. Nous les recommandons sans réserve pour tout projet d'envergure."</p>
+      <div class="testi-author">
+        <img src="https://placehold.co/48x48/EAB308/09090B?text=MK" class="testi-avatar" alt="Marcel Koffi">
+        <div>
+          <div class="testi-name">Marcel Koffi</div>
+          <div class="testi-company">DG · Ageroute Côte d'Ivoire</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <p class="testi-text">"Notre centrale solaire a été réalisée avec une précision remarquable. L'équipe TEKTON démontre une maîtrise technique et une rigueur organisationnelle qui font la différence sur les projets stratégiques."</p>
+      <div class="testi-author">
+        <img src="https://placehold.co/48x48/1C1C1E/EAB308?text=AD" class="testi-avatar" alt="Ahou Diallo">
+        <div>
+          <div class="testi-name">Ahou Diallo</div>
+          <div class="testi-company">PDG · SolarAfrica Investments</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <p class="testi-text">"248 logements livrés avec 3 semaines d'avance sur le planning. La qualité de finition est irréprochable. TEKTON est le constructeur que tout promoteur cherche en Côte d'Ivoire."</p>
+      <div class="testi-author">
+        <img src="https://placehold.co/48x48/EAB308/09090B?text=PT" class="testi-avatar" alt="Pierre Tano">
+        <div>
+          <div class="testi-name">Pierre Tano</div>
+          <div class="testi-company">Directeur · SINOPAC Immobilier</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA DEVIS -->
+<section id="cta">
+  <h2 class="section-title">Votre projet mérite les meilleurs</h2>
+  <p>Parlez-nous de votre chantier. Nous vous proposons une étude gratuite sous 48 heures.</p>
+  <a href="mailto:devis@tekton.ci" class="btn-dark">Demander un devis gratuit →</a>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-name"><em>TEKTON</em> Construction</div>
+      <p>Leader BTP en Côte d'Ivoire depuis 2002. Génie civil, énergie, infrastructure — nous bâtissons l'Afrique de demain avec rigueur et vision.</p>
+      <div class="certifications">
+        <span class="cert">ISO 9001</span>
+        <span class="cert">OHSAS 18001</span>
+        <span class="cert">CEFAT</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Génie civil</a></li>
+        <li><a href="#">Routes & VRD</a></li>
+        <li><a href="#">Énergie</a></li>
+        <li><a href="#">Bâtiments industriels</a></li>
+        <li><a href="#">Immobilier</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Entreprise</h4>
+      <ul>
+        <li><a href="#">À propos</a></li>
+        <li><a href="#">Nos réalisations</a></li>
+        <li><a href="#">Notre équipe</a></li>
+        <li><a href="#">Certifications</a></li>
+        <li><a href="#">Carrières</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+2250708000000">+225 07 08 00 00 00</a></li>
+        <li><a href="mailto:contact@tekton.ci">contact@tekton.ci</a></li>
+        <li><a href="#">Zone Industrielle de Yopougon</a></li>
+        <li><a href="#">Lundi–Samedi 7h–18h</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TEKTON Construction. Tous droits réservés. Template par <strong>FlexWay</strong></p>
+    <div class="footer-social">
+      <a href="#" class="social-btn">f</a>
+      <a href="#" class="social-btn">in</a>
+      <a href="#" class="social-btn">yt</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/2250708000000?text=Bonjour%20TEKTON,%20je%20souhaite%20un%20devis%20pour%20un%20projet" class="whatsapp-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Hero split text animation
+  const heroTl = gsap.timeline({ delay: 0.3 });
+  heroTl
+    .from('#line1', { y: '100%', opacity: 0, duration: 0.7, ease: 'power3.out' })
+    .from('#line2', { y: '100%', opacity: 0, duration: 0.7, ease: 'power3.out' }, '-=0.4')
+    .from('#line3', { y: '100%', opacity: 0, duration: 0.7, ease: 'power3.out' }, '-=0.4')
+    .from('#heroDesc', { y: 20, opacity: 0, duration: 0.6, ease: 'power2.out' }, '-=0.3')
+    .from('#heroCtas a', { y: 20, opacity: 0, duration: 0.5, stagger: 0.15, ease: 'power2.out' }, '-=0.3')
+    .from('.metric', { y: 20, opacity: 0, duration: 0.5, stagger: 0.1, ease: 'power2.out' }, '-=0.2');
+
+  // Services
+  gsap.from('.service-card', {
+    scrollTrigger: { trigger: '#services', start: 'top 75%' },
+    y: 40, opacity: 0, duration: 0.5, stagger: 0.1, ease: 'power2.out'
+  });
+
+  // Projects reveal
+  gsap.from('.project-card', {
+    scrollTrigger: { trigger: '#projets', start: 'top 75%' },
+    scale: 0.95, opacity: 0, duration: 0.6, stagger: 0.12, ease: 'power2.out'
+  });
+
+  // Team
+  gsap.from('.team-card', {
+    scrollTrigger: { trigger: '#equipe', start: 'top 75%' },
+    y: 30, opacity: 0, duration: 0.5, stagger: 0.1, ease: 'power2.out'
+  });
+  gsap.from('.team-text', {
+    scrollTrigger: { trigger: '#equipe', start: 'top 80%' },
+    x: -40, opacity: 0, duration: 0.7, ease: 'power2.out'
+  });
+
+  // Counters
+  const counters = document.querySelectorAll('.counter');
+  counters.forEach(el => {
+    ScrollTrigger.create({
+      trigger: '#stats-section', start: 'top 80%',
+      onEnter: () => {
+        gsap.to(el, {
+          innerText: el.dataset.target,
+          duration: 2, ease: 'power2.out',
+          snap: { innerText: 1 },
+          onUpdate: function() { el.innerText = Math.round(parseFloat(el.innerText)); }
+        });
+      }
+    });
+  });
+
+  // Testimonials
+  gsap.from('.testi-card', {
+    scrollTrigger: { trigger: '#temoignages', start: 'top 75%' },
+    x: 30, opacity: 0, duration: 0.6, stagger: 0.15, ease: 'power2.out'
+  });
+
+  // Nav scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('mainNav');
+    nav.style.background = window.scrollY > 60 ? 'rgba(9,9,11,0.98)' : 'rgba(9,9,11,0.9)';
+  });
+</script>
+</body>
+</html>

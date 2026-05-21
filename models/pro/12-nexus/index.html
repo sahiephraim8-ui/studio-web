@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DATAPRIME Africa — Services B2B Tech & Data Analytics</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --cyan: #06B6D4;
+    --cyan-light: #22D3EE;
+    --cyan-dark: #0891B2;
+    --violet: #7C3AED;
+    --violet-light: #A78BFA;
+    --deep: #03030A;
+    --dark: #111827;
+    --dark2: #0D1117;
+    --card-bg: rgba(17,24,39,0.8);
+    --border: rgba(6,182,212,0.15);
+    --text: #E2E8F0;
+    --muted: #64748B;
+    --white: #FFFFFF;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--deep); color: var(--text); overflow-x: hidden; }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--deep); }
+  ::-webkit-scrollbar-thumb { background: var(--cyan-dark); border-radius: 4px; }
+
+  /* NAV — GLASSMORPHISM */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(3,3,10,0.6);
+    backdrop-filter: blur(24px) saturate(180%);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between; height: 68px;
+    transition: background 0.4s;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; }
+  .logo-mark {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--cyan), var(--violet));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.9rem; color: #fff;
+    position: relative; overflow: hidden;
+  }
+  .logo-mark::after {
+    content: ''; position: absolute; inset: -50%;
+    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+    animation: shimmer 3s infinite;
+  }
+  @keyframes shimmer { 0% { transform: translateX(-100%) rotate(45deg); } 100% { transform: translateX(200%) rotate(45deg); } }
+  .logo-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--white); }
+  .logo-name span { color: var(--cyan); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.87rem; font-weight: 500; transition: color 0.2s; letter-spacing: 0.2px; }
+  .nav-links a:hover { color: var(--cyan); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--cyan), var(--violet));
+    color: #fff; padding: 9px 22px; border-radius: 8px; text-decoration: none;
+    font-size: 0.85rem; font-weight: 600; transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(6,182,212,0.25);
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(6,182,212,0.4); opacity: 0.9; }
+  .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .nav-toggle span { width: 24px; height: 2px; background: var(--text); border-radius: 2px; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh; display: flex; align-items: center;
+    position: relative; overflow: hidden; padding: 100px 5% 80px;
+  }
+  .hero-lines {
+    position: absolute; inset: 0; z-index: 0;
+    overflow: hidden;
+  }
+  .h-line {
+    position: absolute; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(6,182,212,0.15), transparent);
+    animation: lineMove 8s linear infinite;
+  }
+  .v-line {
+    position: absolute; top: 0; bottom: 0; width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(124,58,237,0.15), transparent);
+    animation: vlineMove 10s linear infinite;
+  }
+  @keyframes lineMove { 0% { transform: translateY(-100vh); } 100% { transform: translateY(100vh); } }
+  @keyframes vlineMove { 0% { transform: translateX(-100vw); } 100% { transform: translateX(100vw); } }
+  .hero-orb1 {
+    position: absolute; top: 10%; right: 5%; width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%);
+    border-radius: 50%; z-index: 0; animation: orbFloat 8s ease-in-out infinite alternate;
+  }
+  .hero-orb2 {
+    position: absolute; bottom: 5%; left: 0%; width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%);
+    border-radius: 50%; z-index: 0; animation: orbFloat 10s ease-in-out infinite alternate-reverse;
+  }
+  @keyframes orbFloat { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(20px, 30px) scale(1.1); } }
+  .hero-content { position: relative; z-index: 2; max-width: 760px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(6,182,212,0.08); border: 1px solid rgba(6,182,212,0.3);
+    padding: 7px 18px; border-radius: 100px; margin-bottom: 32px;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--cyan); font-family: 'Space Grotesk', sans-serif;
+  }
+  .badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); animation: dotPulse 2s ease-in-out infinite; }
+  @keyframes dotPulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.7); } }
+  .hero-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.8rem, 5.5vw, 5rem); font-weight: 700; line-height: 1.08;
+    color: var(--white); margin-bottom: 24px;
+  }
+  .hero-title .gradient-text {
+    background: linear-gradient(135deg, var(--cyan), var(--violet-light));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero-desc { font-size: 1.08rem; color: var(--muted); line-height: 1.8; margin-bottom: 44px; max-width: 560px; }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 64px; }
+  .btn-cyan {
+    background: linear-gradient(135deg, var(--cyan), var(--cyan-dark));
+    color: #fff; padding: 14px 32px; border-radius: 10px; text-decoration: none;
+    font-weight: 600; font-size: 0.95rem; transition: all 0.3s;
+    box-shadow: 0 6px 20px rgba(6,182,212,0.3); font-family: 'Space Grotesk', sans-serif;
+  }
+  .btn-cyan:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(6,182,212,0.4); }
+  .btn-outline {
+    border: 1px solid rgba(124,58,237,0.5); color: var(--violet-light);
+    padding: 14px 32px; border-radius: 10px; text-decoration: none;
+    font-weight: 500; font-size: 0.95rem; transition: all 0.3s;
+  }
+  .btn-outline:hover { border-color: var(--violet-light); background: rgba(124,58,237,0.08); }
+  .hero-tech { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .tech-label { color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 2px; margin-right: 4px; }
+  .tech-pill {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    padding: 5px 14px; border-radius: 100px; font-size: 0.75rem; color: var(--text); font-weight: 500;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 5%; }
+  .s-tag { font-size: 0.72rem; letter-spacing: 4px; text-transform: uppercase; color: var(--cyan); font-weight: 600; margin-bottom: 12px; font-family: 'Space Grotesk', sans-serif; }
+  .s-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 700; color: var(--white); margin-bottom: 16px; }
+  .s-sub { font-size: 0.98rem; color: var(--muted); max-width: 540px; line-height: 1.75; }
+  .s-header { margin-bottom: 64px; }
+  .s-header.centered { text-align: center; }
+  .s-header.centered .s-sub { margin: 0 auto; }
+
+  /* SERVICES */
+  #services { background: var(--dark2); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .service-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 16px; padding: 32px; position: relative; overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: default;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+    transform: scaleX(0); transform-origin: center; transition: transform 0.4s;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { border-color: rgba(6,182,212,0.35); transform: translateY(-4px); }
+  .service-icon {
+    width: 52px; height: 52px; border-radius: 12px; margin-bottom: 20px;
+    display: flex; align-items: center; justify-content: center; font-size: 1.6rem;
+    background: linear-gradient(135deg, rgba(6,182,212,0.15), rgba(124,58,237,0.15));
+    border: 1px solid rgba(6,182,212,0.2);
+  }
+  .service-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--white); margin-bottom: 10px; }
+  .service-desc { color: var(--muted); font-size: 0.87rem; line-height: 1.7; margin-bottom: 16px; }
+  .service-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .stag { background: rgba(6,182,212,0.08); border: 1px solid rgba(6,182,212,0.2); padding: 3px 10px; border-radius: 100px; font-size: 0.7rem; color: var(--cyan); font-weight: 500; }
+
+  /* CLIENTS */
+  #clients { background: var(--deep); overflow: hidden; padding: 60px 0; }
+  .clients-header { text-align: center; padding: 0 5% 40px; }
+  .clients-track-wrap { overflow: hidden; }
+  .clients-track {
+    display: flex; gap: 40px; align-items: center;
+    animation: scrollTrack 25s linear infinite; width: max-content;
+  }
+  .clients-track:hover { animation-play-state: paused; }
+  @keyframes scrollTrack { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  .client-logo {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px; padding: 16px 28px; white-space: nowrap;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.9rem;
+    color: var(--muted); min-width: 160px; text-align: center;
+    transition: color 0.3s, border-color 0.3s;
+  }
+  .client-logo:hover { color: var(--cyan); border-color: rgba(6,182,212,0.3); }
+
+  /* METHODE */
+  #methode { background: var(--dark2); }
+  .methode-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; position: relative; }
+  .methode-grid::before {
+    content: ''; position: absolute; top: 32px; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--cyan), var(--violet), var(--cyan));
+    z-index: 0; opacity: 0.3;
+  }
+  .methode-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 16px; padding: 32px 28px; position: relative; z-index: 1;
+    transition: all 0.3s;
+  }
+  .methode-card:hover { border-color: rgba(124,58,237,0.4); transform: translateY(-4px); }
+  .methode-num {
+    font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--cyan);
+    margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+  }
+  .methode-num::before {
+    content: attr(data-step); width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--cyan), var(--violet));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; font-weight: 700; color: #fff;
+  }
+  .methode-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--white); margin-bottom: 12px; }
+  .methode-desc { color: var(--muted); font-size: 0.87rem; line-height: 1.7; }
+  .methode-duration { margin-top: 16px; font-size: 0.75rem; color: var(--cyan); font-weight: 600; font-family: 'Space Grotesk', sans-serif; }
+
+  /* TESTIMONIALS */
+  #temoignages { background: var(--deep); }
+  .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .testi-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 16px; padding: 32px; transition: all 0.3s;
+  }
+  .testi-card:hover { border-color: rgba(124,58,237,0.35); transform: translateY(-4px); }
+  .testi-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+  .quote-mark { font-size: 2.5rem; color: var(--cyan); opacity: 0.4; font-family: 'Space Grotesk', sans-serif; line-height: 1; }
+  .rating { color: #FBBF24; font-size: 0.8rem; letter-spacing: 2px; }
+  .testi-text { color: var(--text); font-size: 0.93rem; line-height: 1.8; margin-bottom: 24px; opacity: 0.85; }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .testi-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--cyan); }
+  .testi-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--white); font-size: 0.9rem; }
+  .testi-role { color: var(--cyan); font-size: 0.75rem; font-weight: 500; }
+
+  /* STACK */
+  #stack { background: var(--dark2); }
+  .stack-split { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .stack-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .stack-item {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px 12px; text-align: center;
+    transition: all 0.3s; cursor: default;
+  }
+  .stack-item:hover { border-color: var(--cyan); transform: scale(1.05); }
+  .stack-icon { font-size: 1.8rem; margin-bottom: 8px; display: block; }
+  .stack-name { font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 600; color: var(--muted); }
+
+  /* STATS */
+  #stats { background: linear-gradient(135deg, rgba(6,182,212,0.08) 0%, rgba(124,58,237,0.08) 100%); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 5%; }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 48px; text-align: center; }
+  .stat-num { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 700; line-height: 1; background: linear-gradient(135deg, var(--cyan), var(--violet-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-label { color: var(--muted); font-size: 0.85rem; margin-top: 8px; }
+
+  /* CTA */
+  #cta {
+    background: var(--deep); text-align: center; padding: 100px 5%;
+    position: relative; overflow: hidden;
+  }
+  .cta-glow {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 600px; height: 300px;
+    background: radial-gradient(ellipse, rgba(124,58,237,0.12) 0%, transparent 70%);
+    z-index: 0;
+  }
+  .cta-content { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+  .cta-badge { display: inline-block; background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.3); color: var(--violet-light); padding: 6px 18px; border-radius: 100px; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px; }
+  .cta-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--white); margin-bottom: 20px; }
+  .cta-desc { color: var(--muted); font-size: 1rem; line-height: 1.7; margin-bottom: 40px; }
+  .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer { background: var(--dark2); border-top: 1px solid var(--border); padding: 60px 5% 30px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-brand .f-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.3rem; color: var(--white); }
+  .footer-brand .f-logo span { color: var(--cyan); }
+  .footer-brand p { color: var(--muted); font-size: 0.87rem; line-height: 1.7; margin-top: 14px; max-width: 280px; }
+  .footer-col h4 { font-family: 'Space Grotesk', sans-serif; color: var(--white); font-weight: 600; margin-bottom: 18px; font-size: 0.88rem; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a { color: var(--muted); text-decoration: none; font-size: 0.84rem; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--cyan); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-bottom p { color: var(--muted); font-size: 0.8rem; }
+  .footer-social { display: flex; gap: 10px; }
+  .social-btn { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--text); text-decoration: none; transition: all 0.2s; }
+  .social-btn:hover { background: linear-gradient(135deg, var(--cyan), var(--violet)); border-color: transparent; }
+  .footer-tags { display: flex; gap: 8px; margin-top: 18px; flex-wrap: wrap; }
+  .ftag { background: rgba(6,182,212,0.07); border: 1px solid var(--border); padding: 4px 12px; border-radius: 100px; font-size: 0.7rem; color: var(--cyan); font-family: 'Space Grotesk', sans-serif; font-weight: 600; }
+
+  /* WHATSAPP */
+  .whatsapp-btn {
+    position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+    width: 58px; height: 58px; border-radius: 50%;
+    background: #25D366; display: flex; align-items: center; justify-content: center;
+    text-decoration: none; box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+    animation: waPulse 2.5s ease-in-out infinite;
+  }
+  .whatsapp-btn svg { width: 28px; height: 28px; fill: #fff; }
+  @keyframes waPulse {
+    0%, 100% { box-shadow: 0 6px 20px rgba(37,211,102,0.4), 0 0 0 0 rgba(37,211,102,0.4); }
+    50% { box-shadow: 0 6px 20px rgba(37,211,102,0.4), 0 0 0 14px rgba(37,211,102,0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .stack-split { grid-template-columns: 1fr; gap: 48px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .nav-toggle { display: flex; }
+    .methode-grid::before { display: none; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .stack-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 480px) {
+    section { padding: 70px 4%; }
+    .hero-ctas { flex-direction: column; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .stack-grid { grid-template-columns: repeat(2, 1fr); }
+    .cta-btns { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-logo">
+    <div class="logo-mark">D</div>
+    <div class="logo-name">DATA<span>PRIME</span> Africa</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#clients">Clients</a></li>
+    <li><a href="#methode">Méthode</a></li>
+    <li><a href="#stack">Tech Stack</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Consultation gratuite</a>
+  <div class="nav-toggle"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-lines" id="heroLines"></div>
+  <div class="hero-orb1"></div>
+  <div class="hero-orb2"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="badge-dot"></span> ESN · Data · SaaS B2B · Afrique</div>
+    <h1 class="hero-title" id="heroTitle">
+      Transformez vos données<br>en <span class="gradient-text">avantage concurrentiel</span>
+    </h1>
+    <p class="hero-desc" id="heroDesc">DATAPRIME Africa accompagne les entreprises africaines dans leur transformation digitale. Data analytics, développement SaaS, intégration API et stratégie cloud — nous bâtissons les systèmes qui font la différence sur le marché.</p>
+    <div class="hero-ctas" id="heroCtas">
+      <a href="#services" class="btn-cyan">Découvrir nos services</a>
+      <a href="#cta" class="btn-outline">Consultation gratuite →</a>
+    </div>
+    <div class="hero-tech">
+      <span class="tech-label">Stack :</span>
+      <span class="tech-pill">Python</span>
+      <span class="tech-pill">React</span>
+      <span class="tech-pill">AWS</span>
+      <span class="tech-pill">PostgreSQL</span>
+      <span class="tech-pill">Docker</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="stats-grid">
+    <div>
+      <div class="stat-num"><span class="counter" data-target="120">0</span>+</div>
+      <div class="stat-label">Projets livrés en Afrique</div>
+    </div>
+    <div>
+      <div class="stat-num"><span class="counter" data-target="48">0</span></div>
+      <div class="stat-label">Clients entreprises B2B</div>
+    </div>
+    <div>
+      <div class="stat-num"><span class="counter" data-target="98">0</span>%</div>
+      <div class="stat-label">Taux de satisfaction client</div>
+    </div>
+    <div>
+      <div class="stat-num"><span class="counter" data-target="12">0</span></div>
+      <div class="stat-label">Pays couverts en Afrique</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="s-header centered">
+    <p class="s-tag">Nos expertises</p>
+    <h2 class="s-title">6 services tech pour scaler votre business</h2>
+    <p class="s-sub">Des solutions data-driven pensées pour les réalités africaines, avec des standards de classe mondiale.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <div class="service-name">Data Analytics & BI</div>
+      <p class="service-desc">Tableaux de bord temps réel, modèles prédictifs, rapports automatisés. Transformez vos données brutes en décisions stratégiques actionnables.</p>
+      <div class="service-tags"><span class="stag">Power BI</span><span class="stag">Python</span><span class="stag">Looker</span></div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">⚙️</div>
+      <div class="service-name">Développement SaaS B2B</div>
+      <p class="service-desc">Conception et développement de plateformes SaaS sur mesure. Architecture microservices, scalabilité garantie, onboarding client optimisé.</p>
+      <div class="service-tags"><span class="stag">React</span><span class="stag">Node.js</span><span class="stag">API REST</span></div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">☁️</div>
+      <div class="service-name">Cloud & Infrastructure</div>
+      <p class="service-desc">Migration cloud, optimisation des coûts infrastructure, mise en place CI/CD et monitoring. AWS, GCP et Azure — nous gérons votre cloud end-to-end.</p>
+      <div class="service-tags"><span class="stag">AWS</span><span class="stag">Docker</span><span class="stag">Kubernetes</span></div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔗</div>
+      <div class="service-name">Intégration API & ERP</div>
+      <p class="service-desc">Connectez vos systèmes existants : ERP, CRM, paiements mobile money, plateformes logistiques. Zéro silo, 100% interopérable.</p>
+      <div class="service-tags"><span class="stag">REST</span><span class="stag">GraphQL</span><span class="stag">MoMo API</span></div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🤖</div>
+      <div class="service-name">IA & Machine Learning</div>
+      <p class="service-desc">Modèles de scoring, NLP multilingue (français, anglais, langues locales), systèmes de recommandation et automatisation intelligente des processus.</p>
+      <div class="service-tags"><span class="stag">TensorFlow</span><span class="stag">OpenAI</span><span class="stag">LLM</span></div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛡️</div>
+      <div class="service-name">Cybersécurité & Audit</div>
+      <p class="service-desc">Audit de sécurité, test de pénétration, conformité RGPD et réglementation africaine. Protection des données et continuité d'activité garanties.</p>
+      <div class="service-tags"><span class="stag">Pentest</span><span class="stag">RGPD</span><span class="stag">ISO 27001</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS SLIDER -->
+<section id="clients">
+  <div class="clients-header">
+    <p class="s-tag">Ils nous font confiance</p>
+    <h2 class="s-title">Nos clients en Afrique</h2>
+  </div>
+  <div class="clients-track-wrap">
+    <div class="clients-track" id="clientsTrack">
+      <div class="client-logo">BNI Côte d'Ivoire</div>
+      <div class="client-logo">Orange Money</div>
+      <div class="client-logo">MTN Africa</div>
+      <div class="client-logo">CANAL+ Afrique</div>
+      <div class="client-logo">Société Générale</div>
+      <div class="client-logo">Total Energies</div>
+      <div class="client-logo">Bolloré Africa</div>
+      <div class="client-logo">CFAO Group</div>
+      <div class="client-logo">Air Côte d'Ivoire</div>
+      <div class="client-logo">NSIA Banque</div>
+      <!-- Duplicate for infinite scroll -->
+      <div class="client-logo">BNI Côte d'Ivoire</div>
+      <div class="client-logo">Orange Money</div>
+      <div class="client-logo">MTN Africa</div>
+      <div class="client-logo">CANAL+ Afrique</div>
+      <div class="client-logo">Société Générale</div>
+      <div class="client-logo">Total Energies</div>
+      <div class="client-logo">Bolloré Africa</div>
+      <div class="client-logo">CFAO Group</div>
+      <div class="client-logo">Air Côte d'Ivoire</div>
+      <div class="client-logo">NSIA Banque</div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODE AGILE -->
+<section id="methode">
+  <div class="s-header centered">
+    <p class="s-tag">Notre approche</p>
+    <h2 class="s-title">Méthode agile en 4 étapes</h2>
+    <p class="s-sub">Un processus éprouvé pour livrer des projets tech de qualité, dans les délais et le budget définis.</p>
+  </div>
+  <div class="methode-grid">
+    <div class="methode-card">
+      <div class="methode-num" data-step="01">Découverte</div>
+      <div class="methode-title">Audit & Stratégie</div>
+      <p class="methode-desc">Nous analysons votre stack existant, vos objectifs business et vos contraintes techniques. Un diagnostic précis pour construire la bonne solution.</p>
+      <div class="methode-duration">⏱ Semaine 1–2</div>
+    </div>
+    <div class="methode-card">
+      <div class="methode-num" data-step="02">Conception</div>
+      <div class="methode-title">Architecture & Design</div>
+      <p class="methode-desc">Architecture technique, wireframes UX, choix du stack. Chaque décision est documentée et validée avec vous avant de coder une ligne.</p>
+      <div class="methode-duration">⏱ Semaine 3–4</div>
+    </div>
+    <div class="methode-card">
+      <div class="methode-num" data-step="03">Développement</div>
+      <div class="methode-title">Sprints & Livraisons</div>
+      <p class="methode-desc">Développement en sprints de 2 semaines. Demo bi-hebdomadaire, feedback intégré en continu, code review systématique et tests automatisés.</p>
+      <div class="methode-duration">⏱ 6–16 semaines</div>
+    </div>
+    <div class="methode-card">
+      <div class="methode-num" data-step="04">Déploiement</div>
+      <div class="methode-title">Go-live & Support</div>
+      <p class="methode-desc">Mise en production progressive, monitoring 24/7, formation des équipes. Support technique réactif et maintenance évolutive inclus 12 mois.</p>
+      <div class="methode-duration">⏱ Ongoing</div>
+    </div>
+  </div>
+</section>
+
+<!-- TEMOIGNAGES -->
+<section id="temoignages">
+  <div class="s-header centered">
+    <p class="s-tag">Témoignages</p>
+    <h2 class="s-title">Ce que disent nos clients</h2>
+    <p class="s-sub">Des partenaires qui ont transformé leur business avec nos solutions data et tech.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-header">
+        <div class="quote-mark">"</div>
+        <div class="rating">★★★★★</div>
+      </div>
+      <p class="testi-text">DATAPRIME a déployé notre tableau de bord analytique en 6 semaines. Nous avons maintenant une visibilité temps réel sur nos 12 agences. Le ROI est mesurable dès le premier trimestre.</p>
+      <div class="testi-author">
+        <img src="https://placehold.co/44x44/06B6D4/FFFFFF?text=KD" class="testi-avatar" alt="Koffi Désir">
+        <div>
+          <div class="testi-name">Koffi Désir</div>
+          <div class="testi-role">DSI · BNI Côte d'Ivoire</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-header">
+        <div class="quote-mark">"</div>
+        <div class="rating">★★★★★</div>
+      </div>
+      <p class="testi-text">Notre plateforme SaaS de gestion de flotte a été développée par DATAPRIME avec une rigueur technique exceptionnelle. Leur équipe comprend les enjeux business africains — c'est rare et précieux.</p>
+      <div class="testi-author">
+        <img src="https://placehold.co/44x44/7C3AED/FFFFFF?text=MO" class="testi-avatar" alt="Marie Ouattara">
+        <div>
+          <div class="testi-name">Marie Ouattara</div>
+          <div class="testi-role">CEO · LogiAfric Solutions</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-header">
+        <div class="quote-mark">"</div>
+        <div class="rating">★★★★★</div>
+      </div>
+      <p class="testi-text">L'audit de sécurité DATAPRIME nous a permis d'identifier 23 vulnérabilités critiques. La remédiation a été rapide et professionnelle. Nous dormons mieux depuis.</p>
+      <div class="testi-author">
+        <img src="https://placehold.co/44x44/0891B2/FFFFFF?text=AB" class="testi-avatar" alt="Adama Bamba">
+        <div>
+          <div class="testi-name">Adama Bamba</div>
+          <div class="testi-role">RSSI · Groupe Fiduciaire CI</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STACK TECHNIQUE -->
+<section id="stack">
+  <div class="stack-split">
+    <div>
+      <p class="s-tag">Technologies</p>
+      <h2 class="s-title">Notre stack technique</h2>
+      <p class="s-sub" style="margin-bottom:28px">Nous utilisons les technologies les plus robustes et éprouvées — pensées pour la performance, la scalabilité et la maintenabilité en contexte africain (latence, bande passante, offline-first).</p>
+      <p class="s-sub">Nos 45 ingénieurs sont certifiés AWS, Google Cloud et Azure. Chaque projet bénéficie d'une revue d'architecture et de code.</p>
+    </div>
+    <div class="stack-grid" id="stackGrid">
+      <div class="stack-item"><span class="stack-icon">🐍</span><div class="stack-name">Python</div></div>
+      <div class="stack-item"><span class="stack-icon">⚛️</span><div class="stack-name">React</div></div>
+      <div class="stack-item"><span class="stack-icon">☁️</span><div class="stack-name">AWS</div></div>
+      <div class="stack-item"><span class="stack-icon">🐘</span><div class="stack-name">PostgreSQL</div></div>
+      <div class="stack-item"><span class="stack-icon">🐳</span><div class="stack-name">Docker</div></div>
+      <div class="stack-item"><span class="stack-icon">🔷</span><div class="stack-name">TypeScript</div></div>
+      <div class="stack-item"><span class="stack-icon">📊</span><div class="stack-name">Power BI</div></div>
+      <div class="stack-item"><span class="stack-icon">🔁</span><div class="stack-name">Kubernetes</div></div>
+      <div class="stack-item"><span class="stack-icon">🤖</span><div class="stack-name">TensorFlow</div></div>
+      <div class="stack-item"><span class="stack-icon">🔥</span><div class="stack-name">Firebase</div></div>
+      <div class="stack-item"><span class="stack-icon">🟢</span><div class="stack-name">Node.js</div></div>
+      <div class="stack-item"><span class="stack-icon">🔴</span><div class="stack-name">Redis</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-glow"></div>
+  <div class="cta-content">
+    <div class="cta-badge">Consultation Gratuite</div>
+    <h2 class="cta-title">Prêt à transformer votre business avec la data ?</h2>
+    <p class="cta-desc">Échangeons 30 minutes sur vos enjeux tech et data. Pas de pitch, pas de pression — une conversation honnête pour voir comment nous pouvons vous aider.</p>
+    <div class="cta-btns">
+      <a href="mailto:hello@dataprime.africa" class="btn-cyan">Réserver une consultation →</a>
+      <a href="tel:+2250709000000" class="btn-outline">+225 07 09 00 00 00</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="f-logo">DATA<span>PRIME</span> Africa</div>
+      <p>ESN africaine spécialisée en data analytics, SaaS B2B et transformation digitale. 120+ projets livrés dans 12 pays africains depuis 2016.</p>
+      <div class="footer-tags">
+        <span class="ftag">AWS Partner</span>
+        <span class="ftag">Google Cloud</span>
+        <span class="ftag">ISO 27001</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Data Analytics</a></li>
+        <li><a href="#">Développement SaaS</a></li>
+        <li><a href="#">Cloud & DevOps</a></li>
+        <li><a href="#">IA & ML</a></li>
+        <li><a href="#">Cybersécurité</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Entreprise</h4>
+      <ul>
+        <li><a href="#">À propos</a></li>
+        <li><a href="#">Blog tech</a></li>
+        <li><a href="#">Cas clients</a></li>
+        <li><a href="#">Carrières</a></li>
+        <li><a href="#">Partenaires</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+2250709000000">+225 07 09 00 00 00</a></li>
+        <li><a href="mailto:hello@dataprime.africa">hello@dataprime.africa</a></li>
+        <li><a href="#">Cocody, Abidjan</a></li>
+        <li><a href="#">Lundi–Vendredi 8h–19h</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 DATAPRIME Africa. Tous droits réservés. Template par <strong>FlexWay</strong></p>
+    <div class="footer-social">
+      <a href="#" class="social-btn">f</a>
+      <a href="#" class="social-btn">in</a>
+      <a href="#" class="social-btn">gh</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/2250709000000?text=Bonjour%20DATAPRIME,%20je%20souhaite%20une%20consultation%20gratuite" class="whatsapp-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animated background lines
+  const linesContainer = document.getElementById('heroLines');
+  const linePositions = [15, 30, 45, 60, 75, 90];
+  linePositions.forEach((pos, i) => {
+    const l = document.createElement('div');
+    l.className = 'h-line';
+    l.style.top = pos + '%';
+    l.style.animationDelay = (i * 1.2) + 's';
+    l.style.animationDuration = (7 + i) + 's';
+    linesContainer.appendChild(l);
+  });
+  const vPositions = [20, 40, 60, 80];
+  vPositions.forEach((pos, i) => {
+    const v = document.createElement('div');
+    v.className = 'v-line';
+    v.style.left = pos + '%';
+    v.style.animationDelay = (i * 2) + 's';
+    v.style.animationDuration = (9 + i * 2) + 's';
+    linesContainer.appendChild(v);
+  });
+
+  // Hero animation
+  const heroTl = gsap.timeline({ delay: 0.2 });
+  heroTl
+    .from('.hero-badge', { y: 20, opacity: 0, duration: 0.6, ease: 'power3.out' })
+    .from('#heroTitle', { y: 40, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.3')
+    .from('#heroDesc', { y: 25, opacity: 0, duration: 0.6, ease: 'power2.out' }, '-=0.4')
+    .from('#heroCtas a', { y: 20, opacity: 0, duration: 0.5, stagger: 0.15, ease: 'power2.out' }, '-=0.3')
+    .from('.hero-tech > *', { y: 15, opacity: 0, duration: 0.4, stagger: 0.08, ease: 'power2.out' }, '-=0.2');
+
+  // Stats counters
+  const counters = document.querySelectorAll('.counter');
+  counters.forEach(el => {
+    ScrollTrigger.create({
+      trigger: '#stats', start: 'top 80%',
+      onEnter: () => {
+        gsap.to(el, {
+          innerText: el.dataset.target,
+          duration: 2.2, ease: 'power2.out',
+          snap: { innerText: 1 },
+          onUpdate: function() { el.innerText = Math.round(parseFloat(el.innerText)); }
+        });
+      }
+    });
+  });
+
+  // Services reveal
+  gsap.from('.service-card', {
+    scrollTrigger: { trigger: '#services', start: 'top 70%' },
+    y: 40, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out'
+  });
+
+  // Methode cards
+  gsap.from('.methode-card', {
+    scrollTrigger: { trigger: '#methode', start: 'top 75%' },
+    y: 30, opacity: 0, scale: 0.97, duration: 0.6, stagger: 0.15, ease: 'back.out(1.4)'
+  });
+
+  // Testimonials
+  gsap.from('.testi-card', {
+    scrollTrigger: { trigger: '#temoignages', start: 'top 75%' },
+    y: 30, opacity: 0, duration: 0.6, stagger: 0.15, ease: 'power2.out'
+  });
+
+  // Stack reveal
+  gsap.from('.stack-item', {
+    scrollTrigger: { trigger: '#stack', start: 'top 75%' },
+    scale: 0.8, opacity: 0, duration: 0.4, stagger: 0.05, ease: 'back.out(1.6)'
+  });
+  gsap.from('.stack-split > div:first-child', {
+    scrollTrigger: { trigger: '#stack', start: 'top 80%' },
+    x: -40, opacity: 0, duration: 0.7, ease: 'power2.out'
+  });
+
+  // CTA
+  gsap.from('.cta-content > *', {
+    scrollTrigger: { trigger: '#cta', start: 'top 80%' },
+    y: 25, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out'
+  });
+
+  // Nav on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('mainNav');
+    nav.style.background = window.scrollY > 60 ? 'rgba(3,3,10,0.95)' : 'rgba(3,3,10,0.6)';
+  });
+</script>
+</body>
+</html>

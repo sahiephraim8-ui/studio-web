@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAVANE Luxe — Boutique Premium Africaine</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:#C2410C;
+  --orange-light:#EA580C;
+  --rouge:#991B1B;
+  --or:#F59E0B;
+  --or-pale:#FEF3C7;
+  --noir:#111111;
+  --gris-fonce:#1C1C1C;
+  --gris-moyen:#2C2C2C;
+  --blanc:#FFFFFF;
+  --creme:#FDFAF5;
+  --texte-gris:#9CA3AF;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--noir);color:var(--blanc);overflow-x:hidden}
+
+/* NAV TRANSPARENTE */
+nav{
+  position:fixed;top:0;left:0;width:100%;z-index:1000;
+  padding:30px 60px;
+  transition:all 0.4s ease;
+}
+nav.scrolled{
+  padding:16px 60px;
+  background:rgba(17,17,17,0.96);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(194,65,12,0.25);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1400px;margin:0 auto}
+.nav-logo{
+  font-family:'Playfair Display',serif;font-size:20px;font-weight:700;
+  letter-spacing:4px;text-transform:uppercase;color:var(--blanc);
+}
+.nav-logo span{color:var(--or)}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{
+  color:rgba(255,255,255,0.7);text-decoration:none;
+  font-size:12px;letter-spacing:2px;text-transform:uppercase;
+  font-weight:500;transition:color 0.3s;
+}
+.nav-links a:hover{color:var(--or)}
+.nav-right{display:flex;align-items:center;gap:20px}
+.nav-cart{
+  position:relative;color:var(--blanc);font-size:22px;cursor:pointer;
+  text-decoration:none;transition:color 0.3s;
+}
+.nav-cart:hover{color:var(--or)}
+.cart-count{
+  position:absolute;top:-6px;right:-8px;
+  width:18px;height:18px;background:var(--orange);border-radius:50%;
+  font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.nav-cta{
+  background:var(--orange);color:var(--blanc);
+  padding:12px 24px;font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  font-weight:600;border:none;cursor:pointer;font-family:'Inter',sans-serif;
+  transition:background 0.3s,transform 0.2s;text-decoration:none;display:inline-block;
+}
+.nav-cta:hover{background:var(--or);color:var(--noir);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hamburger span{width:26px;height:2px;background:var(--blanc);transition:0.3s}
+
+/* HERO FULLSCREEN */
+.hero{
+  min-height:100vh;position:relative;overflow:hidden;
+  display:flex;align-items:center;
+  background:var(--noir);
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#1a0800 0%,var(--rouge) 30%,var(--orange) 70%,#1a0800 100%);
+  opacity:0.85;
+}
+.hero-texture{
+  position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0L100 50L50 100L0 50Z' fill='none' stroke='rgba(245,158,11,0.06)' stroke-width='1'/%3E%3C/svg%3E");
+  background-size:100px 100px;
+}
+.hero-img{
+  position:absolute;right:0;top:0;width:55%;height:100%;
+  clip-path:polygon(15% 0,100% 0,100% 100%,0 100%);
+}
+.hero-img img{width:100%;height:100%;object-fit:cover;opacity:0.4;transform:scale(1.1)}
+.hero-content{
+  max-width:1400px;margin:0 auto;padding:0 60px;
+  position:relative;z-index:2;width:100%;
+}
+.hero-label{
+  display:inline-flex;align-items:center;gap:12px;
+  font-size:10px;letter-spacing:5px;text-transform:uppercase;
+  color:var(--or);font-weight:600;margin-bottom:28px;
+  opacity:0;transform:translateY(20px);
+}
+.hero-label::before,.hero-label::after{content:'◆';font-size:6px}
+
+/* SPLIT TEXT EFFECT */
+.hero-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(56px,8vw,120px);
+  font-weight:900;line-height:0.9;
+  max-width:700px;
+}
+.hero-word{
+  display:block;overflow:hidden;
+}
+.hero-word-inner{
+  display:block;
+  transform:translateY(110%);
+  transition:transform 0.9s cubic-bezier(0.16,1,0.3,1);
+}
+.hero-word-inner.line1{color:var(--blanc)}
+.hero-word-inner.line2{color:var(--or);font-style:italic}
+.hero-word-inner.line3{
+  -webkit-text-stroke:1px var(--blanc);
+  color:transparent;
+}
+.hero-sub{
+  max-width:480px;color:rgba(255,255,255,0.6);font-size:16px;
+  line-height:1.8;margin:32px 0 48px;font-weight:300;
+  opacity:0;transform:translateY(20px);
+}
+.hero-btns{display:flex;gap:16px;align-items:center;opacity:0;transform:translateY(20px)}
+.btn-fire{
+  background:linear-gradient(135deg,var(--orange),var(--rouge));
+  color:var(--blanc);padding:18px 48px;font-size:12px;
+  letter-spacing:2px;text-transform:uppercase;font-weight:600;
+  border:none;cursor:pointer;font-family:'Inter',sans-serif;
+  transition:all 0.3s;text-decoration:none;display:inline-block;
+  box-shadow:0 8px 32px rgba(194,65,12,0.4);
+}
+.btn-fire:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(194,65,12,0.6)}
+.btn-line{
+  color:rgba(255,255,255,0.7);padding:18px 0;font-size:12px;
+  letter-spacing:2px;text-transform:uppercase;font-weight:600;
+  border:none;cursor:pointer;font-family:'Inter',sans-serif;background:none;
+  text-decoration:none;display:inline-flex;align-items:center;gap:10px;
+  transition:color 0.3s;
+}
+.btn-line:hover{color:var(--or)}
+.btn-line::after{content:'→';transition:transform 0.3s}
+.btn-line:hover::after{transform:translateX(6px)}
+.hero-scroll-indicator{
+  position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  opacity:0;
+}
+.scroll-line{width:1px;height:60px;background:linear-gradient(to bottom,var(--or),transparent);animation:scroll-anim 1.5s infinite}
+@keyframes scroll-anim{0%{opacity:0;transform:scaleY(0);transform-origin:top}50%{opacity:1}100%{opacity:0;transform:scaleY(1);transform-origin:bottom}}
+.hero-badges{
+  position:absolute;right:60px;bottom:40px;
+  display:flex;flex-direction:column;gap:12px;
+  opacity:0;transform:translateX(20px);
+  z-index:2;
+}
+.hero-badge-item{
+  background:rgba(255,255,255,0.06);backdrop-filter:blur(10px);
+  border:1px solid rgba(245,158,11,0.3);
+  padding:12px 20px;display:flex;align-items:center;gap:10px;
+}
+.badge-icon{font-size:20px}
+.badge-text{font-size:11px;letter-spacing:1px;color:rgba(255,255,255,0.7)}
+.badge-text strong{display:block;color:var(--or);font-size:12px}
+
+/* CATEGORIES */
+.cat-sec{padding:120px 0;background:var(--gris-fonce)}
+.sec-wrap{max-width:1400px;margin:0 auto;padding:0 60px}
+.sec-eyebrow{
+  display:flex;align-items:center;gap:16px;
+  font-size:10px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--or);font-weight:600;margin-bottom:16px;
+}
+.sec-eyebrow::before{content:'';width:40px;height:1px;background:var(--or)}
+.sec-h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(34px,4vw,56px);font-weight:700;
+  line-height:1.1;margin-bottom:60px;
+}
+.cat-header{opacity:0;transform:translateY(30px)}
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.cat-card{
+  position:relative;aspect-ratio:3/4;overflow:hidden;cursor:pointer;
+  opacity:0;transform:translateY(40px);
+}
+.cat-card img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+  filter:brightness(0.6);
+}
+.cat-card:hover img{transform:scale(1.1);filter:brightness(0.4)}
+.cat-overlay{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  justify-content:flex-end;padding:32px;
+  background:linear-gradient(to top,rgba(0,0,0,0.9) 0%,transparent 50%);
+}
+.cat-tag{
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--or);margin-bottom:8px;font-weight:600;
+}
+.cat-name{
+  font-family:'Playfair Display',serif;font-size:22px;font-weight:700;
+  color:var(--blanc);margin-bottom:6px;
+}
+.cat-count{font-size:12px;color:rgba(255,255,255,0.5)}
+.cat-hover-btn{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%) scale(0.8);opacity:0;
+  background:var(--orange);color:var(--blanc);
+  padding:14px 28px;font-size:11px;letter-spacing:2px;
+  text-transform:uppercase;font-weight:600;
+  transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  white-space:nowrap;
+}
+.cat-card:hover .cat-hover-btn{opacity:1;transform:translate(-50%,-50%) scale(1)}
+
+/* PRODUITS VEDETTES */
+.prod-sec{padding:120px 0;background:var(--noir)}
+.prod-header{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:60px;opacity:0;transform:translateY(30px);
+}
+.prod-header-left{}
+.prod-view-all{
+  color:var(--or);text-decoration:none;font-size:12px;
+  letter-spacing:2px;text-transform:uppercase;font-weight:600;
+  display:flex;align-items:center;gap:8px;transition:gap 0.3s;
+}
+.prod-view-all:hover{gap:14px}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.prod-card{
+  background:var(--gris-fonce);overflow:hidden;
+  opacity:0;transform:translateY(50px);
+  cursor:pointer;
+}
+.prod-img{
+  aspect-ratio:1/1;overflow:hidden;position:relative;
+}
+.prod-img img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.prod-card:hover .prod-img img{transform:scale(1.08)}
+.prod-badge{
+  position:absolute;top:16px;left:16px;
+  background:var(--orange);color:var(--blanc);
+  padding:4px 12px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;
+}
+.prod-wishlist{
+  position:absolute;top:16px;right:16px;
+  width:36px;height:36px;background:rgba(0,0,0,0.5);backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transform:scale(0.8);transition:all 0.3s;cursor:pointer;font-size:16px;
+}
+.prod-card:hover .prod-wishlist{opacity:1;transform:scale(1)}
+.prod-info{padding:24px}
+.prod-cat{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--or);margin-bottom:6px}
+.prod-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--blanc);margin-bottom:8px}
+.prod-desc{font-size:13px;color:var(--texte-gris);margin-bottom:16px;line-height:1.5}
+.prod-footer{display:flex;justify-content:space-between;align-items:center}
+.prod-price{font-size:17px;font-weight:600;color:var(--or)}
+.prod-price span{font-size:12px;font-weight:400;color:var(--texte-gris);margin-left:4px}
+.prod-add{
+  background:var(--orange);color:var(--blanc);border:none;cursor:pointer;
+  padding:10px 20px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
+  font-weight:600;font-family:'Inter',sans-serif;transition:background 0.3s,transform 0.2s;
+}
+.prod-add:hover{background:var(--or);color:var(--noir);transform:scale(1.03)}
+
+/* BRAND STORY */
+.story-sec{
+  padding:140px 0;
+  background:linear-gradient(135deg,var(--gris-moyen) 0%,var(--gris-fonce) 100%);
+  position:relative;overflow:hidden;
+}
+.story-sec::before{
+  content:'SAVANE';
+  position:absolute;right:-60px;top:50%;transform:translateY(-50%);
+  font-family:'Playfair Display',serif;font-size:220px;font-weight:900;
+  color:rgba(245,158,11,0.04);white-space:nowrap;pointer-events:none;letter-spacing:20px;
+}
+.story-inner{max-width:1400px;margin:0 auto;padding:0 60px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.story-img{
+  position:relative;opacity:0;transform:translateX(-40px);
+}
+.story-img-main{
+  width:100%;aspect-ratio:4/5;object-fit:cover;
+}
+.story-img-accent{
+  position:absolute;bottom:-32px;right:-32px;
+  width:55%;aspect-ratio:1/1;object-fit:cover;
+  border:6px solid var(--gris-moyen);
+}
+.story-content{opacity:0;transform:translateX(40px)}
+.story-eyebrow{
+  display:flex;align-items:center;gap:14px;
+  font-size:10px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--or);font-weight:600;margin-bottom:24px;
+}
+.story-eyebrow::before{content:'';width:32px;height:1px;background:var(--or)}
+.story-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(32px,3vw,48px);font-weight:700;
+  line-height:1.15;margin-bottom:24px;
+}
+.story-title em{color:var(--or);font-style:italic}
+.story-text{
+  color:var(--texte-gris);font-size:15px;line-height:1.9;
+  margin-bottom:20px;
+}
+.story-values{display:flex;gap:20px;margin-top:36px;flex-wrap:wrap}
+.story-val{
+  display:flex;align-items:center;gap:10px;
+  font-size:12px;letter-spacing:1px;text-transform:uppercase;
+  color:rgba(255,255,255,0.6);
+}
+.story-val::before{
+  content:'';width:28px;height:1px;background:var(--or);flex-shrink:0;
+}
+
+/* TEMOIGNAGES VIP */
+.testi-sec{padding:120px 0;background:var(--gris-fonce)}
+.testi-inner{max-width:1400px;margin:0 auto;padding:0 60px}
+.testi-header{text-align:center;margin-bottom:60px;opacity:0;transform:translateY(30px)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.04)}
+.testi-card{
+  background:var(--gris-fonce);padding:48px 40px;
+  opacity:0;transform:translateY(30px);
+  border-bottom:2px solid transparent;
+  transition:border-color 0.3s;
+}
+.testi-card:hover{border-bottom-color:var(--or)}
+.testi-stars{color:var(--or);font-size:16px;letter-spacing:2px;margin-bottom:20px}
+.testi-quote-text{
+  font-family:'Playfair Display',serif;font-size:17px;
+  line-height:1.7;color:rgba(255,255,255,0.75);
+  font-style:italic;margin-bottom:28px;
+}
+.testi-author{display:flex;align-items:center;gap:16px}
+.testi-av{
+  width:52px;height:52px;border-radius:50%;overflow:hidden;
+  border:2px solid rgba(245,158,11,0.4);flex-shrink:0;
+}
+.testi-av img{width:100%;height:100%;object-fit:cover}
+.testi-name{font-weight:600;font-size:14px;color:var(--blanc)}
+.testi-info{font-size:12px;color:var(--texte-gris)}
+.testi-purchase{font-size:11px;color:var(--or);margin-top:4px}
+
+/* CTA SECTION */
+.cta-sec{
+  padding:140px 0;
+  background:linear-gradient(135deg,var(--rouge) 0%,var(--orange) 50%,var(--rouge) 100%);
+  position:relative;overflow:hidden;text-align:center;
+}
+.cta-sec::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3C/svg%3E");
+}
+.cta-wrap{position:relative;z-index:1;max-width:800px;margin:0 auto;padding:0 60px}
+.cta-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(40px,5vw,72px);font-weight:900;
+  color:var(--blanc);line-height:1.05;margin-bottom:24px;
+  opacity:0;transform:translateY(30px);
+}
+.cta-sub{
+  color:rgba(255,255,255,0.75);font-size:17px;margin-bottom:48px;
+  opacity:0;transform:translateY(20px);
+}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;opacity:0;transform:translateY(20px)}
+.btn-white{
+  background:var(--blanc);color:var(--orange);
+  padding:18px 48px;font-size:12px;letter-spacing:2px;
+  text-transform:uppercase;font-weight:700;border:none;cursor:pointer;
+  font-family:'Inter',sans-serif;transition:all 0.3s;text-decoration:none;display:inline-block;
+}
+.btn-white:hover{background:var(--or);color:var(--noir);transform:translateY(-2px)}
+.btn-outline-w{
+  background:transparent;color:var(--blanc);
+  padding:18px 48px;font-size:12px;letter-spacing:2px;
+  text-transform:uppercase;font-weight:700;
+  border:2px solid rgba(255,255,255,0.5);cursor:pointer;
+  font-family:'Inter',sans-serif;transition:all 0.3s;text-decoration:none;display:inline-block;
+}
+.btn-outline-w:hover{border-color:var(--blanc);background:rgba(255,255,255,0.1)}
+
+/* FOOTER */
+footer{background:var(--noir);border-top:1px solid rgba(194,65,12,0.2);padding:80px 0 40px}
+.foot-wrap{max-width:1400px;margin:0 auto;padding:0 60px}
+.foot-top{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
+.foot-logo-txt{
+  font-family:'Playfair Display',serif;font-size:24px;
+  font-weight:700;letter-spacing:4px;text-transform:uppercase;
+  color:var(--blanc);margin-bottom:16px;
+}
+.foot-logo-txt span{color:var(--or)}
+.foot-desc{color:var(--texte-gris);font-size:14px;line-height:1.7;margin-bottom:24px}
+.foot-newsletter{display:flex;gap:0}
+.foot-newsletter input{
+  flex:1;background:var(--gris-moyen);border:none;
+  padding:14px 18px;font-size:13px;color:var(--blanc);
+  font-family:'Inter',sans-serif;outline:none;
+}
+.foot-newsletter input::placeholder{color:var(--texte-gris)}
+.foot-newsletter button{
+  background:var(--orange);border:none;color:var(--blanc);
+  padding:14px 20px;cursor:pointer;font-size:16px;
+  transition:background 0.3s;
+}
+.foot-newsletter button:hover{background:var(--or);color:var(--noir)}
+.foot-col h4{
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--or);margin-bottom:20px;font-weight:600;
+}
+.foot-col ul{list-style:none}
+.foot-col li{margin-bottom:10px}
+.foot-col a{color:var(--texte-gris);text-decoration:none;font-size:14px;transition:color 0.3s}
+.foot-col a:hover{color:var(--blanc)}
+.foot-bottom{
+  border-top:1px solid rgba(255,255,255,0.05);
+  padding-top:32px;display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:12px;
+}
+.foot-copy{color:var(--texte-gris);font-size:13px}
+.foot-pay{display:flex;gap:8px}
+.pay-badge{
+  background:var(--gris-moyen);padding:4px 10px;
+  font-size:11px;color:var(--texte-gris);
+}
+.foot-by{color:var(--texte-gris);font-size:13px}
+.foot-by a{color:var(--or);text-decoration:none}
+
+/* WHATSAPP */
+.wa-btn{
+  position:fixed;bottom:32px;right:32px;z-index:999;
+  width:60px;height:60px;background:#25D366;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;font-size:28px;
+  box-shadow:0 4px 20px rgba(37,211,102,0.4);
+  animation:wa-pulse 2.5s infinite;
+}
+@keyframes wa-pulse{
+  0%{box-shadow:0 4px 20px rgba(37,211,102,0.4)}
+  50%{box-shadow:0 4px 40px rgba(37,211,102,0.7),0 0 0 12px rgba(37,211,102,0.1)}
+  100%{box-shadow:0 4px 20px rgba(37,211,102,0.4)}
+}
+
+/* RESPONSIVE */
+@media(max-width:1200px){
+  .prod-grid{grid-template-columns:repeat(2,1fr)}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .story-inner{grid-template-columns:1fr;gap:60px}
+  .story-img-accent{display:none}
+}
+@media(max-width:1024px){
+  nav,nav.scrolled{padding-left:30px;padding-right:30px}
+  .sec-wrap,.testi-inner,.foot-wrap,.cta-wrap,.story-inner{padding-left:30px;padding-right:30px}
+  .foot-top{grid-template-columns:1fr 1fr;gap:40px}
+  .hero-badges{display:none}
+}
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .hero-img{width:100%;clip-path:none;opacity:0.25}
+  .hero-title{font-size:48px}
+  .prod-grid,.cat-grid,.testi-grid{grid-template-columns:1fr}
+  .foot-top{grid-template-columns:1fr}
+  .foot-bottom{flex-direction:column;text-align:center}
+  nav{padding:20px 24px}
+  nav.scrolled{padding:14px 24px}
+  .hero-content{padding:0 24px}
+  .hero-btns{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV TRANSPARENTE -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo">SAVANE<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#categories">Collections</a></li>
+      <li><a href="#produits">Boutique</a></li>
+      <li><a href="#story">Notre Histoire</a></li>
+      <li><a href="#temoignages">Avis</a></li>
+    </ul>
+    <div class="nav-right">
+      <a class="nav-cart" href="#">🛒 <span class="cart-count">3</span></a>
+      <a href="#produits" class="nav-cta">Commander</a>
+    </div>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- HERO FULLSCREEN -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-texture"></div>
+  <div class="hero-img">
+    <img src="https://placehold.co/1200x900/1a0800/C2410C?text=SAVANE+Luxe" alt="SAVANE Luxe Hero">
+  </div>
+  <div class="hero-content">
+    <div class="hero-label">Collection Exclusive 2024 — Artisanat Africain</div>
+    <h1 class="hero-title">
+      <span class="hero-word"><span class="hero-word-inner line1">L'Afrique</span></span>
+      <span class="hero-word"><span class="hero-word-inner line2">Réinventée</span></span>
+      <span class="hero-word"><span class="hero-word-inner line3">avec Luxe</span></span>
+    </h1>
+    <p class="hero-sub">SAVANE Luxe célèbre l'artisanat africain d'exception. Pièces uniques, matières nobles, créateurs locaux — le luxe authentique du continent pour les connaisseurs du monde entier.</p>
+    <div class="hero-btns">
+      <a href="#produits" class="btn-fire">Explorer la boutique</a>
+      <a href="#story" class="btn-line">Notre philosophie</a>
+    </div>
+  </div>
+  <div class="hero-scroll-indicator" id="heroScroll">
+    <div class="scroll-line"></div>
+  </div>
+  <div class="hero-badges" id="heroBadges">
+    <div class="hero-badge-item">
+      <div class="badge-icon">🌍</div>
+      <div class="badge-text"><strong>12 pays africains</strong>Créateurs partenaires</div>
+    </div>
+    <div class="hero-badge-item">
+      <div class="badge-icon">✦</div>
+      <div class="badge-text"><strong>100% Authentique</strong>Certificat d'origine</div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="cat-sec" id="categories">
+  <div class="sec-wrap">
+    <div class="cat-header" id="catHeader">
+      <div class="sec-eyebrow">Nos univers</div>
+      <h2 class="sec-h2">Quatre collections,<br>une <span style="color:var(--or);font-style:italic">passion</span></h2>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <img src="https://placehold.co/500x667/1a0800/C2410C?text=Mode+%26+Bijoux" alt="Mode & Bijoux">
+        <div class="cat-overlay">
+          <div class="cat-tag">Prêt-à-porter</div>
+          <div class="cat-name">Mode & Bijoux</div>
+          <div class="cat-count">124 pièces</div>
+        </div>
+        <div class="cat-hover-btn">Découvrir →</div>
+      </div>
+      <div class="cat-card">
+        <img src="https://placehold.co/500x667/0f0505/991B1B?text=Art+%26+Déco" alt="Art & Décoration">
+        <div class="cat-overlay">
+          <div class="cat-tag">Art africain</div>
+          <div class="cat-name">Art & Décoration</div>
+          <div class="cat-count">89 pièces</div>
+        </div>
+        <div class="cat-hover-btn">Découvrir →</div>
+      </div>
+      <div class="cat-card">
+        <img src="https://placehold.co/500x667/1C1C1C/F59E0B?text=Maroquinerie" alt="Maroquinerie">
+        <div class="cat-overlay">
+          <div class="cat-tag">Artisanat cuir</div>
+          <div class="cat-name">Maroquinerie</div>
+          <div class="cat-count">67 pièces</div>
+        </div>
+        <div class="cat-hover-btn">Découvrir →</div>
+      </div>
+      <div class="cat-card">
+        <img src="https://placehold.co/500x667/111111/EA580C?text=Épicerie+Fine" alt="Épicerie Fine">
+        <div class="cat-overlay">
+          <div class="cat-tag">Gastronomie</div>
+          <div class="cat-name">Épicerie Fine</div>
+          <div class="cat-count">203 références</div>
+        </div>
+        <div class="cat-hover-btn">Découvrir →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUITS VEDETTES -->
+<section class="prod-sec" id="produits">
+  <div class="sec-wrap">
+    <div class="prod-header" id="prodHeader">
+      <div>
+        <div class="sec-eyebrow">Sélection premium</div>
+        <h2 class="sec-h2">Produits <span style="color:var(--or);font-style:italic">vedettes</span></h2>
+      </div>
+      <a href="#" class="prod-view-all">Voir tout →</a>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="prod-img">
+          <img src="https://placehold.co/500x500/1C1C1C/F59E0B?text=Collier+Baoulé" alt="Collier Baoulé">
+          <div class="prod-badge">Exclusif</div>
+          <div class="prod-wishlist">♡</div>
+        </div>
+        <div class="prod-info">
+          <div class="prod-cat">Bijoux · Artisanat Baoulé</div>
+          <div class="prod-name">Collier Royal Baoulé</div>
+          <div class="prod-desc">Or 18 carats, perles d'ivoire végétal. Pièce unique certifiée par l'artisan.</div>
+          <div class="prod-footer">
+            <div class="prod-price">285 000 <span>FCFA</span></div>
+            <button class="prod-add">Ajouter</button>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img">
+          <img src="https://placehold.co/500x500/111111/C2410C?text=Sac+Kente" alt="Sac Kente Premium">
+          <div class="prod-badge">Nouveau</div>
+          <div class="prod-wishlist">♡</div>
+        </div>
+        <div class="prod-info">
+          <div class="prod-cat">Maroquinerie · Tissu Kente</div>
+          <div class="prod-name">Sac Kente Premium</div>
+          <div class="prod-desc">Cuir de vachette tanné végétal, tissu Kente authentique du Ghana. Fait main.</div>
+          <div class="prod-footer">
+            <div class="prod-price">195 000 <span>FCFA</span></div>
+            <button class="prod-add">Ajouter</button>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img">
+          <img src="https://placehold.co/500x500/1a0800/991B1B?text=Masque+Senoufo" alt="Masque Sénoufo">
+          <div class="prod-wishlist">♡</div>
+        </div>
+        <div class="prod-info">
+          <div class="prod-cat">Art · Sculpture Sénoufo</div>
+          <div class="prod-name">Masque Cérémoniel Sénoufo</div>
+          <div class="prod-desc">Bois d'iroko sculpté. Provenance certifiée, village de Korhogo. Numéroté.</div>
+          <div class="prod-footer">
+            <div class="prod-price">420 000 <span>FCFA</span></div>
+            <button class="prod-add">Ajouter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND STORY -->
+<section class="story-sec" id="story">
+  <div class="story-inner">
+    <div class="story-img" id="storyImg">
+      <img class="story-img-main" src="https://placehold.co/600x750/1C1C1C/C2410C?text=Notre+Atelier" alt="Atelier SAVANE">
+      <img class="story-img-accent" src="https://placehold.co/400x400/111111/F59E0B?text=Artisan" alt="Artisan SAVANE">
+    </div>
+    <div class="story-content" id="storyContent">
+      <div class="story-eyebrow">Notre philosophie</div>
+      <h2 class="story-title">
+        L'artisanat africain<br>mérite d'être <em>célébré</em>
+      </h2>
+      <p class="story-text">Fondée en 2010 à Abidjan, SAVANE Luxe est née d'une conviction profonde : les créateurs africains produisent des œuvres de niveau mondial qui méritent une vitrine à la hauteur de leur talent.</p>
+      <p class="story-text">Nous travaillons directement avec plus de 200 artisans dans 12 pays, garantissant une rémunération juste, une traçabilité totale et la préservation des savoir-faire ancestraux.</p>
+      <div class="story-values">
+        <div class="story-val">Commerce équitable</div>
+        <div class="story-val">Authenticité certifiée</div>
+        <div class="story-val">Savoir-faire préservé</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEMOIGNAGES VIP -->
+<section class="testi-sec" id="temoignages">
+  <div class="testi-inner">
+    <div class="testi-header" id="testiHeader">
+      <div class="sec-eyebrow" style="justify-content:center">Avis clients</div>
+      <h2 class="sec-h2">Nos clients <span style="color:var(--or);font-style:italic">témoignent</span></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote-text">"Des pièces d'une beauté absolue. Le collier Baoulé que j'ai offert à mon épouse a suscité l'admiration de tous nos amis. La qualité et le certificat d'authenticité sont un vrai plus."</p>
+        <div class="testi-author">
+          <div class="testi-av"><img src="https://placehold.co/100x100/2C2C2C/F59E0B?text=OT" alt="O.T"></div>
+          <div>
+            <div class="testi-name">Ousmane TOURÉ</div>
+            <div class="testi-info">Entrepreneur, Dakar</div>
+            <div class="testi-purchase">Achat : Collier Royal Baoulé</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote-text">"SAVANE est la meilleure adresse pour trouver des cadeaux d'exception. J'ai offert le masque Sénoufo à un partenaire étranger — il était subjugué. Livraison soignée, emballage luxueux."</p>
+        <div class="testi-author">
+          <div class="testi-av"><img src="https://placehold.co/100x100/1C1C1C/C2410C?text=EK" alt="E.K"></div>
+          <div>
+            <div class="testi-name">Élodie KOUASSI</div>
+            <div class="testi-info">Directrice Export, Abidjan</div>
+            <div class="testi-purchase">Achat : Masque Sénoufo + Sac Kente</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote-text">"Je commande depuis Paris régulièrement. La qualité est constante, la traçabilité rassurante et le service client irréprochable. SAVANE représente ce que l'Afrique a de meilleur à offrir."</p>
+        <div class="testi-author">
+          <div class="testi-av"><img src="https://placehold.co/100x100/111111/991B1B?text=MB" alt="M.B"></div>
+          <div>
+            <div class="testi-name">Marc BOURGEOIS</div>
+            <div class="testi-info">Collectionneur, Paris</div>
+            <div class="testi-purchase">Client fidèle depuis 2018</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec" id="contact">
+  <div class="cta-wrap">
+    <h2 class="cta-title">Rejoignez<br>le cercle <em style="font-style:italic">SAVANE</em></h2>
+    <p class="cta-sub">Accédez aux pièces exclusives en avant-première, aux ventes privées et aux collections capsule réservées à nos membres VIP.</p>
+    <div class="cta-btns">
+      <a href="#" class="btn-white">Devenir membre VIP</a>
+      <a href="#produits" class="btn-outline-w">Explorer la boutique</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-logo-txt">SAVANE<span>.</span></div>
+        <p class="foot-desc">Boutique premium d'artisanat africain d'exception. Livraison internationale. Authenticité garantie.</p>
+        <div class="foot-newsletter">
+          <input type="email" placeholder="Votre email pour les offres VIP">
+          <button>→</button>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Collections</h4>
+        <ul>
+          <li><a href="#">Mode & Bijoux</a></li>
+          <li><a href="#">Art & Décoration</a></li>
+          <li><a href="#">Maroquinerie</a></li>
+          <li><a href="#">Épicerie Fine</a></li>
+          <li><a href="#">Nouveautés</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Infos pratiques</h4>
+        <ul>
+          <li><a href="#">Livraison mondiale</a></li>
+          <li><a href="#">Retours & échanges</a></li>
+          <li><a href="#">Certificats d'origine</a></li>
+          <li><a href="#">Programme VIP</a></li>
+          <li><a href="#">Cadeaux d'entreprise</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">Plateau, Abidjan</a></li>
+          <li><a href="#">+225 07 00 XX XX XX</a></li>
+          <li><a href="#">vip@savane-luxe.com</a></li>
+          <li><a href="#">WhatsApp VIP</a></li>
+          <li><a href="#">Partenaires artisans</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p class="foot-copy">© 2024 SAVANE Luxe. Artisanat africain d'exception.</p>
+      <div class="foot-pay">
+        <span class="pay-badge">Orange Money</span>
+        <span class="pay-badge">Wave</span>
+        <span class="pay-badge">Visa</span>
+        <span class="pay-badge">PayPal</span>
+      </div>
+      <p class="foot-by">Site créé par <a href="#">FlexWay</a></p>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-btn" href="https://wa.me/2250700000000" target="_blank" title="Commander via WhatsApp">💬</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// NAV SCROLL
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll',() => {
+  if(window.scrollY > 80) navbar.classList.add('scrolled');
+  else navbar.classList.remove('scrolled');
+});
+
+// HERO — SPLIT TEXT EFFECT (sans plugin)
+const heroTl = gsap.timeline({delay:0.2});
+heroTl
+  .to('.hero-label',{opacity:1,y:0,duration:0.8,ease:'power3.out'})
+  .to('.hero-word-inner',{
+    y:'0%',duration:1.1,stagger:0.15,ease:'power4.out'
+  },'-=0.3')
+  .to('.hero-sub',{opacity:1,y:0,duration:0.8,ease:'power3.out'},'-=0.5')
+  .to('.hero-btns',{opacity:1,y:0,duration:0.7,ease:'power3.out'},'-=0.5')
+  .to('#heroScroll',{opacity:1,duration:0.5},'-=0.3')
+  .to('#heroBadges',{opacity:1,x:0,duration:0.7,ease:'power3.out'},'-=0.4');
+
+// Hero image parallax
+gsap.to('.hero-img img',{
+  yPercent:-10,
+  ease:'none',
+  scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}
+});
+
+// CAT HEADER
+ScrollTrigger.create({
+  trigger:'#catHeader',start:'top 80%',
+  onEnter:() => gsap.to('#catHeader',{opacity:1,y:0,duration:0.8,ease:'power3.out'})
+});
+gsap.utils.toArray('.cat-card').forEach((c,i) => {
+  ScrollTrigger.create({
+    trigger:c,start:'top 85%',
+    onEnter:() => gsap.to(c,{opacity:1,y:0,duration:0.7,delay:i*0.1,ease:'power3.out'})
+  });
+});
+
+// PRODUITS
+ScrollTrigger.create({
+  trigger:'#prodHeader',start:'top 80%',
+  onEnter:() => gsap.to('#prodHeader',{opacity:1,y:0,duration:0.8,ease:'power3.out'})
+});
+gsap.utils.toArray('.prod-card').forEach((c,i) => {
+  ScrollTrigger.create({
+    trigger:c,start:'top 85%',
+    onEnter:() => gsap.to(c,{opacity:1,y:0,duration:0.7,delay:i*0.12,ease:'power3.out'})
+  });
+});
+
+// STORY
+ScrollTrigger.create({
+  trigger:'#storyImg',start:'top 80%',
+  onEnter:() => gsap.to('#storyImg',{opacity:1,x:0,duration:0.9,ease:'power3.out'})
+});
+ScrollTrigger.create({
+  trigger:'#storyContent',start:'top 80%',
+  onEnter:() => gsap.to('#storyContent',{opacity:1,x:0,duration:0.9,delay:0.15,ease:'power3.out'})
+});
+
+// TESTI
+ScrollTrigger.create({
+  trigger:'#testiHeader',start:'top 80%',
+  onEnter:() => gsap.to('#testiHeader',{opacity:1,y:0,duration:0.8})
+});
+gsap.utils.toArray('.testi-card').forEach((c,i) => {
+  ScrollTrigger.create({
+    trigger:c,start:'top 85%',
+    onEnter:() => gsap.to(c,{opacity:1,y:0,duration:0.7,delay:i*0.12,ease:'power3.out'})
+  });
+});
+
+// CTA
+gsap.utils.toArray(['.cta-title','.cta-sub','.cta-btns']).forEach((el,i) => {
+  ScrollTrigger.create({
+    trigger:el,start:'top 85%',
+    onEnter:() => gsap.to(el,{opacity:1,y:0,duration:0.7,delay:i*0.15,ease:'power3.out'})
+  });
+});
+
+// WISHLIST toggle
+document.querySelectorAll('.prod-wishlist').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    btn.textContent = btn.textContent === '♡' ? '♥' : '♡';
+    btn.style.color = btn.textContent === '♥' ? '#F59E0B' : '';
+    gsap.fromTo(btn,{scale:1.4},{scale:1,duration:0.3,ease:'back.out(2)'});
+  });
+});
+</script>
+</body>
+</html>
