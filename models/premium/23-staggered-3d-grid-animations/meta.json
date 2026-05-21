@@ -1,0 +1,18 @@
+{
+  "name": "Staggered 3D Grid Animations",
+  "tier": "premium",
+  "source_url": "https://github.com/codrops/Staggered3DGridAnimations",
+  "demo_url": "https://tympanus.net/Tutorials/Staggered3DGridAnimations/",
+  "download_url": "https://github.com/codrops/Staggered3DGridAnimations/archive/refs/heads/main.zip",
+  "codrops_article": "https://tympanus.net/codrops/",
+  "license": "MIT",
+  "author": "Codrops",
+  "stars": 91,
+  "stack": ["HTML5", "CSS3", "JavaScript", "GSAP", "ScrollTrigger", "CSS 3D transforms", "Lenis"],
+  "mood": "3d-spatial-immersive",
+  "effects": ["Grid 3D au scroll", "Perspective dynamique", "Stagger animations", "Profondeur cinematique"],
+  "why_this_tier": "Effet 3D CSS pur (pas de WebGL → léger ET impressionnant). Niveau Awwwards, parfait pour portfolio signature.",
+  "recommended_sectors": ["Architecte premium", "Galerie d'art", "Mode luxe", "Studio créatif signature", "Immobilier haut de gamme"],
+  "added_date": "2026-05-21",
+  "batch": 2
+}

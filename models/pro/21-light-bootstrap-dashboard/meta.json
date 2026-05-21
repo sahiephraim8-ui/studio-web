@@ -1,0 +1,17 @@
+{
+  "name": "Light Bootstrap Dashboard",
+  "tier": "pro",
+  "source_url": "https://github.com/creativetimofficial/light-bootstrap-dashboard",
+  "demo_url": "https://demos.creative-tim.com/light-bootstrap-dashboard/",
+  "download_url": "https://github.com/creativetimofficial/light-bootstrap-dashboard/archive/refs/heads/master.zip",
+  "license": "MIT",
+  "author": "Creative Tim",
+  "stars": 1360,
+  "stack": ["HTML5", "CSS3", "JavaScript", "Bootstrap 4", "jQuery", "Chart.js"],
+  "mood": "saas-dashboard-clean",
+  "effects": ["Sidebar fixed", "Charts animés", "Cards modulaires", "Responsive grid"],
+  "why_this_tier": "Dashboard SaaS admin propre, ultra-réputé (1.3k★ MIT). Idéal pour back-office, portail client B2B, espace membre.",
+  "recommended_sectors": ["SaaS B2B", "Cabinet conseil portail client", "Assurance espace client", "Agence digitale dashboard", "Fintech"],
+  "added_date": "2026-05-21",
+  "batch": 2
+}

@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch",
+      "WebSearch",
+      "Bash(git *)",
+      "Bash(curl *)",
+      "Bash(gh *)",
+      "Bash(mkdir *)",
+      "Bash(cp *)",
+      "Bash(wc *)",
+      "Bash(ls *)"
+    ]
+  }
+}

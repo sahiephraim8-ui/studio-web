@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ORION — Corporate Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Space Grotesk',sans-serif;
+    background:#05060a;
+    color:#e8eaf0;
+    overflow-x:hidden;
+    line-height:1.6;
+  }
+  .serif{font-family:'Cormorant Garamond',serif;font-weight:400}
+
+  /* NAV */
+  nav.top{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:24px 60px;
+    display:flex;justify-content:space-between;align-items:center;
+    background:rgba(5,6,10,0.4);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  .logo{
+    font-family:'Cormorant Garamond',serif;
+    font-size:26px;letter-spacing:6px;font-weight:500;
+  }
+  .logo span{color:#6da6ff}
+  .menu{display:flex;gap:42px;list-style:none}
+  .menu a{
+    color:#c5c9d6;text-decoration:none;font-size:13px;
+    letter-spacing:2px;text-transform:uppercase;
+    transition:color .3s;
+  }
+  .menu a:hover{color:#6da6ff}
+  .btn-nav{
+    padding:11px 26px;border:1px solid rgba(109,166,255,.4);
+    border-radius:30px;color:#fff;font-size:12px;letter-spacing:2px;
+    text-transform:uppercase;text-decoration:none;
+    transition:all .3s;
+  }
+  .btn-nav:hover{background:#6da6ff;border-color:#6da6ff}
+
+  /* HERO */
+  .hero{
+    position:relative;
+    height:100vh;
+    width:100%;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  #vanta-bg{
+    position:absolute;inset:0;z-index:1;
+  }
+  .hero-content{
+    position:relative;z-index:2;
+    text-align:center;
+    padding:0 30px;
+    max-width:1100px;
+  }
+  .tag-hero{
+    display:inline-block;
+    padding:8px 22px;border:1px solid rgba(109,166,255,.5);
+    border-radius:30px;font-size:11px;letter-spacing:4px;
+    text-transform:uppercase;color:#6da6ff;
+    margin-bottom:32px;
+    background:rgba(109,166,255,.06);
+  }
+  .hero h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(48px,8vw,120px);
+    font-weight:300;
+    letter-spacing:-2px;line-height:1;
+    margin-bottom:28px;
+  }
+  .hero h1 em{
+    font-style:italic;color:#6da6ff;
+  }
+  .hero p.lead{
+    font-size:19px;color:#a8aebf;
+    max-width:620px;margin:0 auto 42px;
+    font-weight:300;
+  }
+  .cta-row{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+  .btn{
+    display:inline-block;padding:17px 38px;
+    border-radius:40px;font-size:13px;letter-spacing:2px;
+    text-transform:uppercase;text-decoration:none;
+    transition:all .3s;cursor:pointer;border:none;
+    font-family:inherit;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,#6da6ff,#4a7fd8);
+    color:#fff;
+    box-shadow:0 10px 40px rgba(109,166,255,.35);
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 50px rgba(109,166,255,.5)}
+  .btn-ghost{
+    color:#fff;border:1px solid rgba(255,255,255,.25);
+  }
+  .btn-ghost:hover{background:rgba(255,255,255,.08)}
+
+  /* SECTIONS */
+  section.block{padding:130px 60px;position:relative}
+  .container{max-width:1280px;margin:0 auto}
+  .eyebrow{
+    display:inline-block;font-size:11px;letter-spacing:5px;
+    text-transform:uppercase;color:#6da6ff;margin-bottom:20px;
+  }
+  h2.section-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(40px,5vw,72px);
+    font-weight:300;line-height:1.05;
+    margin-bottom:30px;letter-spacing:-1px;
+  }
+  h2.section-title em{font-style:italic;color:#6da6ff}
+
+  /* SERVICES */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;margin-top:70px;
+  }
+  .service-card{
+    padding:48px 36px;
+    background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:6px;
+    transition:all .4s;
+  }
+  .service-card:hover{
+    border-color:rgba(109,166,255,.4);
+    transform:translateY(-6px);
+    background:linear-gradient(180deg,rgba(109,166,255,.08),rgba(255,255,255,.01));
+  }
+  .service-num{
+    font-family:'Cormorant Garamond',serif;
+    font-size:48px;color:#6da6ff;font-weight:300;
+    margin-bottom:18px;
+  }
+  .service-card h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:28px;font-weight:400;margin-bottom:14px;
+  }
+  .service-card p{color:#9499a8;font-size:15px}
+
+  /* STATS */
+  .stats-block{
+    background:linear-gradient(180deg,#080a12,#05060a);
+    border-top:1px solid rgba(255,255,255,.05);
+    border-bottom:1px solid rgba(255,255,255,.05);
+  }
+  .stats-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:50px;text-align:center;
+  }
+  .stat-num{
+    font-family:'Cormorant Garamond',serif;
+    font-size:80px;font-weight:300;color:#6da6ff;
+    line-height:1;
+  }
+  .stat-label{
+    font-size:13px;letter-spacing:3px;
+    text-transform:uppercase;color:#888c9a;margin-top:12px;
+  }
+
+  /* ABOUT */
+  .about-grid{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:80px;align-items:center;
+  }
+  .about-text p{
+    color:#a8aebf;font-size:17px;margin-bottom:22px;
+    font-weight:300;
+  }
+  .about-visual{
+    aspect-ratio:1;
+    background:radial-gradient(circle at 30% 30%,rgba(109,166,255,.25),transparent 60%),#0b0d16;
+    border:1px solid rgba(109,166,255,.2);
+    border-radius:6px;
+    position:relative;overflow:hidden;
+  }
+  .about-visual::after{
+    content:'';position:absolute;inset:20%;
+    border:1px dashed rgba(109,166,255,.3);
+    border-radius:50%;
+    animation:spin 30s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* CTA */
+  .cta-block{
+    text-align:center;
+    padding:160px 30px;
+    background:radial-gradient(ellipse at center,rgba(109,166,255,.08),transparent 70%);
+  }
+  .cta-block h2{margin-bottom:24px}
+  .cta-block p{
+    color:#a8aebf;max-width:560px;margin:0 auto 40px;
+    font-size:18px;
+  }
+
+  /* FOOTER */
+  footer{
+    background:#03040a;
+    padding:80px 60px 40px;
+    border-top:1px solid rgba(255,255,255,.05);
+  }
+  .foot-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:50px;margin-bottom:50px;
+  }
+  .foot-col h4{
+    font-size:12px;letter-spacing:3px;
+    text-transform:uppercase;color:#fff;margin-bottom:20px;
+  }
+  .foot-col a{
+    display:block;color:#888c9a;
+    text-decoration:none;font-size:14px;
+    padding:7px 0;transition:color .3s;
+  }
+  .foot-col a:hover{color:#6da6ff}
+  .foot-col p{color:#888c9a;font-size:14px;margin-top:14px}
+  .foot-bottom{
+    border-top:1px solid rgba(255,255,255,.05);
+    padding-top:30px;text-align:center;
+    color:#666;font-size:13px;letter-spacing:1px;
+  }
+
+  /* WHATSAPP */
+  .wa{
+    position:fixed;bottom:30px;right:30px;
+    width:60px;height:60px;border-radius:50%;
+    background:#25d366;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 30px rgba(37,211,102,.4);
+    z-index:99;text-decoration:none;
+    transition:transform .3s;
+  }
+  .wa:hover{transform:scale(1.1)}
+  .wa svg{width:30px;height:30px;fill:#fff}
+
+  /* RESPONSIVE */
+  @media(max-width:900px){
+    nav.top{padding:18px 24px}
+    .menu{display:none}
+    section.block{padding:80px 24px}
+    .about-grid{grid-template-columns:1fr;gap:50px}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:30px}
+    #vanta-bg{display:none}
+    .hero{background:radial-gradient(ellipse at 50% 50%,#1a2950 0%,#05060a 70%)}
+  }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="logo">ORI<span>·</span>ON</div>
+  <ul class="menu">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">Vision</a></li>
+    <li><a href="#stats">Impact</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="btn-nav">Démarrer</a>
+</nav>
+
+<section class="hero">
+  <div id="vanta-bg"></div>
+  <div class="hero-content">
+    <div class="tag-hero">Intelligence Corporate · 2026</div>
+    <h1>Connecter le monde<br><em>par la donnée.</em></h1>
+    <p class="lead">ORION accompagne les leaders globaux dans leur transformation digitale grâce à des solutions d'intelligence augmentée déployées sur 4 continents.</p>
+    <div class="cta-row">
+      <a href="#contact" class="btn btn-primary">Réserver un audit</a>
+      <a href="#about" class="btn btn-ghost">Découvrir la vision</a>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="services">
+  <div class="container">
+    <span class="eyebrow">Nos expertises</span>
+    <h2 class="section-title">Quatre piliers,<br><em>une orchestration unique.</em></h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <h3>Data Strategy</h3>
+        <p>Cartographie complète de votre écosystème data et roadmap stratégique sur 36 mois.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <h3>AI Implementation</h3>
+        <p>Déploiement d'agents IA spécialisés sur vos processus métiers critiques.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <h3>Cloud Architecture</h3>
+        <p>Infrastructures multi-cloud résilientes, optimisées coûts et performance.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <h3>Cybersécurité</h3>
+        <p>Posture sécurité Zero-Trust certifiée ISO 27001 et SOC 2 Type II.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block stats-block" id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div><div class="stat-num">142</div><div class="stat-label">Entreprises<br>accompagnées</div></div>
+      <div><div class="stat-num">4</div><div class="stat-label">Continents<br>couverts</div></div>
+      <div><div class="stat-num">98%</div><div class="stat-label">Taux de<br>rétention</div></div>
+      <div><div class="stat-num">12</div><div class="stat-label">Années<br>d'expertise</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="eyebrow">Notre vision</span>
+        <h2 class="section-title">L'intelligence,<br><em>pensée globale.</em></h2>
+        <p>Depuis 2014, ORION transforme les défis stratégiques des grandes organisations en avantages compétitifs durables. Nos 240 consultants opèrent depuis 8 bureaux internationaux.</p>
+        <p>Notre méthodologie propriétaire combine intelligence artificielle, expertise sectorielle et exécution opérationnelle pour des résultats mesurables dès le premier trimestre.</p>
+        <a href="#contact" class="btn btn-primary" style="margin-top:20px">Rencontrer l'équipe</a>
+      </div>
+      <div class="about-visual"></div>
+    </div>
+  </div>
+</section>
+
+<section class="block cta-block" id="contact">
+  <span class="eyebrow">Premier contact</span>
+  <h2 class="section-title">Construisons votre<br><em>prochain horizon.</em></h2>
+  <p>Échangeons sur vos enjeux stratégiques lors d'une session de cadrage offerte de 45 minutes.</p>
+  <div class="cta-row">
+    <a href="#" class="btn btn-primary">Planifier un échange</a>
+    <a href="#" class="btn btn-ghost">+225 07 00 00 00 00</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="logo" style="margin-bottom:18px">ORI<span>·</span>ON</div>
+        <p>Intelligence corporate au service de la transformation globale.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <a href="#">Data Strategy</a>
+        <a href="#">AI Implementation</a>
+        <a href="#">Cloud Architecture</a>
+        <a href="#">Cybersécurité</a>
+      </div>
+      <div class="foot-col">
+        <h4>Société</h4>
+        <a href="#">Vision</a>
+        <a href="#">Équipe</a>
+        <a href="#">Carrières</a>
+        <a href="#">Presse</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="#">Abidjan</a>
+        <a href="#">Paris</a>
+        <a href="#">London</a>
+        <a href="#">Singapore</a>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2026 ORION · Tous droits réservés</div>
+  </div>
+</footer>
+
+<a href="https://wa.me/2250700000000" class="wa" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2.1-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3 4.9 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.2-.3-.3-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.2.8.9-3.1-.2-.3C3.9 14.7 3.5 13.4 3.5 12 3.5 7.3 7.3 3.5 12 3.5s8.5 3.8 8.5 8.5S16.7 20 12 20z"/></svg>
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+<script>
+  if(window.innerWidth > 900 && typeof VANTA !== 'undefined'){
+    VANTA.GLOBE({
+      el: "#vanta-bg",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      color: 0x6da6ff,
+      color2: 0xffffff,
+      size: 1.20,
+      backgroundColor: 0x05060a
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "THREE Phenomenon",
+  "tier": "premium",
+  "source_url": "https://github.com/vaneenige/THREE.Phenomenon",
+  "demo_url": "https://vaneenige.github.io/THREE.Phenomenon/",
+  "download_url": "https://github.com/vaneenige/THREE.Phenomenon/archive/refs/heads/master.zip",
+  "license": "MIT",
+  "author": "Colin van Eenige (vaneenige)",
+  "stars": 364,
+  "stack": ["HTML5", "JavaScript", "Three.js", "WebGL", "GLSL shaders"],
+  "mood": "webgl-particles-experimental",
+  "effects": ["Particules WebGL haute performance", "Shaders GLSL custom", "Geometry instancing", "Animation continue"],
+  "why_this_tier": "Wrapper Three.js spécialisé performances WebGL. Permet expériences particules niveau studio. Base technique pour effet hero signature.",
+  "recommended_sectors": ["Studio créatif tech", "Marque innovante", "Hero section signature", "Lancement produit tech", "Site événementiel"],
+  "added_date": "2026-05-21",
+  "batch": 2
+}

@@ -1,0 +1,18 @@
+{
+  "name": "Scroll Text Motion",
+  "tier": "pro",
+  "source_url": "https://github.com/codrops/ScrollTextMotion",
+  "demo_url": "https://tympanus.net/Tutorials/ScrollTextMotion/",
+  "download_url": "https://github.com/codrops/ScrollTextMotion/archive/refs/heads/main.zip",
+  "codrops_article": "https://tympanus.net/codrops/",
+  "license": "MIT",
+  "author": "Codrops",
+  "stars": 30,
+  "stack": ["HTML5", "CSS3", "JavaScript", "GSAP", "ScrollTrigger", "SplitType", "Lenis"],
+  "mood": "typographic-kinetic-art",
+  "effects": ["Kinetic typography au scroll", "Per-letter motion", "Stagger reveals", "Smooth Lenis scroll"],
+  "why_this_tier": "Typographie cinétique signature — esthétique magazine moderne. Parfait pour brand storytelling.",
+  "recommended_sectors": ["Magazine éditorial", "Marque mode", "Agence branding", "Restaurant gastronomique", "Galerie d'art"],
+  "added_date": "2026-05-21",
+  "batch": 2
+}

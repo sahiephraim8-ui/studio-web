@@ -1,0 +1,18 @@
+{
+  "name": "On Scroll Layout Formations",
+  "tier": "pro",
+  "source_url": "https://github.com/codrops/OnScrollLayoutFormations",
+  "demo_url": "https://tympanus.net/Tutorials/OnScrollLayoutFormations/",
+  "download_url": "https://github.com/codrops/OnScrollLayoutFormations/archive/refs/heads/main.zip",
+  "codrops_article": "https://tympanus.net/codrops/",
+  "license": "MIT",
+  "author": "Codrops",
+  "stars": 109,
+  "stack": ["HTML5", "CSS3", "JavaScript", "GSAP", "ScrollTrigger", "ImagesLoaded", "Lenis"],
+  "mood": "photography-portfolio-grid",
+  "effects": ["Grid formation au scroll", "Réarrangement dynamique d'images", "Smooth scroll Lenis", "Sequence transitions"],
+  "why_this_tier": "Effet portfolio photo qui se recompose au scroll — parfait pour un studio créatif. Code propre Codrops, MIT, prêt à customiser.",
+  "recommended_sectors": ["Photographe", "Architecte", "Agence créative", "Portfolio studio", "Restaurant signature"],
+  "added_date": "2026-05-21",
+  "batch": 2
+}

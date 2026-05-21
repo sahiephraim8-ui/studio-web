@@ -1,0 +1,18 @@
+{
+  "name": "Scroll Blur Typography",
+  "tier": "pro",
+  "source_url": "https://github.com/codrops/ScrollBlurTypography",
+  "demo_url": "https://tympanus.net/Tutorials/ScrollBlurTypography/",
+  "download_url": "https://github.com/codrops/ScrollBlurTypography/archive/refs/heads/main.zip",
+  "codrops_article": "https://tympanus.net/codrops/",
+  "license": "MIT",
+  "author": "Codrops",
+  "stars": 139,
+  "stack": ["HTML5", "CSS3", "JavaScript", "GSAP", "ScrollTrigger", "SplitType", "Lenis"],
+  "mood": "editorial-typographic-cinematic",
+  "effects": ["Blur reveal on scroll", "Per-character text animation", "Smooth scroll Lenis", "Scroll-triggered timeline"],
+  "why_this_tier": "Animation typographique au scroll niveau Awwwards, sans WebGL — accessible et léger mais visuellement haut de gamme. Stack GSAP + Lenis = signature studio.",
+  "recommended_sectors": ["Cabinet conseil", "Avocats", "Architecture", "Corporate premium", "Magazine éditorial"],
+  "added_date": "2026-05-21",
+  "batch": 2
+}

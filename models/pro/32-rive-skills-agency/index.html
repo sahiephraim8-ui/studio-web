@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KORE — Agence digitale créative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Manrope',sans-serif;background:#f5f3ee;color:#1a1a1a;line-height:1.6;overflow-x:hidden}
+  .serif{font-family:'Fraunces',serif;font-weight:400;font-style:italic}
+
+  /* NAV */
+  nav.top{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:22px 60px;display:flex;justify-content:space-between;align-items:center;
+    background:rgba(245,243,238,0.85);backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(0,0,0,0.06);
+  }
+  .logo{font-family:'Fraunces',serif;font-size:28px;font-weight:500;letter-spacing:-1px}
+  .logo span{color:#6b4eff}
+  .menu{display:flex;gap:38px;list-style:none}
+  .menu a{color:#1a1a1a;text-decoration:none;font-size:14px;font-weight:500;transition:color .3s}
+  .menu a:hover{color:#6b4eff}
+  .btn-nav{padding:11px 22px;background:#1a1a1a;color:#f5f3ee;border-radius:30px;font-size:13px;font-weight:600;text-decoration:none;transition:all .3s}
+  .btn-nav:hover{background:#6b4eff}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:60px;
+    padding:140px 60px 80px;
+  }
+  .hero-text{max-width:640px}
+  .badge{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:8px 18px;background:#fff;border-radius:30px;
+    font-size:13px;font-weight:500;margin-bottom:32px;border:1px solid rgba(0,0,0,.06);
+  }
+  .badge .dot{width:8px;height:8px;background:#22c55e;border-radius:50%}
+  .hero h1{
+    font-family:'Fraunces',serif;font-weight:400;
+    font-size:clamp(50px,7vw,108px);line-height:.95;letter-spacing:-3px;margin-bottom:30px;
+  }
+  .hero h1 em{font-style:italic;color:#6b4eff}
+  .hero p.lead{font-size:19px;color:#555;margin-bottom:40px;max-width:540px}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn-p{
+    padding:18px 34px;background:#1a1a1a;color:#f5f3ee;border-radius:50px;
+    font-size:15px;font-weight:600;text-decoration:none;transition:all .3s;
+    display:inline-flex;align-items:center;gap:10px;
+  }
+  .btn-p:hover{background:#6b4eff;transform:translateY(-2px)}
+  .btn-g{padding:18px 34px;background:transparent;color:#1a1a1a;border:1.5px solid #1a1a1a;border-radius:50px;font-size:15px;font-weight:600;text-decoration:none;transition:all .3s}
+  .btn-g:hover{background:#1a1a1a;color:#f5f3ee}
+
+  /* RIVE */
+  .rive-stage{
+    width:100%;aspect-ratio:1/1;max-width:600px;justify-self:center;
+    background:linear-gradient(135deg,#6b4eff,#9d7fff);
+    border-radius:40px;overflow:hidden;position:relative;
+    box-shadow:0 30px 80px rgba(107,78,255,.25);
+  }
+  #rive-canvas{width:100%;height:100%;display:block}
+
+  /* MARQUEE */
+  .marquee{
+    padding:30px 0;background:#1a1a1a;color:#f5f3ee;
+    overflow:hidden;white-space:nowrap;
+  }
+  .marquee-track{display:inline-block;animation:scroll 30s linear infinite;font-family:'Fraunces',serif;font-size:42px;font-style:italic}
+  .marquee-track span{margin:0 40px;color:#6b4eff}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* SERVICES */
+  .services{padding:140px 60px;max-width:1400px;margin:0 auto}
+  .sec-tag{font-size:13px;font-weight:600;color:#6b4eff;text-transform:uppercase;letter-spacing:3px;margin-bottom:18px}
+  .sec-title{font-family:'Fraunces',serif;font-size:clamp(38px,5vw,72px);font-weight:400;letter-spacing:-2px;margin-bottom:80px;max-width:800px;line-height:1.05}
+  .sec-title em{font-style:italic;color:#6b4eff}
+  .svc-list{display:flex;flex-direction:column;gap:0}
+  .svc{
+    padding:40px 0;border-top:1px solid rgba(0,0,0,.1);
+    display:grid;grid-template-columns:80px 1fr 2fr 60px;gap:40px;align-items:center;
+    transition:padding .3s;cursor:pointer;
+  }
+  .svc:last-child{border-bottom:1px solid rgba(0,0,0,.1)}
+  .svc:hover{padding-left:20px}
+  .svc-num{font-family:'Fraunces',serif;font-size:32px;color:#999}
+  .svc-name{font-family:'Fraunces',serif;font-size:34px;font-weight:400;letter-spacing:-1px}
+  .svc-desc{color:#555;font-size:16px}
+  .svc-arrow{font-size:24px;color:#6b4eff;text-align:right}
+
+  /* CTA */
+  .cta-band{
+    margin:60px;padding:100px 60px;background:#1a1a1a;color:#f5f3ee;
+    border-radius:40px;text-align:center;
+  }
+  .cta-band h2{font-family:'Fraunces',serif;font-size:clamp(40px,5vw,72px);font-weight:400;letter-spacing:-2px;margin-bottom:24px;line-height:1}
+  .cta-band h2 em{color:#9d7fff;font-style:italic}
+  .cta-band p{font-size:18px;color:#aaa;margin-bottom:40px}
+  .cta-band .btn-p{background:#6b4eff}
+  .cta-band .btn-p:hover{background:#f5f3ee;color:#1a1a1a}
+
+  /* FOOTER */
+  footer{padding:80px 60px 40px;background:#f5f3ee;border-top:1px solid rgba(0,0,0,.06)}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;max-width:1400px;margin:0 auto 60px}
+  footer h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#6b4eff;margin-bottom:18px}
+  footer a{display:block;color:#555;text-decoration:none;font-size:15px;margin-bottom:10px;transition:color .2s}
+  footer a:hover{color:#6b4eff}
+  .copyright{text-align:center;color:#888;font-size:13px;padding-top:30px;border-top:1px solid rgba(0,0,0,.06)}
+
+  /* WA */
+  .wa-float{position:fixed;bottom:30px;right:30px;width:62px;height:62px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(37,211,102,.4);z-index:200;text-decoration:none;transition:transform .3s}
+  .wa-float:hover{transform:scale(1.1)}
+  .wa-float svg{width:32px;height:32px;fill:#fff}
+
+  @media (max-width:980px){
+    nav.top{padding:18px 24px}.menu{display:none}
+    .hero{grid-template-columns:1fr;padding:120px 24px 60px;text-align:center}
+    .hero-text{margin:0 auto}.cta-row{justify-content:center}
+    .marquee-track{font-size:28px}
+    .services{padding:80px 24px}
+    .svc{grid-template-columns:50px 1fr;gap:20px;padding:24px 0}
+    .svc-desc,.svc-arrow{display:none}
+    .svc-name{font-size:24px}
+    .cta-band{margin:30px 20px;padding:60px 24px}
+    .footer-grid{grid-template-columns:1fr;gap:40px;padding:0 24px}
+    footer{padding:50px 0 30px}
+  }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="logo">Kore<span>.</span></div>
+  <ul class="menu">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#works">Réalisations</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="btn-nav">Démarrer un projet</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <span class="badge"><span class="dot"></span> Studio disponible — mai 2026</span>
+    <h1>Branding, web & <em>identité</em> qui sortent du lot.</h1>
+    <p class="lead">Studio créatif basé à Abidjan. On accompagne les marques ambitieuses dans leur transformation visuelle et digitale.</p>
+    <div class="cta-row">
+      <a href="#contact" class="btn-p">Démarrer un projet →</a>
+      <a href="#works" class="btn-g">Voir nos travaux</a>
+    </div>
+  </div>
+  <div class="rive-stage">
+    <canvas id="rive-canvas"></canvas>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    Branding <span>★</span> Web Design <span>★</span> Direction artistique <span>★</span> Motion <span>★</span> Stratégie <span>★</span>
+    Branding <span>★</span> Web Design <span>★</span> Direction artistique <span>★</span> Motion <span>★</span> Stratégie <span>★</span>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="sec-tag">Nos services</div>
+  <h2 class="sec-title">On crée des marques que les gens <em>reconnaissent</em>.</h2>
+  <div class="svc-list">
+    <div class="svc"><div class="svc-num">01</div><div class="svc-name">Branding</div><div class="svc-desc">Identité visuelle complète, logo, charte graphique, brand book.</div><div class="svc-arrow">→</div></div>
+    <div class="svc"><div class="svc-num">02</div><div class="svc-name">Web Design</div><div class="svc-desc">Sites vitrine, landing pages, e-commerce sur mesure.</div><div class="svc-arrow">→</div></div>
+    <div class="svc"><div class="svc-num">03</div><div class="svc-name">Direction artistique</div><div class="svc-desc">Campagnes publicitaires, shooting, supports print et digital.</div><div class="svc-arrow">→</div></div>
+    <div class="svc"><div class="svc-num">04</div><div class="svc-name">Motion design</div><div class="svc-desc">Animations 2D, logo reveals, vidéos courtes pour réseaux.</div><div class="svc-arrow">→</div></div>
+    <div class="svc"><div class="svc-num">05</div><div class="svc-name">Stratégie de marque</div><div class="svc-desc">Positionnement, naming, plateforme de marque, tone of voice.</div><div class="svc-arrow">→</div></div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <h2>Prêt à <em>transformer</em><br>votre marque ?</h2>
+  <p>Premier appel découverte gratuit — 30 minutes.</p>
+  <a href="https://wa.me/2250708090910" class="btn-p">Réserver un appel</a>
+</section>
+
+<footer id="contact">
+  <div class="footer-grid">
+    <div>
+      <div class="logo" style="margin-bottom:20px">Kore<span>.</span></div>
+      <p style="color:#555;font-size:15px;max-width:320px">Studio créatif indépendant basé à Abidjan, Cocody. On travaille avec des marques qui veulent compter.</p>
+    </div>
+    <div><h4>Studio</h4><a href="#">À propos</a><a href="#">Équipe</a><a href="#">Carrières</a></div>
+    <div><h4>Services</h4><a href="#">Branding</a><a href="#">Web design</a><a href="#">Motion</a></div>
+    <div><h4>Contact</h4><a href="mailto:hello@kore.studio">hello@kore.studio</a><a href="tel:+2250708090910">+225 07 08 09 09 10</a><a href="#">Cocody, Abidjan</a></div>
+  </div>
+  <div class="copyright">© 2026 Kore Studio — Crafted with intention</div>
+</footer>
+
+<a href="https://wa.me/2250708090910" class="wa-float" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="https://unpkg.com/@rive-app/canvas@2.17.3"></script>
+<script>
+  const r = new rive.Rive({
+    src: 'https://cdn.rive.app/animations/skills.riv',
+    canvas: document.getElementById('rive-canvas'),
+    autoplay: true,
+    fit: rive.Fit.contain,
+    alignment: rive.Alignment.center,
+    onLoad: () => { r.resizeDrawingSurfaceToCanvas(); }
+  });
+  window.addEventListener('resize', () => r.resizeDrawingSurfaceToCanvas());
+</script>
+
+</body>
+</html>

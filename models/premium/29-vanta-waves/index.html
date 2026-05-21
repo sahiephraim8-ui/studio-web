@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MERIDIA — Gestion de Patrimoine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Manrope',sans-serif;
+    background:#0a1628;color:#e8e2d0;
+    overflow-x:hidden;line-height:1.6;
+  }
+
+  /* NAV */
+  nav.top{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:24px 60px;
+    display:flex;justify-content:space-between;align-items:center;
+    background:rgba(10,22,40,.5);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(212,175,108,.15);
+  }
+  .logo{
+    font-family:'Playfair Display',serif;
+    font-size:28px;font-weight:500;
+    letter-spacing:4px;color:#d4af6c;
+  }
+  .menu{display:flex;gap:40px;list-style:none}
+  .menu a{
+    color:#c5beaa;text-decoration:none;font-size:13px;
+    letter-spacing:2px;text-transform:uppercase;
+    font-weight:400;transition:color .3s;
+  }
+  .menu a:hover{color:#d4af6c}
+  .btn-nav{
+    padding:11px 26px;border:1px solid #d4af6c;
+    color:#d4af6c;border-radius:0;
+    font-size:12px;letter-spacing:2px;text-transform:uppercase;
+    text-decoration:none;transition:all .3s;font-weight:500;
+  }
+  .btn-nav:hover{background:#d4af6c;color:#0a1628}
+
+  /* HERO */
+  .hero{
+    position:relative;height:100vh;width:100%;
+    display:flex;align-items:center;overflow:hidden;
+  }
+  #vanta-bg{position:absolute;inset:0;z-index:1}
+  .hero-content{
+    position:relative;z-index:2;
+    padding:0 80px;max-width:1000px;
+  }
+  .tag-hero{
+    display:inline-block;
+    padding:8px 22px;
+    border:1px solid rgba(212,175,108,.4);
+    border-radius:0;font-size:11px;font-weight:500;
+    letter-spacing:4px;text-transform:uppercase;
+    color:#d4af6c;margin-bottom:32px;
+  }
+  .hero h1{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(48px,7.5vw,108px);
+    font-weight:400;line-height:1;
+    letter-spacing:-1.5px;margin-bottom:28px;color:#fff;
+  }
+  .hero h1 em{font-style:italic;color:#d4af6c}
+  .hero p.lead{
+    font-size:19px;color:#c5beaa;
+    max-width:540px;margin-bottom:42px;font-weight:300;
+  }
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap}
+  .btn{
+    display:inline-block;padding:17px 38px;
+    border-radius:0;font-size:13px;font-weight:500;
+    letter-spacing:2px;text-transform:uppercase;
+    text-decoration:none;transition:all .3s;
+    cursor:pointer;border:none;font-family:inherit;
+  }
+  .btn-primary{
+    background:#d4af6c;color:#0a1628;
+  }
+  .btn-primary:hover{background:#e6c285;transform:translateY(-2px)}
+  .btn-ghost{
+    background:transparent;color:#fff;
+    border:1px solid rgba(255,255,255,.3);
+  }
+  .btn-ghost:hover{border-color:#d4af6c;color:#d4af6c}
+
+  /* SECTIONS */
+  section.block{padding:140px 60px;position:relative}
+  .container{max-width:1280px;margin:0 auto}
+  .eyebrow{
+    display:inline-block;font-size:11px;letter-spacing:5px;
+    text-transform:uppercase;color:#d4af6c;
+    font-weight:500;margin-bottom:20px;
+  }
+  h2.section-title{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(40px,5vw,72px);
+    font-weight:400;line-height:1.05;
+    letter-spacing:-1px;margin-bottom:30px;color:#fff;
+  }
+  h2.section-title em{font-style:italic;color:#d4af6c}
+
+  /* PRESTATIONS */
+  .prestations-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);
+    gap:1px;margin-top:70px;
+    background:rgba(212,175,108,.15);
+  }
+  .prestation-card{
+    padding:60px 50px;
+    background:#0a1628;
+    transition:all .4s;
+  }
+  .prestation-card:hover{
+    background:#0d1c34;
+  }
+  .prestation-num{
+    font-family:'Playfair Display',serif;
+    font-size:14px;color:#d4af6c;
+    letter-spacing:4px;margin-bottom:24px;
+  }
+  .prestation-card h3{
+    font-family:'Playfair Display',serif;
+    font-size:32px;font-weight:400;
+    margin-bottom:14px;color:#fff;
+  }
+  .prestation-card p{color:#a8a290;font-size:15px}
+
+  /* CHIFFRES */
+  .chiffres-block{
+    background:linear-gradient(180deg,#08111f,#0a1628);
+    border-top:1px solid rgba(212,175,108,.15);
+    border-bottom:1px solid rgba(212,175,108,.15);
+  }
+  .chiffres-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:50px;text-align:center;
+  }
+  .chiffre-num{
+    font-family:'Playfair Display',serif;
+    font-size:88px;font-weight:400;color:#d4af6c;
+    line-height:1;
+  }
+  .chiffre-label{
+    font-size:12px;letter-spacing:3px;
+    text-transform:uppercase;color:#a8a290;margin-top:14px;
+  }
+
+  /* PHILOSOPHIE */
+  .philo-grid{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:90px;align-items:center;
+  }
+  .philo-text p{
+    color:#c5beaa;font-size:17px;margin-bottom:24px;
+    font-weight:300;
+  }
+  .philo-text p em{
+    font-family:'Playfair Display',serif;
+    font-style:italic;color:#d4af6c;font-size:19px;
+  }
+  .philo-visual{
+    aspect-ratio:3/4;
+    background:linear-gradient(135deg,#1a2d4d,#0a1628);
+    border:1px solid rgba(212,175,108,.2);
+    position:relative;overflow:hidden;
+  }
+  .philo-visual::before{
+    content:'M';position:absolute;
+    bottom:-50px;right:-30px;
+    font-family:'Playfair Display',serif;
+    font-size:400px;color:rgba(212,175,108,.08);
+    font-style:italic;
+  }
+
+  /* CTA */
+  .cta-block{
+    text-align:center;
+    padding:160px 30px;
+    background:#08111f;
+    border-top:1px solid rgba(212,175,108,.15);
+  }
+  .cta-block h2{margin-bottom:24px}
+  .cta-block p{
+    color:#c5beaa;max-width:600px;margin:0 auto 40px;
+    font-size:18px;font-weight:300;
+  }
+
+  /* FOOTER */
+  footer{
+    background:#06101c;
+    padding:80px 60px 40px;
+    border-top:1px solid rgba(212,175,108,.1);
+  }
+  .foot-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:60px;margin-bottom:50px;
+  }
+  .foot-col h4{
+    font-size:11px;letter-spacing:3px;
+    text-transform:uppercase;color:#d4af6c;
+    margin-bottom:22px;font-weight:500;
+  }
+  .foot-col a{
+    display:block;color:#8a8474;text-decoration:none;
+    font-size:14px;padding:7px 0;transition:color .3s;
+    font-weight:300;
+  }
+  .foot-col a:hover{color:#d4af6c}
+  .foot-col p{color:#8a8474;font-size:14px;margin-top:14px;font-weight:300}
+  .foot-bottom{
+    border-top:1px solid rgba(212,175,108,.1);
+    padding-top:30px;text-align:center;
+    color:#666052;font-size:12px;letter-spacing:2px;
+  }
+
+  /* WHATSAPP */
+  .wa{
+    position:fixed;bottom:30px;right:30px;
+    width:60px;height:60px;border-radius:50%;
+    background:#25d366;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 30px rgba(37,211,102,.4);
+    z-index:99;text-decoration:none;
+    transition:transform .3s;
+  }
+  .wa:hover{transform:scale(1.1)}
+  .wa svg{width:30px;height:30px;fill:#fff}
+
+  @media(max-width:900px){
+    nav.top{padding:18px 24px}
+    .menu{display:none}
+    .hero-content{padding:0 24px}
+    section.block{padding:80px 24px}
+    .prestations-grid{grid-template-columns:1fr}
+    .philo-grid{grid-template-columns:1fr;gap:50px}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:30px}
+    #vanta-bg{display:none}
+    .hero{background:linear-gradient(180deg,#1a2d4d 0%,#0a1628 100%)}
+  }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="logo">MERIDIA</div>
+  <ul class="menu">
+    <li><a href="#prestations">Prestations</a></li>
+    <li><a href="#philosophie">Philosophie</a></li>
+    <li><a href="#chiffres">Performance</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="btn-nav">Rendez-vous</a>
+</nav>
+
+<section class="hero">
+  <div id="vanta-bg"></div>
+  <div class="hero-content">
+    <div class="tag-hero">Gestion de patrimoine · depuis 1987</div>
+    <h1>L'art de faire<br>fructifier <em>l'essentiel.</em></h1>
+    <p class="lead">MERIDIA accompagne 320 familles fortunées africaines dans la structuration, la croissance et la transmission de leur patrimoine.</p>
+    <div class="cta-row">
+      <a href="#contact" class="btn btn-primary">Premier entretien</a>
+      <a href="#philosophie" class="btn btn-ghost">Notre philosophie</a>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="prestations">
+  <div class="container">
+    <span class="eyebrow">Nos prestations</span>
+    <h2 class="section-title">Quatre métiers,<br>une <em>seule exigence.</em></h2>
+    <div class="prestations-grid">
+      <div class="prestation-card">
+        <div class="prestation-num">I</div>
+        <h3>Gestion sous mandat</h3>
+        <p>Allocation d'actifs sur-mesure, multidevise, supervisée par un comité d'investissement trimestriel.</p>
+      </div>
+      <div class="prestation-card">
+        <div class="prestation-num">II</div>
+        <h3>Conseil patrimonial</h3>
+        <p>Audit complet, structuration fiscale optimisée et stratégie de transmission intergénérationnelle.</p>
+      </div>
+      <div class="prestation-card">
+        <div class="prestation-num">III</div>
+        <h3>Immobilier privé</h3>
+        <p>Acquisitions off-market à Abidjan, Paris, Dubaï, Londres avec gestion locative déléguée.</p>
+      </div>
+      <div class="prestation-card">
+        <div class="prestation-num">IV</div>
+        <h3>Family office</h3>
+        <p>Coordination juridique, fiscale, philanthropique et gouvernance familiale pour les patrimoines complexes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block chiffres-block" id="chiffres">
+  <div class="container">
+    <div class="chiffres-grid">
+      <div><div class="chiffre-num">2,4Mds</div><div class="chiffre-label">FCFA<br>sous gestion</div></div>
+      <div><div class="chiffre-num">320</div><div class="chiffre-label">Familles<br>accompagnées</div></div>
+      <div><div class="chiffre-num">39</div><div class="chiffre-label">Années<br>d'expertise</div></div>
+      <div><div class="chiffre-num">11,2%</div><div class="chiffre-label">Performance<br>annuelle moyenne</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="philosophie">
+  <div class="container">
+    <div class="philo-grid">
+      <div class="philo-visual"></div>
+      <div class="philo-text">
+        <span class="eyebrow">Notre philosophie</span>
+        <h2 class="section-title">Patient,<br><em>discret, durable.</em></h2>
+        <p>La gestion de patrimoine ne se mesure pas en trimestres. Elle se construit sur deux générations, parfois trois, dans le silence et la rigueur d'une discipline exigeante.</p>
+        <p><em>"Nous protégeons d'abord, faisons croître ensuite, transmettons enfin."</em></p>
+        <p>Notre comité réunit chaque trimestre un panel d'experts indépendants — économistes, juristes internationaux, fiscalistes — pour valider chaque décision majeure.</p>
+        <a href="#contact" class="btn btn-primary" style="margin-top:20px">Rencontrer un associé</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block cta-block" id="contact">
+  <span class="eyebrow">Confidentiel</span>
+  <h2 class="section-title">Un premier entretien,<br><em>sans engagement.</em></h2>
+  <p>Échangez 60 minutes avec l'un de nos associés gérants pour explorer vos enjeux patrimoniaux dans la plus stricte confidentialité.</p>
+  <div class="cta-row" style="justify-content:center">
+    <a href="#" class="btn btn-primary">Réserver l'entretien</a>
+    <a href="#" class="btn btn-ghost">+225 27 22 00 00 00</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="logo" style="margin-bottom:18px">MERIDIA</div>
+        <p>Société de gestion agréée CIMA n°2024/MRD. Capital 5 milliards FCFA.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Prestations</h4>
+        <a href="#">Gestion sous mandat</a>
+        <a href="#">Conseil patrimonial</a>
+        <a href="#">Immobilier privé</a>
+        <a href="#">Family office</a>
+      </div>
+      <div class="foot-col">
+        <h4>Maison</h4>
+        <a href="#">Notre histoire</a>
+        <a href="#">Associés</a>
+        <a href="#">Conformité</a>
+        <a href="#">Mentions légales</a>
+      </div>
+      <div class="foot-col">
+        <h4>Bureaux</h4>
+        <a href="#">Abidjan</a>
+        <a href="#">Dakar</a>
+        <a href="#">Paris</a>
+        <a href="#">Genève</a>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2026 MERIDIA · Société agréée CIMA · Tous droits réservés</div>
+  </div>
+</footer>
+
+<a href="https://wa.me/2250700000000" class="wa" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2.1-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3 4.9 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.2-.3-.3-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.2.8.9-3.1-.2-.3C3.9 14.7 3.5 13.4 3.5 12 3.5 7.3 7.3 3.5 12 3.5s8.5 3.8 8.5 8.5S16.7 20 12 20z"/></svg>
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+<script>
+  if(window.innerWidth > 900 && typeof VANTA !== 'undefined'){
+    VANTA.WAVES({
+      el: "#vanta-bg",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      color: 0x102544,
+      shininess: 50.00,
+      waveHeight: 18.00,
+      waveSpeed: 0.85,
+      zoom: 0.92
+    });
+  }
+</script>
+</body>
+</html>
