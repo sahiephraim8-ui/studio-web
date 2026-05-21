@@ -1,6 +1,6 @@
 {
   "last_updated": "2026-05-21",
-  "total_templates": 32,
+  "total_templates": 43,
   "sources": [
     "html5up.net",
     "github.com/uisual/freebies",
@@ -10,11 +10,15 @@
     "github.com/vaneenige/THREE.Phenomenon",
     "github.com/hmans/three-elements",
     "github.com/tengbao/vanta",
-    "github.com/rive-app/rive-wasm"
+    "github.com/rive-app/rive-wasm",
+    "github.com/StartBootstrap",
+    "github.com/airbnb/lottie-web",
+    "github.com/splinetool/react-spline"
   ],
   "batches": {
     "1": "Templates 01-15 — HTML5UP curation (2026-05-21)",
-    "2": "Templates 16-32 — Codrops + Creative Tim + Three.js + Vanta.js + Rive MIT (2026-05-21)"
+    "2": "Templates 16-37 — Codrops + Creative Tim + Three.js + Vanta.js + Rive + Awwwards + Spline MIT (2026-05-21)",
+    "3": "Templates 38-43 — Start Bootstrap + LottieFiles MIT (2026-05-21)"
   },
   "numbering_scheme": "IDs globaux séquentiels. 01-05 essentiel, 06-15 pro/premium batch1, 16-21 pro batch2, 22-29 premium batch2",
   "essentiel": [
@@ -73,6 +77,20 @@
       "stack": ["HTML5", "CSS3"],
       "stars": 461,
       "recommended_sectors": ["Startup", "SaaS", "Corporate générique", "Portfolio"]
+    },
+    {
+      "id": "38-startbootstrap-landing-page",
+      "name": "Landing Page (Start Bootstrap)",
+      "mood": "clean-conversion",
+      "license": "MIT",
+      "source_url": "https://github.com/StartBootstrap/startbootstrap-landing-page",
+      "demo_url": "https://startbootstrap.github.io/startbootstrap-landing-page/",
+      "download_url": "https://github.com/StartBootstrap/startbootstrap-landing-page/archive/refs/heads/master.zip",
+      "stack": ["HTML5", "CSS3", "JavaScript", "Bootstrap 5", "SCSS"],
+      "stars": 1700,
+      "effects": ["Hero gradient overlay", "Responsive navbar fixe", "Service icon grid", "Smooth anchor scroll"],
+      "recommended_sectors": ["PME services", "Consultants", "Coachs", "Artisans"],
+      "batch": 3
     }
   ],
   "pro": [
@@ -227,6 +245,79 @@
       "effects": ["Animation vectorielle Rive interactive hero", "Hover cards services", "Glassmorphism nav"],
       "recommended_sectors": ["Logistique", "Livraison", "E-commerce", "Mobilité", "Startups tech"],
       "batch": 2
+    },
+    {
+      "id": "39-startbootstrap-agency",
+      "name": "Agency (Start Bootstrap)",
+      "mood": "agency-portfolio",
+      "license": "MIT",
+      "source_url": "https://github.com/StartBootstrap/startbootstrap-agency",
+      "demo_url": "https://startbootstrap.github.io/startbootstrap-agency/",
+      "download_url": "https://github.com/StartBootstrap/startbootstrap-agency/archive/refs/heads/master.zip",
+      "stack": ["HTML5", "CSS3", "JavaScript", "Bootstrap 5", "SCSS", "jQuery"],
+      "stars": 2000,
+      "effects": ["Scroll spy nav", "Portfolio modals", "Team grid hover", "Services reveal", "Contact form"],
+      "recommended_sectors": ["Agences créatives", "Studios design", "Cabinets architecture", "Freelances multi-services"],
+      "batch": 3
+    },
+    {
+      "id": "40-startbootstrap-new-age",
+      "name": "New Age (Start Bootstrap)",
+      "mood": "saas-app-launch",
+      "license": "MIT",
+      "source_url": "https://github.com/StartBootstrap/startbootstrap-new-age",
+      "demo_url": "https://startbootstrap.github.io/startbootstrap-new-age/",
+      "download_url": "https://github.com/StartBootstrap/startbootstrap-new-age/archive/refs/heads/master.zip",
+      "stack": ["HTML5", "CSS3", "JavaScript", "Bootstrap 5", "SCSS"],
+      "stars": 1200,
+      "effects": ["Gradient hero", "Device mockup", "Feature icons", "App store CTA", "Nav transparence scroll"],
+      "recommended_sectors": ["SaaS", "Apps mobiles", "Startups tech", "Lancement produit digital"],
+      "batch": 3
+    },
+    {
+      "id": "41-lottie-finance",
+      "name": "Lottie Finance Hero",
+      "mood": "fintech-trust",
+      "license": "MIT",
+      "source_url": "https://github.com/airbnb/lottie-web",
+      "demo_url": "https://lottiefiles.com/animations/finance",
+      "download_url": "https://github.com/airbnb/lottie-web/archive/refs/heads/master.zip",
+      "stack": ["HTML5", "CSS3", "JavaScript", "lottie-web 5.12.2", "Lottie JSON"],
+      "stars": 31900,
+      "effects": ["Lottie animation hero charts/graphs", "Compteur KPI", "Card hover lift", "Gradient bleu finance"],
+      "recommended_sectors": ["Banque", "Microfinance", "Fintech", "Cabinet comptable", "Conseil financier"],
+      "batch": 3,
+      "lottie_fallback": "Toute animation 'finance/chart' gratuite sur lottiefiles.com"
+    },
+    {
+      "id": "42-lottie-corporate",
+      "name": "Lottie Corporate Services",
+      "mood": "corporate-confiance",
+      "license": "MIT",
+      "source_url": "https://github.com/airbnb/lottie-web",
+      "demo_url": "https://lottiefiles.com/animations/business",
+      "download_url": "https://github.com/airbnb/lottie-web/archive/refs/heads/master.zip",
+      "stack": ["HTML5", "CSS3", "JavaScript", "lottie-web 5.12.2", "Lottie JSON"],
+      "stars": 31900,
+      "effects": ["Lottie hero business meeting", "Services cards", "Trust badges animés", "Smooth scroll"],
+      "recommended_sectors": ["Cabinets conseil", "Avocats", "Notaires", "Audit", "RH/Recrutement"],
+      "batch": 3,
+      "lottie_fallback": "Toute animation 'business/corporate/office' gratuite sur lottiefiles.com"
+    },
+    {
+      "id": "43-lottie-tech",
+      "name": "Lottie Tech SaaS",
+      "mood": "tech-saas-dark",
+      "license": "MIT",
+      "source_url": "https://github.com/airbnb/lottie-web",
+      "demo_url": "https://lottiefiles.com/animations/technology",
+      "download_url": "https://github.com/airbnb/lottie-web/archive/refs/heads/master.zip",
+      "stack": ["HTML5", "CSS3", "JavaScript", "lottie-web 5.12.2", "Lottie JSON"],
+      "stars": 31900,
+      "effects": ["Lottie tech abstract hero", "Dark mode gradient", "Feature grid", "Code snippet card", "Glow hover"],
+      "recommended_sectors": ["SaaS B2B", "Outils développeurs", "Cybersécurité", "Cloud/Infra", "AI tools"],
+      "batch": 3,
+      "lottie_fallback": "Toute animation 'tech/code/AI' gratuite sur lottiefiles.com"
     },
     {
       "id": "32-rive-skills-agency",
@@ -411,6 +502,79 @@
       "effects": ["Vagues fluides WebGL", "Palette marine+or premium", "Typographie Playfair luxe"],
       "recommended_sectors": ["Gestion de patrimoine", "Banque privée", "Assurances vie", "Family office", "Hôtellerie luxe", "Maritime"],
       "batch": 2
+    },
+    {
+      "id": "33-awwwards-zentry-rebuild",
+      "name": "Award-Winning Website — Zentry Rebuild",
+      "mood": "awwwards-cinematic-bento",
+      "license": "non-spécifiée — inspiration/référence",
+      "source_url": "https://github.com/adrianhajdin/award-winning-website",
+      "demo_url": "https://award-winning-site.vercel.app/",
+      "download_url": "https://github.com/adrianhajdin/award-winning-website/archive/refs/heads/main.zip",
+      "stack": ["React", "Vite", "GSAP", "ScrollTrigger", "Tailwind CSS"],
+      "stars": 996,
+      "effects": ["Scroll-triggered video expand", "Bento grid 3D tilt", "Curseur custom magnétique", "Typo XXL overlap scroll"],
+      "recommended_sectors": ["Agence créative", "Studio gaming", "Marque lifestyle premium", "Lancement produit tech"],
+      "batch": 2,
+      "note": "Rebuild du SOTM Zentry (Awwwards). Pas de license — référence/inspiration uniquement"
+    },
+    {
+      "id": "34-awwwards-furrow",
+      "name": "Awwwards Rebuilt — Furrow",
+      "mood": "editorial-magazine-cinematic",
+      "license": "MIT",
+      "source_url": "https://github.com/rodrigogama/awwwards-rebuilt-furrow",
+      "demo_url": "https://awwwards-rebuilt-furrow.vercel.app",
+      "download_url": "https://github.com/rodrigogama/awwwards-rebuilt-furrow/archive/refs/heads/master.zip",
+      "stack": ["Next.js", "React", "framer-motion", "Canvas API"],
+      "stars": 149,
+      "effects": ["Curseur canvas inertia", "Page transitions framer-motion", "Hover images révélation", "Préloader animé"],
+      "recommended_sectors": ["Agence créative", "Magazine en ligne", "Studio photographie", "Portfolio designer senior"],
+      "batch": 2
+    },
+    {
+      "id": "35-threejs-graces",
+      "name": "Three.js Graces — Awwwards-Inspired",
+      "mood": "sculptural-3d-luxe",
+      "license": "NOASSERTION — vérifier avant usage commercial",
+      "source_url": "https://github.com/ektogamat/threejs-graces",
+      "demo_url": "https://threejs-graces.vercel.app/",
+      "download_url": "https://github.com/ektogamat/threejs-graces/archive/refs/heads/main.zip",
+      "stack": ["HTML5", "JavaScript", "Three.js", "GSAP", "GLSL shaders"],
+      "stars": 302,
+      "effects": ["Sculptures 3D scroll-driven", "Bloom post-processing", "Camera GSAP cinématique", "Gradient GLSL"],
+      "recommended_sectors": ["Mode/Luxe", "Musée/Galerie", "Marque produit haut de gamme", "Studio architecture"],
+      "batch": 2
+    },
+    {
+      "id": "36-spline-corporate",
+      "name": "Spline Corporate — Abstract 3D Hero",
+      "mood": "corporate-tech-abstract-3d",
+      "license": "MIT (Spline Viewer web component)",
+      "source_url": "https://github.com/splinetool/react-spline",
+      "demo_url": "https://my.spline.design/untitledcopy-6Wq1Q7YGyM-iab9i/",
+      "download_url": "local (index.html dans ce dossier)",
+      "stack": ["HTML5", "CSS3", "JavaScript", "Spline Viewer (web component)"],
+      "stars": 0,
+      "effects": ["Scène 3D Spline interactive fullscreen", "Caméra suit curseur", "0 npm — pur HTML statique"],
+      "recommended_sectors": ["SaaS B2B", "Cabinet conseil", "Fintech", "Studio tech innovation"],
+      "batch": 2,
+      "note": "Scene ID public de la doc Spline officielle. Pour production, remplacer par scène custom sur app.spline.design"
+    },
+    {
+      "id": "37-spline-luxe",
+      "name": "Spline Luxe — Typographie 3D Mode",
+      "mood": "luxe-fashion-3d-typography",
+      "license": "MIT (Spline Viewer web component)",
+      "source_url": "https://github.com/splinetool/react-spline",
+      "demo_url": "https://my.spline.design/untitledcopy-KFonZGtsoUXP-qx7/",
+      "download_url": "local (index.html dans ce dossier)",
+      "stack": ["HTML5", "CSS3", "JavaScript", "Spline Viewer (web component)"],
+      "stars": 0,
+      "effects": ["Typographie 3D interactive", "Mouse-follow caméra", "Palette luxe noir/crème/doré"],
+      "recommended_sectors": ["Mode/Haute couture", "Parfumerie luxe", "Joaillerie", "Hôtellerie 5 étoiles"],
+      "batch": 2,
+      "note": "Pour production, créer une scène custom sur app.spline.design (typo nom de marque en 3D)"
     },
     {
       "id": "30-vanta-net",

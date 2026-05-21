@@ -1,0 +1,24 @@
+{
+  "name": "Award-Winning Website — Zentry Rebuild (JS Mastery)",
+  "tier": "premium",
+  "source_url": "https://github.com/adrianhajdin/award-winning-website",
+  "demo_url": "https://award-winning-site.vercel.app/",
+  "download_url": "https://github.com/adrianhajdin/award-winning-website/archive/refs/heads/main.zip",
+  "license": "non-spécifiée — usage en inspiration/référence",
+  "author": "Adrian Hajdin (JavaScript Mastery)",
+  "stars": 996,
+  "stack": ["React", "Vite", "GSAP", "ScrollTrigger", "Tailwind CSS"],
+  "mood": "awwwards-cinematic-bento",
+  "effects": [
+    "Scroll-triggered video player massif (clip-path expand)",
+    "Bento grid 3D tilt sur hover",
+    "Transitions sections type Awwwards SOTM",
+    "Typo XXL avec overlap scroll",
+    "Curseur custom magnétique"
+  ],
+  "why_this_tier": "Rebuild fidèle du site Zentry (Awwwards Site Of The Month). Niveau scroll-storytelling et animations GSAP rare en open source. 996 étoiles. Référence absolue pour qui veut viser Awwwards.",
+  "recommended_sectors": ["Agence créative", "Studio gaming", "Marque lifestyle premium", "Lancement produit tech"],
+  "added_date": "2026-05-21",
+  "batch": 2,
+  "note": "Pas de license explicite — référence/inspiration uniquement, ne pas redistribuer tel quel commercialement"
+}

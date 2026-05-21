@@ -1,0 +1,20 @@
+{
+  "name": "Lottie Tech SaaS",
+  "tier": "pro",
+  "source_url": "https://github.com/airbnb/lottie-web",
+  "demo_url": "https://lottiefiles.com/animations/technology",
+  "download_url": "https://github.com/airbnb/lottie-web/archive/refs/heads/master.zip",
+  "license": "MIT",
+  "author": "FlexWay (runtime: Airbnb lottie-web ; animations: LottieFiles community)",
+  "stars": 31900,
+  "stack": ["HTML5", "CSS3", "JavaScript", "lottie-web 5.12.2", "Lottie JSON"],
+  "mood": "tech-saas-dark",
+  "effects": ["Lottie tech abstract", "dark mode gradient", "feature grid", "code snippet card", "glow hover"],
+  "why_this_tier": "Theme dark moderne tech avec hero Lottie + structure SaaS pure. Niveau PRO — pas de WebGL mais finition pro startup tech.",
+  "recommended_sectors": ["SaaS B2B", "Outils developpeurs", "Cybersecurite", "Cloud/Infra", "AI tools"],
+  "added_date": "2026-05-21",
+  "batch": 3,
+  "note_curation": "Template FlexWay original. Animation Lottie 'tech' substituable via CDN LottieFiles.",
+  "lottie_animation_used": "https://assets10.lottiefiles.com/packages/lf20_w51pcehl.json",
+  "lottie_fallback": "Toute animation 'tech' / 'code' / 'AI' gratuite sur lottiefiles.com"
+}

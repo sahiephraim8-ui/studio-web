@@ -1,0 +1,24 @@
+{
+  "name": "Three.js Graces — Awwwards-Inspired",
+  "tier": "premium",
+  "source_url": "https://github.com/ektogamat/threejs-graces",
+  "demo_url": "https://threejs-graces.vercel.app/",
+  "download_url": "https://github.com/ektogamat/threejs-graces/archive/refs/heads/main.zip",
+  "license": "NOASSERTION (voir LICENSE) — vérifier avant redistribution",
+  "author": "Anderson Mancini (ektogamat)",
+  "stars": 302,
+  "stack": ["HTML5", "JavaScript", "Three.js", "GSAP", "GLSL shaders"],
+  "mood": "sculptural-3d-luxe",
+  "effects": [
+    "Modèles 3D 'Three Graces' avec éclairage cinématique",
+    "Scroll-driven camera (GSAP)",
+    "Bloom et post-processing Three.js",
+    "Reveal sections synchronisé avec rotation 3D",
+    "Background gradient animé GLSL"
+  ],
+  "why_this_tier": "Démo Three.js de 240 lignes seulement qui atteint un rendu type Awwwards. Sculptures 3D scrollables, lumière studio, post-pro pro. Idéal pour pages produit luxe ou installations artistiques.",
+  "recommended_sectors": ["Mode/Luxe", "Musée/Galerie", "Marque produit haut de gamme", "Studio architecture"],
+  "added_date": "2026-05-21",
+  "batch": 2,
+  "note": "License NOASSERTION — contacter l'auteur avant usage commercial direct"
+}
