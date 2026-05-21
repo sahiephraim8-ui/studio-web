@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORISUN Commerce — Le Commerce Réinventé</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+:root {
+  --storm: #1E293B;
+  --storm2: #0F172A;
+  --storm3: #263549;
+  --red: #EF4444;
+  --red-dark: #DC2626;
+  --red-light: #FCA5A5;
+  --gold: #F59E0B;
+  --gold-light: #FCD34D;
+  --white: #FFFFFF;
+  --gray: #94A3B8;
+  --gray2: #64748B;
+  --surface: #1E293B;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--storm2);
+  color: var(--white);
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--storm2); }
+::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 60px;
+  background: rgba(15,23,42,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(239,68,68,0.15);
+  transition: all 0.4s;
+}
+
+nav.scrolled {
+  padding: 14px 60px;
+  background: rgba(15,23,42,0.98);
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 12px;
+}
+
+.nav-logo-mark {
+  width: 36px; height: 36px;
+  background: var(--red);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex; align-items: center; justify-content: center;
+}
+
+.nav-logo-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px; letter-spacing: 3px;
+  color: var(--white);
+}
+
+.nav-logo-text span { color: var(--red); }
+
+nav ul {
+  display: flex; gap: 36px; list-style: none;
+}
+
+nav ul li a {
+  color: var(--gray); text-decoration: none;
+  font-size: 12px; letter-spacing: 2px;
+  text-transform: uppercase; font-weight: 600;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover { color: var(--white); }
+
+.nav-cta {
+  background: var(--red);
+  color: var(--white) !important;
+  padding: 10px 28px;
+  border-radius: 2px;
+  font-weight: 700 !important;
+  letter-spacing: 1px !important;
+  transition: background 0.3s, transform 0.2s !important;
+}
+
+.nav-cta:hover {
+  background: var(--red-dark) !important;
+  transform: translateY(-1px);
+}
+
+.nav-mobile { display: none; }
+
+/* ─── HERO ─── */
+.hero {
+  position: relative;
+  height: 100vh; min-height: 750px;
+  display: flex; align-items: center;
+  overflow: hidden;
+}
+
+#storm-canvas {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+}
+
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg,
+    rgba(15,23,42,0.85) 0%,
+    rgba(15,23,42,0.5) 50%,
+    rgba(239,68,68,0.08) 100%);
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 0 60px;
+  max-width: 900px;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(239,68,68,0.15);
+  border: 1px solid rgba(239,68,68,0.4);
+  padding: 8px 20px; border-radius: 40px;
+  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--red-light);
+  margin-bottom: 32px;
+  opacity: 0;
+}
+
+.hero-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--red);
+  border-radius: 50%;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 10vw, 140px);
+  line-height: 0.9;
+  letter-spacing: 2px;
+  margin-bottom: 28px;
+  overflow: hidden;
+}
+
+.hero-title-word {
+  display: block;
+  overflow: hidden;
+}
+
+.hero-title-inner {
+  display: block;
+  transform: translateY(100%);
+}
+
+.hero-title-red { color: var(--red); }
+.hero-title-gold { color: var(--gold); }
+
+.hero-sub {
+  font-size: 18px; font-weight: 300; color: var(--gray);
+  max-width: 500px; line-height: 1.7;
+  margin-bottom: 44px;
+  opacity: 0; transform: translateY(20px);
+}
+
+.hero-actions {
+  display: flex; align-items: center; gap: 24px;
+  opacity: 0; transform: translateY(20px);
+}
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--red);
+  color: var(--white);
+  padding: 16px 36px;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.3s;
+  position: relative; overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute; top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transition: left 0.5s;
+}
+
+.btn-primary:hover::before { left: 100%; }
+.btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: var(--white);
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.btn-secondary:hover { color: var(--gold); }
+
+.btn-arrow {
+  width: 44px; height: 44px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover .btn-arrow {
+  border-color: var(--gold);
+  background: rgba(245,158,11,0.1);
+}
+
+.hero-stats {
+  position: absolute; bottom: 60px; right: 60px;
+  display: flex; gap: 48px; z-index: 2;
+}
+
+.hero-stat {
+  text-align: center;
+  opacity: 0;
+}
+
+.hero-stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px; color: var(--gold);
+  display: block; line-height: 1;
+}
+
+.hero-stat-label {
+  font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gray2);
+  margin-top: 4px;
+}
+
+/* ─── SECTION BASE ─── */
+section { padding: 100px 60px; }
+
+.section-label {
+  font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 12px;
+}
+
+.section-label::before {
+  content: '';
+  width: 32px; height: 1px;
+  background: var(--red);
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: 0.95;
+  letter-spacing: 1px;
+}
+
+/* ─── CATEGORIES ─── */
+.categories-section {
+  background: var(--storm2);
+  padding: 80px 0 0;
+}
+
+.categories-header {
+  padding: 0 60px 60px;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.category-card {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.category-bg {
+  position: absolute; inset: 0;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.category-card:hover .category-bg { transform: scale(1.08); }
+
+.cat-1 .category-bg { background: linear-gradient(160deg, #1a0a0a 0%, #2d1414 40%, #3d1f1f 100%); }
+.cat-2 .category-bg { background: linear-gradient(160deg, #0a1a0e 0%, #142d1a 40%, #1a3d22 100%); }
+.cat-3 .category-bg { background: linear-gradient(160deg, #0a0e1a 0%, #141a2d 40%, #1f2240 100%); }
+.cat-4 .category-bg { background: linear-gradient(160deg, #1a140a 0%, #2d2014 40%, #3d2f1a 100%); }
+
+.category-pattern {
+  position: absolute; inset: 0; opacity: 0.05;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 20px,
+    rgba(255,255,255,0.5) 20px,
+    rgba(255,255,255,0.5) 21px
+  );
+  transition: opacity 0.4s;
+}
+
+.category-card:hover .category-pattern { opacity: 0.12; }
+
+.category-glow {
+  position: absolute; inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.cat-1 .category-glow { background: radial-gradient(circle at 50% 80%, rgba(239,68,68,0.3), transparent 60%); }
+.cat-2 .category-glow { background: radial-gradient(circle at 50% 80%, rgba(34,197,94,0.3), transparent 60%); }
+.cat-3 .category-glow { background: radial-gradient(circle at 50% 80%, rgba(99,102,241,0.3), transparent 60%); }
+.cat-4 .category-glow { background: radial-gradient(circle at 50% 80%, rgba(245,158,11,0.3), transparent 60%); }
+
+.category-card:hover .category-glow { opacity: 1; }
+
+.category-icon {
+  position: absolute; top: 40px; left: 40px;
+  width: 60px; height: 60px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+  transition: transform 0.4s;
+}
+
+.cat-1 .category-icon { background: rgba(239,68,68,0.2); border: 1px solid rgba(239,68,68,0.4); }
+.cat-2 .category-icon { background: rgba(34,197,94,0.2); border: 1px solid rgba(34,197,94,0.4); }
+.cat-3 .category-icon { background: rgba(99,102,241,0.2); border: 1px solid rgba(99,102,241,0.4); }
+.cat-4 .category-icon { background: rgba(245,158,11,0.2); border: 1px solid rgba(245,158,11,0.4); }
+
+.category-card:hover .category-icon { transform: scale(1.1) rotate(5deg); }
+
+.category-num {
+  position: absolute; top: 40px; right: 40px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 80px; color: rgba(255,255,255,0.04);
+  line-height: 1;
+}
+
+.category-content {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 40px;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+  transform: translateY(20px);
+  transition: transform 0.4s;
+}
+
+.category-card:hover .category-content { transform: translateY(0); }
+
+.category-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px; letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.category-desc {
+  font-size: 13px; color: var(--gray);
+  line-height: 1.5; margin-bottom: 20px;
+}
+
+.category-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none; color: var(--white);
+  opacity: 0; transition: opacity 0.3s 0.1s;
+}
+
+.cat-1 .category-link { color: var(--red); }
+.cat-2 .category-link { color: #22c55e; }
+.cat-3 .category-link { color: #818cf8; }
+.cat-4 .category-link { color: var(--gold); }
+
+.category-card:hover .category-link { opacity: 1; }
+
+.category-divider {
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1), transparent);
+}
+
+/* ─── PRODUCTS ─── */
+.products-section {
+  background: var(--storm2);
+  position: relative;
+  overflow: hidden;
+}
+
+.products-section::before {
+  content: '';
+  position: absolute; top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(239,68,68,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.products-header {
+  display: flex; align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.product-card {
+  background: var(--storm);
+  position: relative; overflow: hidden;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.1s;
+}
+
+.product-img {
+  height: 280px;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-visual {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 80px;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.product-card:hover .product-visual { transform: scale(1.1); }
+
+.p1 .product-visual { background: linear-gradient(135deg, #1a0e0e, #2d1616); }
+.p2 .product-visual { background: linear-gradient(135deg, #0e150e, #162616); }
+.p3 .product-visual { background: linear-gradient(135deg, #0e0e1a, #161624); }
+.p4 .product-visual { background: linear-gradient(135deg, #1a140e, #2d2416); }
+.p5 .product-visual { background: linear-gradient(135deg, #12080a, #2a1016); }
+.p6 .product-visual { background: linear-gradient(135deg, #080e14, #0e1a24); }
+
+.product-badge {
+  position: absolute; top: 16px; left: 16px;
+  background: var(--red);
+  color: var(--white);
+  font-size: 9px; font-weight: 800;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 2px;
+}
+
+.product-badge.gold { background: var(--gold); color: var(--storm2); }
+
+.product-info {
+  padding: 24px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.product-category {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gray2); margin-bottom: 8px;
+}
+
+.product-name {
+  font-weight: 700; font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.product-origin {
+  font-size: 12px; color: var(--gray);
+  margin-bottom: 16px;
+}
+
+.product-footer {
+  display: flex; align-items: center;
+  justify-content: space-between;
+}
+
+.product-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px; color: var(--gold);
+  letter-spacing: 1px;
+}
+
+.product-price span {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px; color: var(--gray2);
+  font-weight: 400;
+}
+
+.product-btn {
+  width: 40px; height: 40px;
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.3);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: var(--red); font-size: 18px;
+}
+
+.product-card:hover .product-btn {
+  background: var(--red);
+  color: var(--white);
+  border-color: var(--red);
+  transform: scale(1.1);
+}
+
+.product-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(239,68,68,0.05), transparent);
+  opacity: 0; transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.product-card:hover .product-overlay { opacity: 1; }
+
+/* ─── BRAND STORY ─── */
+.brand-section {
+  background: var(--storm);
+  position: relative; overflow: hidden;
+}
+
+.brand-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+
+.brand-visual {
+  position: relative; height: 500px;
+}
+
+.brand-img-main {
+  width: 85%; height: 380px;
+  background: linear-gradient(135deg, #1a0808, #2d1010);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 100px;
+  position: absolute; bottom: 0; right: 0;
+  overflow: hidden;
+}
+
+.brand-img-accent {
+  width: 55%; height: 240px;
+  background: linear-gradient(135deg, #0a1219, #0f1f2e);
+  border-radius: 4px;
+  border: 2px solid rgba(239,68,68,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 60px;
+  position: absolute; top: 0; left: 0;
+  z-index: 2;
+}
+
+.brand-tag {
+  position: absolute; bottom: 40px; left: 0;
+  background: var(--red);
+  color: var(--white);
+  padding: 16px 24px;
+  z-index: 3;
+}
+
+.brand-tag-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px; line-height: 1;
+}
+
+.brand-tag-label {
+  font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; opacity: 0.8;
+}
+
+.brand-content {}
+
+.brand-year {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 120px; color: rgba(239,68,68,0.08);
+  line-height: 1; margin-bottom: -30px;
+  display: block;
+}
+
+.brand-desc {
+  color: var(--gray); line-height: 1.8;
+  margin: 24px 0 36px;
+}
+
+.brand-values {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.brand-value {
+  display: flex; align-items: flex-start; gap: 12px;
+}
+
+.brand-value-icon {
+  width: 36px; height: 36px; flex-shrink: 0;
+  background: rgba(239,68,68,0.1);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+}
+
+.brand-value-text { font-size: 13px; color: var(--gray); line-height: 1.5; }
+.brand-value-text strong { color: var(--white); display: block; margin-bottom: 2px; }
+
+/* ─── STATS ─── */
+.stats-section {
+  background: var(--red);
+  padding: 80px 60px;
+  position: relative; overflow: hidden;
+}
+
+.stats-section::before {
+  content: 'ORISUN';
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 200px; color: rgba(0,0,0,0.08);
+  white-space: nowrap; pointer-events: none;
+  letter-spacing: 10px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative; z-index: 1;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 40px 20px;
+  border-right: 1px solid rgba(255,255,255,0.2);
+}
+
+.stat-item:last-child { border-right: none; }
+
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 72px; color: var(--white);
+  line-height: 1; display: block;
+}
+
+.stat-suffix {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px; color: rgba(255,255,255,0.7);
+}
+
+.stat-label {
+  font-size: 12px; letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-top: 8px;
+}
+
+/* ─── TESTIMONIALS ─── */
+.testimonials-section {
+  background: var(--storm2);
+  overflow: hidden;
+}
+
+.testimonials-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.testimonials-track-wrap {
+  position: relative;
+}
+
+.testimonials-track {
+  display: flex; gap: 24px;
+  animation: testimonials-scroll 30s linear infinite;
+  width: max-content;
+}
+
+.testimonials-track:hover { animation-play-state: paused; }
+
+@keyframes testimonials-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.testimonial-card {
+  width: 380px; flex-shrink: 0;
+  background: var(--storm);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 4px;
+  padding: 36px;
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: '"';
+  position: absolute; top: 20px; right: 24px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 80px; color: rgba(239,68,68,0.15);
+  line-height: 1;
+}
+
+.testimonial-stars {
+  display: flex; gap: 4px; margin-bottom: 20px;
+}
+
+.star { color: var(--gold); font-size: 14px; }
+
+.testimonial-text {
+  font-size: 15px; line-height: 1.7;
+  color: var(--gray);
+  margin-bottom: 28px;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex; align-items: center; gap: 14px;
+}
+
+.author-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--red), var(--gold));
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 16px;
+}
+
+.author-name { font-weight: 700; font-size: 14px; }
+.author-role { font-size: 11px; color: var(--gray2); letter-spacing: 1px; }
+
+/* ─── CTA ─── */
+.cta-section {
+  background: var(--storm);
+  position: relative; overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg,
+    rgba(239,68,68,0.08) 0%,
+    transparent 50%,
+    rgba(245,158,11,0.06) 100%);
+}
+
+.cta-inner {
+  position: relative; z-index: 1;
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 60px;
+}
+
+.cta-content .section-label { margin-bottom: 24px; }
+
+.cta-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 5vw, 72px);
+  line-height: 0.95; margin-bottom: 20px;
+}
+
+.cta-title span { color: var(--red); }
+
+.cta-text {
+  color: var(--gray); max-width: 440px;
+  line-height: 1.7;
+}
+
+.cta-actions {
+  display: flex; flex-direction: column;
+  align-items: flex-start; gap: 16px;
+  flex-shrink: 0;
+}
+
+.btn-cta-large {
+  display: inline-flex; align-items: center; gap: 14px;
+  background: var(--red);
+  color: var(--white);
+  padding: 20px 48px;
+  font-size: 14px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+.btn-cta-large:hover {
+  background: var(--red-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(239,68,68,0.3);
+}
+
+.btn-cta-outline {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--white);
+  padding: 18px 44px;
+  font-size: 14px; font-weight: 600;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+.btn-cta-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.cta-trust {
+  display: flex; align-items: center; gap: 12px;
+  margin-top: 8px;
+}
+
+.trust-badge {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; color: var(--gray2);
+}
+
+.trust-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%; background: var(--gray2);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--storm2);
+  border-top: 1px solid rgba(239,68,68,0.15);
+  padding: 60px 60px 30px;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+.footer-brand-desc {
+  color: var(--gray); line-height: 1.7;
+  margin: 16px 0 24px;
+  font-size: 14px;
+  max-width: 280px;
+}
+
+.footer-social {
+  display: flex; gap: 12px;
+}
+
+.social-btn {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gray); font-size: 13px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.social-btn:hover {
+  border-color: var(--red);
+  color: var(--red);
+  background: rgba(239,68,68,0.1);
+}
+
+.footer-col-title {
+  font-size: 11px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--white);
+  font-weight: 700; margin-bottom: 24px;
+}
+
+.footer-links {
+  list-style: none; display: flex;
+  flex-direction: column; gap: 12px;
+}
+
+.footer-links li a {
+  color: var(--gray); text-decoration: none;
+  font-size: 13px; transition: color 0.3s;
+}
+
+.footer-links li a:hover { color: var(--white); }
+
+.footer-contact-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  margin-bottom: 14px; color: var(--gray);
+  font-size: 13px;
+}
+
+.footer-contact-item span { opacity: 0.6; font-size: 15px; }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 30px;
+  display: flex; align-items: center;
+  justify-content: space-between;
+}
+
+.footer-copy {
+  font-size: 12px; color: var(--gray2);
+}
+
+.footer-copy a { color: var(--red); text-decoration: none; }
+
+.footer-legal {
+  display: flex; gap: 24px;
+}
+
+.footer-legal a {
+  font-size: 12px; color: var(--gray2);
+  text-decoration: none; transition: color 0.3s;
+}
+
+.footer-legal a:hover { color: var(--white); }
+
+/* ─── WHATSAPP ─── */
+.whatsapp-btn {
+  position: fixed; bottom: 32px; right: 32px; z-index: 999;
+  width: 58px; height: 58px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(37,211,102,0.4);
+  animation: wa-pulse 2.5s infinite;
+  transition: transform 0.3s;
+}
+
+.whatsapp-btn:hover { transform: scale(1.1); animation-play-state: paused; }
+
+@keyframes wa-pulse {
+  0%, 100% { box-shadow: 0 8px 24px rgba(37,211,102,0.4); }
+  50% { box-shadow: 0 8px 40px rgba(37,211,102,0.7), 0 0 0 12px rgba(37,211,102,0.1); }
+}
+
+.whatsapp-btn svg { width: 28px; height: 28px; fill: white; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  nav { padding: 16px 32px; }
+  nav ul, .nav-cta { display: none; }
+  .nav-mobile { display: block; cursor: pointer; }
+  .nav-mobile span { display: block; width: 24px; height: 2px; background: var(--white); margin: 5px 0; }
+  section { padding: 80px 32px; }
+  .hero-content { padding: 0 32px; }
+  .hero-stats { bottom: 40px; right: 32px; gap: 24px; }
+  .hero-stat-num { font-size: 28px; }
+  .categories-grid { grid-template-columns: 1fr 1fr; }
+  .products-grid { grid-template-columns: 1fr 1fr; }
+  .brand-inner { grid-template-columns: 1fr; gap: 40px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .cta-inner { flex-direction: column; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+}
+
+@media (max-width: 640px) {
+  nav { padding: 16px 20px; }
+  section { padding: 60px 20px; }
+  .hero-content { padding: 0 20px; }
+  .hero-stats { position: relative; bottom: auto; right: auto; margin-top: 40px; justify-content: center; }
+  .hero-title { font-size: 60px; }
+  .categories-grid { grid-template-columns: 1fr; }
+  .products-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+  #storm-canvas { display: none; }
+  .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #2d1616 100%); }
+  .products-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .brand-visual { height: 300px; }
+  .brand-img-main { height: 250px; font-size: 60px; }
+  .brand-img-accent { width: 65%; height: 160px; font-size: 40px; }
+  .cta-inner { gap: 40px; }
+  .btn-cta-large, .btn-cta-outline { width: 100%; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-logo">
+    <div class="nav-logo-mark"></div>
+    <div class="nav-logo-text">ORI<span>SUN</span></div>
+  </div>
+  <ul>
+    <li><a href="#categories">Catégories</a></li>
+    <li><a href="#produits">Produits</a></li>
+    <li><a href="#marque">Notre Histoire</a></li>
+    <li><a href="#contact" class="nav-cta">Commander</a></li>
+  </ul>
+  <div class="nav-mobile">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <canvas id="storm-canvas"></canvas>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge" id="hero-badge">Commerce Premium Africain</div>
+    <h1 class="hero-title">
+      <span class="hero-title-word"><span class="hero-title-inner">L'EXCELLENCE</span></span>
+      <span class="hero-title-word"><span class="hero-title-inner hero-title-red">DU COMMERCE</span></span>
+      <span class="hero-title-word"><span class="hero-title-inner hero-title-gold">AFRICAIN</span></span>
+    </h1>
+    <p class="hero-sub" id="hero-sub">Distribution premium, sourcing exclusif et marketplace B2B — ORISUN redéfinit les standards du commerce en Afrique de l'Ouest.</p>
+    <div class="hero-actions" id="hero-actions">
+      <a href="#produits" class="btn-primary">Explorer la boutique &#8594;</a>
+      <a href="#marque" class="btn-secondary">
+        Notre histoire
+        <span class="btn-arrow">&#8594;</span>
+      </a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat" id="stat1">
+      <span class="hero-stat-num">12K+</span>
+      <span class="hero-stat-label">Références</span>
+    </div>
+    <div class="hero-stat" id="stat2">
+      <span class="hero-stat-num">48</span>
+      <span class="hero-stat-label">Pays Partenaires</span>
+    </div>
+    <div class="hero-stat" id="stat3">
+      <span class="hero-stat-num">98%</span>
+      <span class="hero-stat-label">Satisfaction</span>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories-section" id="categories">
+  <div class="categories-header">
+    <div class="section-label">Univers ORISUN</div>
+    <h2 class="section-title">NOS <span style="color:var(--red)">CATÉGORIES</span><br>VEDETTES</h2>
+  </div>
+  <div class="categories-grid">
+    <div class="category-card cat-1">
+      <div class="category-bg"></div>
+      <div class="category-pattern"></div>
+      <div class="category-glow"></div>
+      <div class="category-icon">🏆</div>
+      <div class="category-num">01</div>
+      <div class="category-content">
+        <div class="category-name">Agroalimentaire</div>
+        <div class="category-desc">Produits premium du terroir africain, transformation artisanale et industrielle.</div>
+        <a href="#" class="category-link">Découvrir →</a>
+      </div>
+    </div>
+    <div class="category-card cat-2">
+      <div class="category-bg"></div>
+      <div class="category-pattern"></div>
+      <div class="category-glow"></div>
+      <div class="category-icon">💎</div>
+      <div class="category-num">02</div>
+      <div class="category-content">
+        <div class="category-name">Mode & Textile</div>
+        <div class="category-desc">Créateurs africains, wax premium, couture contemporaine et accessoires.</div>
+        <a href="#" class="category-link">Découvrir →</a>
+      </div>
+    </div>
+    <div class="category-card cat-3">
+      <div class="category-bg"></div>
+      <div class="category-pattern"></div>
+      <div class="category-glow"></div>
+      <div class="category-icon">⚡</div>
+      <div class="category-num">03</div>
+      <div class="category-content">
+        <div class="category-name">Tech & Innovation</div>
+        <div class="category-desc">Électronique, solutions tech africaines et marketplace B2B digitale.</div>
+        <a href="#" class="category-link">Découvrir →</a>
+      </div>
+    </div>
+    <div class="category-card cat-4">
+      <div class="category-bg"></div>
+      <div class="category-pattern"></div>
+      <div class="category-glow"></div>
+      <div class="category-icon">🌿</div>
+      <div class="category-num">04</div>
+      <div class="category-content">
+        <div class="category-name">Bien-être & Beauté</div>
+        <div class="category-desc">Cosmétiques naturels, huiles rares et rituels de beauté africains.</div>
+        <a href="#" class="category-link">Découvrir →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products-section" id="produits">
+  <div class="products-header">
+    <div>
+      <div class="section-label">Sélection Exclusive</div>
+      <h2 class="section-title">PRODUITS <span style="color:var(--red)">PREMIUM</span></h2>
+    </div>
+    <a href="#" class="btn-secondary">Voir tout le catalogue <span class="btn-arrow">&#8594;</span></a>
+  </div>
+  <div class="products-grid">
+    <div class="product-card p1">
+      <div class="product-overlay"></div>
+      <div class="product-img">
+        <div class="product-visual">☕</div>
+        <div class="product-badge">Bestseller</div>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Agroalimentaire · Boissons</div>
+        <div class="product-name">Café Robusta Côte d'Ivoire</div>
+        <div class="product-origin">Origine : Région du Bélier, CI</div>
+        <div class="product-footer">
+          <div class="product-price">24 500 <span>FCFA/kg</span></div>
+          <div class="product-btn">+</div>
+        </div>
+      </div>
+    </div>
+    <div class="product-card p2">
+      <div class="product-overlay"></div>
+      <div class="product-img">
+        <div class="product-visual">👗</div>
+        <div class="product-badge gold">Exclusif</div>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Mode · Couture Africaine</div>
+        <div class="product-name">Collection Wax Signature</div>
+        <div class="product-origin">Création : Atelier Abidjan</div>
+        <div class="product-footer">
+          <div class="product-price">185 000 <span>FCFA</span></div>
+          <div class="product-btn">+</div>
+        </div>
+      </div>
+    </div>
+    <div class="product-card p3">
+      <div class="product-overlay"></div>
+      <div class="product-img">
+        <div class="product-visual">🌿</div>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Cosmétique · Huiles</div>
+        <div class="product-name">Huile de Karité Pure</div>
+        <div class="product-origin">Source : Burkina Faso, BIO</div>
+        <div class="product-footer">
+          <div class="product-price">18 000 <span>FCFA/L</span></div>
+          <div class="product-btn">+</div>
+        </div>
+      </div>
+    </div>
+    <div class="product-card p4">
+      <div class="product-overlay"></div>
+      <div class="product-img">
+        <div class="product-visual">🍫</div>
+        <div class="product-badge">Nouveau</div>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Agroalimentaire · Cacao</div>
+        <div class="product-name">Chocolat Noir Grands Crus</div>
+        <div class="product-origin">Origine : San-Pédro, Côte d'Ivoire</div>
+        <div class="product-footer">
+          <div class="product-price">32 000 <span>FCFA/kg</span></div>
+          <div class="product-btn">+</div>
+        </div>
+      </div>
+    </div>
+    <div class="product-card p5">
+      <div class="product-overlay"></div>
+      <div class="product-img">
+        <div class="product-visual">💄</div>
+        <div class="product-badge gold">Premium</div>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Beauté · Maquillage</div>
+        <div class="product-name">Gamme Teintes Africaines</div>
+        <div class="product-origin">Lab : Dakar + Abidjan</div>
+        <div class="product-footer">
+          <div class="product-price">45 000 <span>FCFA/set</span></div>
+          <div class="product-btn">+</div>
+        </div>
+      </div>
+    </div>
+    <div class="product-card p6">
+      <div class="product-overlay"></div>
+      <div class="product-img">
+        <div class="product-visual">🎋</div>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Décoration · Art Africain</div>
+        <div class="product-name">Art & Artisanat Signature</div>
+        <div class="product-origin">Artisans : 12 pays africains</div>
+        <div class="product-footer">
+          <div class="product-price">75 000 <span>FCFA</span></div>
+          <div class="product-btn">+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND STORY -->
+<section class="brand-section" id="marque">
+  <div class="brand-inner">
+    <div class="brand-visual">
+      <div class="brand-img-main">🌍</div>
+      <div class="brand-img-accent">⚡</div>
+      <div class="brand-tag">
+        <div class="brand-tag-num">2009</div>
+        <div class="brand-tag-label">Fondé à Abidjan</div>
+      </div>
+    </div>
+    <div class="brand-content">
+      <span class="brand-year">15</span>
+      <div class="section-label">Notre Histoire</div>
+      <h2 class="section-title">L'ORISUN<br><span style="color:var(--red)">EN VOUS</span></h2>
+      <p class="brand-desc">Fondé en 2009 à Abidjan, ORISUN Commerce est né d'une conviction simple : l'Afrique mérite une marketplace à la hauteur de sa richesse. Nous connectons producteurs d'excellence et acheteurs exigeants à travers 48 pays.</p>
+      <div class="brand-values">
+        <div class="brand-value">
+          <div class="brand-value-icon">🏆</div>
+          <div class="brand-value-text">
+            <strong>Excellence</strong>
+            Chaque produit référencé passe par 12 critères de qualité stricts.
+          </div>
+        </div>
+        <div class="brand-value">
+          <div class="brand-value-icon">🤝</div>
+          <div class="brand-value-text">
+            <strong>Partenariat</strong>
+            Relations directes avec plus de 340 producteurs certifiés.
+          </div>
+        </div>
+        <div class="brand-value">
+          <div class="brand-value-icon">🌍</div>
+          <div class="brand-value-text">
+            <strong>Impact</strong>
+            15 000 emplois soutenus dans toute l'Afrique subsaharienne.
+          </div>
+        </div>
+        <div class="brand-value">
+          <div class="brand-value-icon">⚡</div>
+          <div class="brand-value-text">
+            <strong>Innovation</strong>
+            Logistique tech pour livraisons J+2 sur 24 capitales africaines.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section" id="stats">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <span class="stat-num" data-target="12000">0</span>
+      <span class="stat-suffix">+</span>
+      <span class="stat-label">Références Produits</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="340">0</span>
+      <span class="stat-suffix">+</span>
+      <span class="stat-label">Partenaires Producteurs</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="48">0</span>
+      <span class="stat-label">Pays de Distribution</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="98">0</span>
+      <span class="stat-suffix">%</span>
+      <span class="stat-label">Clients Satisfaits</span>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="temoignages">
+  <div class="testimonials-header">
+    <div class="section-label" style="justify-content:center">Ils nous font confiance</div>
+    <h2 class="section-title">CE QU'ILS <span style="color:var(--red)">DISENT</span></h2>
+  </div>
+  <div class="testimonials-track-wrap">
+    <div class="testimonials-track">
+      <!-- Set 1 -->
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-text">ORISUN a complètement transformé notre chaîne d'approvisionnement. La qualité des produits agroalimentaires est incomparable et la logistique, impeccable.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">AK</div>
+          <div>
+            <div class="author-name">Ama Kouassi</div>
+            <div class="author-role">Directrice Achats · Grande Surface Abidjan</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-text">En tant qu'importateur européen, ORISUN est notre partenaire incontournable pour tout ce qui concerne les matières premières africaines premium.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">MB</div>
+          <div>
+            <div class="author-name">Marc Bertrand</div>
+            <div class="author-role">CEO · AfroImports SAS, Lyon</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-text">La sélection des créateurs de mode est extraordinaire. Nous avons trouvé des talents exceptionnels grâce à leur marketplace. Partenariat longue durée assuré.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">FD</div>
+          <div>
+            <div class="author-name">Fatou Diallo</div>
+            <div class="author-role">Fondatrice · Boutique Dakar Chic</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-text">Service irréprochable, délais respectés, qualité certifiée. ORISUN représente exactement la vision du commerce africain que nous défendons.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">KO</div>
+          <div>
+            <div class="author-name">Kofi Owusu</div>
+            <div class="author-role">Directeur Commercial · GhanaFoods Ltd</div>
+          </div>
+        </div>
+      </div>
+      <!-- Set 2 (duplicate for seamless scroll) -->
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-text">ORISUN a complètement transformé notre chaîne d'approvisionnement. La qualité des produits agroalimentaires est incomparable et la logistique, impeccable.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">AK</div>
+          <div>
+            <div class="author-name">Ama Kouassi</div>
+            <div class="author-role">Directrice Achats · Grande Surface Abidjan</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-text">En tant qu'importateur européen, ORISUN est notre partenaire incontournable pour tout ce qui concerne les matières premières africaines premium.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">MB</div>
+          <div>
+            <div class="author-name">Marc Bertrand</div>
+            <div class="author-role">CEO · AfroImports SAS, Lyon</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-text">La sélection des créateurs de mode est extraordinaire. Nous avons trouvé des talents exceptionnels grâce à leur marketplace. Partenariat longue durée assuré.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">FD</div>
+          <div>
+            <div class="author-name">Fatou Diallo</div>
+            <div class="author-role">Fondatrice · Boutique Dakar Chic</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-text">Service irréprochable, délais respectés, qualité certifiée. ORISUN représente exactement la vision du commerce africain que nous défendons.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">KO</div>
+          <div>
+            <div class="author-name">Kofi Owusu</div>
+            <div class="author-role">Directeur Commercial · GhanaFoods Ltd</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-inner">
+    <div class="cta-content">
+      <div class="section-label">Rejoignez ORISUN</div>
+      <h2 class="cta-title">PRÊT À COMMANDER<br>AU <span>MEILLEUR NIVEAU</span> ?</h2>
+      <p class="cta-text">Accédez à notre catalogue complet de 12 000+ références. Devenez distributeur officiel ou passez votre première commande B2B dès aujourd'hui.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="tel:+22501000000" class="btn-cta-large">Appeler notre équipe &#8594;</a>
+      <a href="https://wa.me/22501000000" class="btn-cta-outline">WhatsApp Business &#8594;</a>
+      <div class="cta-trust">
+        <div class="trust-badge"><span class="trust-dot"></span>Paiement sécurisé</div>
+        <div class="trust-badge"><span class="trust-dot"></span>Livraison garantie</div>
+        <div class="trust-badge"><span class="trust-dot"></span>Support 24h/7j</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="nav-logo" style="margin-bottom:0">
+        <div class="nav-logo-mark"></div>
+        <div class="nav-logo-text">ORI<span>SUN</span></div>
+      </div>
+      <p class="footer-brand-desc">La marketplace premium pour le commerce africain d'excellence. Connexion entre producteurs et acheteurs exigeants depuis 2009.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">f</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">tw</a>
+        <a href="#" class="social-btn">ig</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigation</div>
+      <ul class="footer-links">
+        <li><a href="#categories">Catégories</a></li>
+        <li><a href="#produits">Produits Premium</a></li>
+        <li><a href="#marque">Notre Histoire</a></li>
+        <li><a href="#">Devenir Partenaire</a></li>
+        <li><a href="#">Blog Commerce</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#">Marketplace B2B</a></li>
+        <li><a href="#">Sourcing Premium</a></li>
+        <li><a href="#">Logistique Afrique</a></li>
+        <li><a href="#">Export & Import</a></li>
+        <li><a href="#">Certification Qualité</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <div class="footer-contact-item"><span>📍</span>Plateau, Abidjan, Côte d'Ivoire</div>
+      <div class="footer-contact-item"><span>📞</span>+225 01 00 00 00</div>
+      <div class="footer-contact-item"><span>✉️</span>contact@orisun.ci</div>
+      <div class="footer-contact-item"><span>⏰</span>Lun–Ven, 08h–18h GMT</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 ORISUN Commerce. Tous droits réservés. Site réalisé par <a href="#">FlexWay Studio</a>.</div>
+    <div class="footer-legal">
+      <a href="#">Mentions légales</a>
+      <a href="#">CGV</a>
+      <a href="#">Confidentialité</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/22501000000" class="whatsapp-btn" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+<script>
+// ─── THREE.JS STORM PARTICLES ───
+(function() {
+  const isMobile = window.innerWidth < 640;
+  if (isMobile) return;
+
+  const canvas = document.getElementById('storm-canvas');
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, canvas.offsetWidth / canvas.offsetHeight, 0.1, 1000);
+  camera.position.z = 5;
+
+  // Particle system — storm-like flux
+  const COUNT = 2500;
+  const geometry = new THREE.BufferGeometry();
+  const positions = new Float32Array(COUNT * 3);
+  const velocities = new Float32Array(COUNT * 3);
+  const colors = new Float32Array(COUNT * 3);
+  const sizes = new Float32Array(COUNT);
+
+  const palette = [
+    [0.94, 0.27, 0.27], // red
+    [0.96, 0.62, 0.04], // gold
+    [0.12, 0.16, 0.24], // storm
+    [1, 1, 1],          // white
+  ];
+
+  for (let i = 0; i < COUNT; i++) {
+    positions[i * 3] = (Math.random() - 0.5) * 20;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 12;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
+
+    velocities[i * 3] = (Math.random() - 0.3) * 0.02;
+    velocities[i * 3 + 1] = (Math.random() - 0.7) * 0.015;
+    velocities[i * 3 + 2] = 0;
+
+    const col = palette[Math.floor(Math.random() * palette.length)];
+    colors[i * 3] = col[0];
+    colors[i * 3 + 1] = col[1];
+    colors[i * 3 + 2] = col[2];
+
+    sizes[i] = Math.random() * 3 + 0.5;
+  }
+
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+
+  const material = new THREE.PointsMaterial({
+    size: 0.06,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.6,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false,
+  });
+
+  const particles = new THREE.Points(geometry, material);
+  scene.add(particles);
+
+  // Mouse influence
+  let mouseX = 0, mouseY = 0;
+  document.addEventListener('mousemove', (e) => {
+    mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+    mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  let frame = 0;
+  function animate() {
+    requestAnimationFrame(animate);
+    frame++;
+
+    const pos = geometry.attributes.position.array;
+    for (let i = 0; i < COUNT; i++) {
+      pos[i * 3] += velocities[i * 3] + mouseX * 0.003;
+      pos[i * 3 + 1] += velocities[i * 3 + 1] - mouseY * 0.002;
+
+      // Wrap around
+      if (pos[i * 3] > 10) pos[i * 3] = -10;
+      if (pos[i * 3] < -10) pos[i * 3] = 10;
+      if (pos[i * 3 + 1] > 6) pos[i * 3 + 1] = -6;
+      if (pos[i * 3 + 1] < -6) pos[i * 3 + 1] = 6;
+    }
+    geometry.attributes.position.needsUpdate = true;
+
+    particles.rotation.z = Math.sin(frame * 0.001) * 0.05;
+    renderer.render(scene, camera);
+  }
+
+  animate();
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth < 640) { canvas.style.display = 'none'; return; }
+    renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+    camera.aspect = canvas.offsetWidth / canvas.offsetHeight;
+    camera.updateProjectionMatrix();
+  });
+})();
+
+// ─── GSAP ANIMATIONS ───
+gsap.registerPlugin(ScrollTrigger);
+
+// Nav scroll
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+// Hero badge
+gsap.to('#hero-badge', {
+  opacity: 1, y: 0,
+  duration: 0.8, delay: 0.3,
+  ease: 'power2.out'
+});
+
+// Hero title — words explode then regroup
+const words = document.querySelectorAll('.hero-title-inner');
+words.forEach((word, i) => {
+  // Start scattered
+  gsap.set(word, {
+    y: 120,
+    x: (i % 2 === 0 ? -60 : 60),
+    rotation: (i - 1) * 8,
+    opacity: 0
+  });
+  // Animate to final position
+  gsap.to(word, {
+    y: 0, x: 0, rotation: 0, opacity: 1,
+    duration: 1.2,
+    delay: 0.6 + i * 0.18,
+    ease: 'back.out(1.4)'
+  });
+});
+
+// Hero sub & actions
+gsap.to('#hero-sub', { opacity: 1, y: 0, duration: 0.8, delay: 1.3, ease: 'power2.out' });
+gsap.to('#hero-actions', { opacity: 1, y: 0, duration: 0.8, delay: 1.5, ease: 'power2.out' });
+
+// Hero stats
+['#stat1','#stat2','#stat3'].forEach((id, i) => {
+  gsap.to(id, { opacity: 1, y: 0, duration: 0.6, delay: 1.8 + i * 0.15, ease: 'power2.out' });
+});
+
+// Category cards
+gsap.utils.toArray('.category-card').forEach((card, i) => {
+  gsap.from(card, {
+    scrollTrigger: { trigger: card, start: 'top 90%' },
+    y: 60, opacity: 0,
+    duration: 0.8,
+    delay: i * 0.1,
+    ease: 'power3.out'
+  });
+});
+
+// Products
+gsap.utils.toArray('.product-card').forEach((card, i) => {
+  gsap.from(card, {
+    scrollTrigger: { trigger: card, start: 'top 90%' },
+    y: 50, opacity: 0,
+    duration: 0.7,
+    delay: i * 0.08,
+    ease: 'power2.out'
+  });
+});
+
+// 3D tilt on products
+document.querySelectorAll('.product-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    gsap.to(card, {
+      rotateY: x * 8,
+      rotateX: -y * 8,
+      duration: 0.3,
+      ease: 'power1.out',
+      transformPerspective: 800
+    });
+  });
+  card.addEventListener('mouseleave', () => {
+    gsap.to(card, { rotateY: 0, rotateX: 0, duration: 0.5, ease: 'power2.out' });
+  });
+});
+
+// Brand section parallax
+gsap.to('.brand-img-main', {
+  scrollTrigger: {
+    trigger: '.brand-section',
+    start: 'top bottom',
+    end: 'bottom top',
+    scrub: 1.5
+  },
+  y: -40
+});
+
+gsap.from('.brand-content > *', {
+  scrollTrigger: { trigger: '.brand-content', start: 'top 75%' },
+  y: 40, opacity: 0,
+  stagger: 0.15,
+  duration: 0.8,
+  ease: 'power2.out'
+});
+
+// Stats counter
+document.querySelectorAll('.stat-num[data-target]').forEach(el => {
+  const target = parseInt(el.dataset.target);
+  ScrollTrigger.create({
+    trigger: el,
+    start: 'top 80%',
+    once: true,
+    onEnter: () => {
+      gsap.to({ val: 0 }, {
+        val: target,
+        duration: 2,
+        ease: 'power2.out',
+        onUpdate: function() {
+          el.textContent = Math.round(this.targets()[0].val).toLocaleString('fr-FR');
+        }
+      });
+    }
+  });
+});
+
+// Sections reveal
+gsap.utils.toArray('.section-title, .section-label').forEach(el => {
+  gsap.from(el, {
+    scrollTrigger: { trigger: el, start: 'top 85%' },
+    y: 30, opacity: 0,
+    duration: 0.7,
+    ease: 'power2.out'
+  });
+});
+
+// CTA section
+gsap.from('.cta-title', {
+  scrollTrigger: { trigger: '.cta-section', start: 'top 75%' },
+  x: -60, opacity: 0,
+  duration: 1, ease: 'power3.out'
+});
+
+gsap.from('.cta-actions', {
+  scrollTrigger: { trigger: '.cta-section', start: 'top 70%' },
+  x: 60, opacity: 0,
+  duration: 1, delay: 0.2, ease: 'power3.out'
+});
+
+// Footer reveal
+gsap.from('footer', {
+  scrollTrigger: { trigger: 'footer', start: 'top 90%' },
+  y: 40, opacity: 0,
+  duration: 0.8, ease: 'power2.out'
+});
+</script>
+</body>
+</html>

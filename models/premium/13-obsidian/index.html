@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ÆON Assurances — Protéger ce qui compte</title>
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #F0D080;
+    --dark: #0A0A0F;
+    --dark2: #111118;
+    --dark3: #1A1A24;
+    --text: #E8E8F0;
+    --muted: #6B6B80;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 24px 60px;
+    background: linear-gradient(to bottom, rgba(10,10,15,0.95), transparent);
+    backdrop-filter: blur(4px);
+  }
+
+  .logo {
+    font-size: 22px; font-weight: 700; letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .logo span { color: var(--white); }
+
+  nav ul {
+    display: flex; gap: 40px; list-style: none;
+  }
+
+  nav ul li a {
+    color: var(--muted); text-decoration: none; font-size: 13px;
+    letter-spacing: 2px; text-transform: uppercase; font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  nav ul li a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold); color: var(--dark) !important;
+    padding: 10px 24px; border-radius: 2px;
+    font-weight: 700 !important; color: var(--dark) !important;
+    transition: background 0.3s !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--dark) !important; }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative; height: 100vh; min-height: 700px;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+
+  /* Slot vidéo Higgsfield */
+  .video-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%),
+      linear-gradient(135deg, #0A0A0F 0%, #0D0D1A 40%, #0A0A0F 100%);
+    overflow: hidden;
+  }
+
+  /* Particules animées (placeholder avant vidéo Higgsfield) */
+  .particles {
+    position: absolute; inset: 0;
+  }
+
+  .particle {
+    position: absolute;
+    width: 1px; height: 1px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: float linear infinite;
+    opacity: 0;
+  }
+
+  @keyframes float {
+    0%   { transform: translateY(100vh) translateX(0); opacity: 0; }
+    10%  { opacity: 0.6; }
+    90%  { opacity: 0.3; }
+    100% { transform: translateY(-100px) translateX(40px); opacity: 0; }
+  }
+
+  /* Grid cinématique */
+  .grid-overlay {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    animation: gridShift 20s linear infinite;
+  }
+
+  @keyframes gridShift {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(80px); }
+  }
+
+  /* Cercles lumineux */
+  .orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(80px); pointer-events: none;
+  }
+  .orb-1 {
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    top: -100px; left: -100px;
+    animation: orbPulse 8s ease-in-out infinite alternate;
+  }
+  .orb-2 {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(100,100,255,0.08) 0%, transparent 70%);
+    bottom: 0; right: 0;
+    animation: orbPulse 10s ease-in-out infinite alternate-reverse;
+  }
+
+  @keyframes orbPulse {
+    0%   { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.2) translate(30px, -30px); }
+  }
+
+  .video-label {
+    position: absolute; bottom: 20px; right: 20px;
+    font-size: 10px; letter-spacing: 2px; color: var(--gold);
+    opacity: 0.4; text-transform: uppercase;
+  }
+
+  /* Overlay gradient bas */
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, var(--dark) 0%, transparent 40%);
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center; padding: 0 20px;
+    max-width: 900px;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3);
+    padding: 8px 20px; border-radius: 100px; margin-bottom: 40px;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold);
+    animation: fadeUp 1s ease 0.2s both;
+  }
+
+  .badge-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.4; transform: scale(0.7); }
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 6vw, 90px);
+    font-weight: 200;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 30px;
+    animation: fadeUp 1s ease 0.4s both;
+  }
+
+  .hero h1 strong {
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+  }
+
+  .hero p {
+    font-size: 18px; color: var(--muted); max-width: 600px;
+    margin: 0 auto 50px; line-height: 1.7;
+    animation: fadeUp 1s ease 0.6s both;
+  }
+
+  .hero-buttons {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    animation: fadeUp 1s ease 0.8s both;
+  }
+
+  .btn-primary {
+    background: var(--gold); color: var(--dark);
+    padding: 16px 40px; border-radius: 2px;
+    font-weight: 700; font-size: 13px; letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none;
+    transition: all 0.3s; border: none; cursor: pointer;
+    position: relative; overflow: hidden;
+  }
+
+  .btn-primary::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+  }
+
+  .btn-primary:hover::after { transform: translateX(100%); }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 20px 40px rgba(201,168,76,0.3); }
+
+  .btn-outline {
+    background: transparent; color: var(--text);
+    padding: 16px 40px; border-radius: 2px;
+    font-weight: 500; font-size: 13px; letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: all 0.3s; cursor: pointer;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--gold); color: var(--gold);
+    transform: translateY(-2px);
+  }
+
+  /* Scroll indicator */
+  .scroll-hint {
+    position: absolute; bottom: 40px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    animation: fadeUp 1s ease 1.2s both;
+  }
+
+  .scroll-hint span {
+    font-size: 10px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0%   { transform: scaleY(0); transform-origin: top; }
+    50%  { transform: scaleY(1); transform-origin: top; }
+    51%  { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* ─── STATS ─── */
+  .stats-bar {
+    background: var(--dark2);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    padding: 50px 60px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+
+  .stat {
+    text-align: center;
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+
+  .stat.visible { opacity: 1; transform: translateY(0); }
+
+  .stat-number {
+    font-size: 48px; font-weight: 800;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    display: block; line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 12px; letter-spacing: 2px; color: var(--muted);
+    text-transform: uppercase; margin-top: 8px; display: block;
+  }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 120px 60px; }
+
+  .section-tag {
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px; display: block;
+  }
+
+  .section-title {
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 200; line-height: 1.2; margin-bottom: 20px;
+  }
+
+  .section-title strong { font-weight: 800; }
+
+  .section-desc {
+    font-size: 17px; color: var(--muted); max-width: 500px;
+    line-height: 1.7;
+  }
+
+  /* ─── SERVICES ─── */
+  .services {
+    background: var(--dark);
+  }
+
+  .services-header {
+    text-align: center; margin-bottom: 80px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  .service-card {
+    background: var(--dark2);
+    padding: 50px 40px;
+    position: relative; overflow: hidden;
+    cursor: pointer;
+    opacity: 0; transform: translateY(30px);
+    transition: all 0.6s ease, background 0.4s;
+  }
+
+  .service-card.visible { opacity: 1; transform: translateY(0); }
+
+  .service-card:hover {
+    background: var(--dark3);
+    z-index: 2;
+  }
+
+  .service-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+  }
+
+  .service-card:hover::before { transform: translateX(0); }
+
+  .service-icon {
+    font-size: 36px; margin-bottom: 24px; display: block;
+  }
+
+  .service-title {
+    font-size: 20px; font-weight: 600; margin-bottom: 12px;
+    color: var(--white);
+  }
+
+  .service-desc {
+    font-size: 14px; color: var(--muted); line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .service-link {
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); text-decoration: none; font-weight: 600;
+    display: flex; align-items: center; gap: 8px;
+    transition: gap 0.3s;
+  }
+
+  .service-card:hover .service-link { gap: 16px; }
+
+  /* ─── VIDEO SECTION ─── */
+  .video-section {
+    background: var(--dark2);
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0; padding: 0;
+    min-height: 600px;
+  }
+
+  .video-slot {
+    position: relative; overflow: hidden;
+    background: var(--dark3);
+    min-height: 500px;
+  }
+
+  /* Higgsfield video placeholder */
+  .video-slot-inner {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    background:
+      radial-gradient(ellipse 70% 70% at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
+      linear-gradient(135deg, #0D0D1A, #111118);
+  }
+
+  /* Cinematic scan line effect */
+  .video-slot-inner::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(201,168,76,0.015) 2px,
+      rgba(201,168,76,0.015) 4px
+    );
+    pointer-events: none;
+    animation: scanlines 8s linear infinite;
+  }
+
+  @keyframes scanlines {
+    0%   { background-position: 0 0; }
+    100% { background-position: 0 100px; }
+  }
+
+  .video-placeholder-text {
+    font-size: 11px; letter-spacing: 3px; color: rgba(201,168,76,0.3);
+    text-transform: uppercase; text-align: center;
+    position: relative; z-index: 2;
+  }
+
+  .video-placeholder-icon {
+    width: 60px; height: 60px; border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.2);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px; font-size: 20px;
+    animation: rotateSlow 20s linear infinite;
+  }
+
+  @keyframes rotateSlow {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .video-content {
+    padding: 80px 60px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+
+  .video-content .section-desc { max-width: 100%; }
+
+  .feature-list {
+    margin-top: 40px; list-style: none; display: flex; flex-direction: column; gap: 16px;
+  }
+
+  .feature-list li {
+    display: flex; align-items: flex-start; gap: 16px;
+    font-size: 15px; color: var(--muted);
+  }
+
+  .feature-list li::before {
+    content: '→'; color: var(--gold); flex-shrink: 0; font-weight: 700;
+    margin-top: 1px;
+  }
+
+  /* ─── PROCESS ─── */
+  .process {
+    background: var(--dark);
+    text-align: center;
+  }
+
+  .process-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 40px; margin-top: 80px; max-width: 1100px; margin-left: auto; margin-right: auto;
+  }
+
+  .step {
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+
+  .step.visible { opacity: 1; transform: translateY(0); }
+
+  .step-number {
+    font-size: 72px; font-weight: 800;
+    color: rgba(201,168,76,0.1); line-height: 1;
+    margin-bottom: 16px; display: block;
+  }
+
+  .step-title { font-size: 18px; font-weight: 600; margin-bottom: 12px; }
+
+  .step-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* ─── OFFRES ─── */
+  .offres {
+    background: var(--dark2);
+  }
+
+  .offres-header { text-align: center; margin-bottom: 80px; }
+
+  .offres-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; max-width: 1000px; margin: 0 auto;
+  }
+
+  .offre-card {
+    background: var(--dark); padding: 50px 40px;
+    position: relative; overflow: hidden;
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+
+  .offre-card.featured {
+    background: linear-gradient(135deg, var(--dark3), #1C1A10);
+  }
+
+  .offre-card.visible { opacity: 1; transform: translateY(0); }
+
+  .featured-tag {
+    position: absolute; top: 20px; right: 20px;
+    background: var(--gold); color: var(--dark);
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    padding: 4px 12px; text-transform: uppercase;
+  }
+
+  .offre-name {
+    font-size: 13px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px; display: block;
+  }
+
+  .offre-price {
+    font-size: 52px; font-weight: 800; line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .offre-price span { font-size: 18px; font-weight: 400; color: var(--muted); }
+
+  .offre-desc {
+    font-size: 14px; color: var(--muted); margin-bottom: 32px; line-height: 1.6;
+  }
+
+  .offre-features { list-style: none; margin-bottom: 40px; display: flex; flex-direction: column; gap: 12px; }
+
+  .offre-features li {
+    font-size: 14px; color: var(--text);
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  .offre-features li::before {
+    content: '✓'; color: var(--gold); font-weight: 800; flex-shrink: 0;
+  }
+
+  /* ─── CTA FINAL ─── */
+  .cta-section {
+    background: var(--dark);
+    text-align: center;
+    padding: 140px 60px;
+    position: relative; overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(201,168,76,0.07) 0%, transparent 70%);
+  }
+
+  .cta-section h2 {
+    font-size: clamp(36px, 5vw, 70px);
+    font-weight: 200; margin-bottom: 24px;
+    position: relative; z-index: 2;
+  }
+
+  .cta-section h2 strong { font-weight: 800; color: var(--gold); }
+
+  .cta-section p {
+    font-size: 18px; color: var(--muted); max-width: 500px;
+    margin: 0 auto 50px; line-height: 1.7; position: relative; z-index: 2;
+  }
+
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 2; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--dark2);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding: 60px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .footer-logo { font-size: 18px; font-weight: 700; letter-spacing: 4px; color: var(--gold); }
+  .footer-logo span { color: var(--white); }
+
+  .footer-text { font-size: 13px; color: var(--muted); }
+
+  .footer-links { display: flex; gap: 32px; }
+  .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; letter-spacing: 1px; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Stagger delays pour service cards */
+  .service-card:nth-child(1) { transition-delay: 0.1s; }
+  .service-card:nth-child(2) { transition-delay: 0.2s; }
+  .service-card:nth-child(3) { transition-delay: 0.3s; }
+  .service-card:nth-child(4) { transition-delay: 0.4s; }
+  .service-card:nth-child(5) { transition-delay: 0.5s; }
+  .service-card:nth-child(6) { transition-delay: 0.6s; }
+
+  .step:nth-child(1) { transition-delay: 0.1s; }
+  .step:nth-child(2) { transition-delay: 0.25s; }
+  .step:nth-child(3) { transition-delay: 0.4s; }
+  .step:nth-child(4) { transition-delay: 0.55s; }
+
+  .stat:nth-child(1) { transition-delay: 0.05s; }
+  .stat:nth-child(2) { transition-delay: 0.15s; }
+  .stat:nth-child(3) { transition-delay: 0.25s; }
+  .stat:nth-child(4) { transition-delay: 0.35s; }
+
+  .offre-card:nth-child(1) { transition-delay: 0.1s; }
+  .offre-card:nth-child(2) { transition-delay: 0.25s; }
+  .offre-card:nth-child(3) { transition-delay: 0.4s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    nav ul { display: none; }
+    section { padding: 80px 24px; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); padding: 40px 24px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .video-section { grid-template-columns: 1fr; }
+    .video-slot { min-height: 300px; }
+    .process-steps { grid-template-columns: repeat(2, 1fr); }
+    .offres-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 24px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Æ<span>ON</span></div>
+  <ul>
+    <li><a href="#services">Solutions</a></li>
+    <li><a href="#process">Méthode</a></li>
+    <li><a href="#offres">Offres</a></li>
+    <li><a href="#contact" class="nav-cta">Audit gratuit</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="video-bg">
+    <div class="grid-overlay"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="particles" id="particles"></div>
+    <div class="video-label">[ HIGGSFIELD · VEO 3.1 READY ]</div>
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="badge-dot"></div>
+      Présence digitale premium pour assureurs
+    </div>
+    <h1>
+      Votre image,
+      <strong>à la hauteur<br>de votre confiance</strong>
+    </h1>
+    <p>
+      Des sites et expériences digitales cinématiques qui transforment
+      vos prospects en clients — conçus spécifiquement pour le secteur
+      de l'assurance.
+    </p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary">Demander un audit</a>
+      <a href="#services" class="btn-outline">Découvrir les solutions</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Défiler</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar" id="stats">
+  <div class="stat">
+    <span class="stat-number" data-target="340">0</span>
+    <span class="stat-label">% de leads en plus</span>
+  </div>
+  <div class="stat">
+    <span class="stat-number" data-target="72">0</span>
+    <span class="stat-label">Heures de livraison</span>
+  </div>
+  <div class="stat">
+    <span class="stat-number" data-target="98">0</span>
+    <span class="stat-label">% satisfaction client</span>
+  </div>
+  <div class="stat">
+    <span class="stat-number" data-target="3">0</span>
+    <span class="stat-label">× plus de conversions</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header">
+    <span class="section-tag">Solutions digitales</span>
+    <h2 class="section-title">Tout ce dont un assureur<br><strong>a besoin en ligne</strong></h2>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">🏛</span>
+      <div class="service-title">Site vitrine premium</div>
+      <p class="service-desc">Une présence digitale cinématique avec vidéos IA, animations fluides et design qui inspire confiance dès la première seconde.</p>
+      <a href="#" class="service-link">Explorer <span>→</span></a>
+    </div>
+
+    <div class="service-card">
+      <span class="service-icon">⚡</span>
+      <div class="service-title">Simulateur de devis</div>
+      <p class="service-desc">Un outil interactif personnalisé qui guide vos prospects vers la bonne formule — intégré directement dans votre site.</p>
+      <a href="#" class="service-link">Explorer <span>→</span></a>
+    </div>
+
+    <div class="service-card">
+      <span class="service-icon">📱</span>
+      <div class="service-title">Espace client digital</div>
+      <p class="service-desc">Portail sécurisé pour que vos assurés gèrent leurs contrats, déclarent des sinistres et communiquent avec vous 24h/24.</p>
+      <a href="#" class="service-link">Explorer <span>→</span></a>
+    </div>
+
+    <div class="service-card">
+      <span class="service-icon">🎯</span>
+      <div class="service-title">Landing pages campagnes</div>
+      <p class="service-desc">Pages d'atterrissage ultra-convergeantes pour vos campagnes assurance auto, habitation, vie, santé — optimisées pour le ROI.</p>
+      <a href="#" class="service-link">Explorer <span>→</span></a>
+    </div>
+
+    <div class="service-card">
+      <span class="service-icon">🤖</span>
+      <div class="service-title">Chatbot & IA intégrée</div>
+      <p class="service-desc">Assistant IA qui répond aux questions fréquentes, qualifie les leads et prend des rendez-vous — même à 3h du matin.</p>
+      <a href="#" class="service-link">Explorer <span>→</span></a>
+    </div>
+
+    <div class="service-card">
+      <span class="service-icon">📊</span>
+      <div class="service-title">Dashboard analytics</div>
+      <p class="service-desc">Tableau de bord temps réel : trafic, conversions, coût par lead, performance campagnes — tout visible en un coup d'œil.</p>
+      <a href="#" class="service-link">Explorer <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO SECTION -->
+<div class="video-section">
+  <div class="video-slot">
+    <div class="video-slot-inner">
+      <div class="video-placeholder-icon">▶</div>
+      <div class="video-placeholder-text">
+        Vidéo Higgsfield · Veo 3.1<br>
+        <small style="font-size:9px;opacity:0.5">Cinematic · Famille protégée</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="video-content" style="padding: 80px 60px;">
+    <span class="section-tag">Pourquoi nous</span>
+    <h2 class="section-title">Bien plus qu'un<br><strong>simple site web</strong></h2>
+    <p class="section-desc">
+      Nous combinons l'IA générative et l'expertise du secteur assurance pour
+      créer des expériences digitales qui rassurent, engagent et convertissent.
+    </p>
+    <ul class="feature-list">
+      <li>Vidéos IA cinématiques personnalisées à votre marque</li>
+      <li>Design pensé pour la psychologie de l'acheteur d'assurance</li>
+      <li>Intégration CRM, comparateurs et outils métier</li>
+      <li>Conformité RGPD & DDA incluse d'office</li>
+      <li>Support prioritaire & évolutions illimitées</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <span class="section-tag">Notre méthode</span>
+  <h2 class="section-title">De zéro à en ligne<br><strong>en 72 heures</strong></h2>
+
+  <div class="process-steps">
+    <div class="step">
+      <span class="step-number">01</span>
+      <div class="step-title">Audit & Brief</div>
+      <p class="step-desc">Analyse de votre positionnement, vos cibles et vos concurrents. Définition du cahier des charges précis.</p>
+    </div>
+    <div class="step">
+      <span class="step-number">02</span>
+      <div class="step-title">Conception IA</div>
+      <p class="step-desc">Génération des visuels et vidéos Higgsfield. Architecture du site pensée pour la conversion assurance.</p>
+    </div>
+    <div class="step">
+      <span class="step-number">03</span>
+      <div class="step-title">Développement</div>
+      <p class="step-desc">Intégration code, animations, formulaires et connecteurs métier. Tests complets sur tous devices.</p>
+    </div>
+    <div class="step">
+      <span class="step-number">04</span>
+      <div class="step-title">Live & Suivi</div>
+      <p class="step-desc">Mise en ligne, formation équipe, dashboard analytics et optimisations continues basées sur les données.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OFFRES -->
+<section class="offres" id="offres">
+  <div class="offres-header">
+    <span class="section-tag">Tarification transparente</span>
+    <h2 class="section-title">Choisissez votre<br><strong>niveau d'impact</strong></h2>
+  </div>
+
+  <div class="offres-grid">
+    <div class="offre-card">
+      <span class="offre-name">Essentiel</span>
+      <div class="offre-price">2 900 <span>€</span></div>
+      <p class="offre-desc">Idéal pour débuter ou rénover rapidement votre présence en ligne.</p>
+      <ul class="offre-features">
+        <li>Site vitrine 5 pages</li>
+        <li>1 vidéo IA cinématique</li>
+        <li>Formulaire de contact avancé</li>
+        <li>SEO de base inclus</li>
+        <li>Livraison en 72h</li>
+      </ul>
+      <a href="#contact" class="btn-outline" style="display:inline-block;text-align:center;width:100%">Démarrer</a>
+    </div>
+
+    <div class="offre-card featured">
+      <div class="featured-tag">Populaire</div>
+      <span class="offre-name">Premium</span>
+      <div class="offre-price">6 900 <span>€</span></div>
+      <p class="offre-desc">La solution complète pour dominer votre marché local et régional.</p>
+      <ul class="offre-features">
+        <li>Site complet jusqu'à 15 pages</li>
+        <li>3 vidéos IA + motion design</li>
+        <li>Simulateur de devis intégré</li>
+        <li>Chatbot IA personnalisé</li>
+        <li>Dashboard analytics temps réel</li>
+        <li>SEO avancé + Google Ads setup</li>
+      </ul>
+      <a href="#contact" class="btn-primary" style="display:inline-block;text-align:center;width:100%">Démarrer</a>
+    </div>
+
+    <div class="offre-card">
+      <span class="offre-name">Entreprise</span>
+      <div class="offre-price">Sur <span>mesure</span></div>
+      <p class="offre-desc">Pour les groupes, courtiers multi-sites et acteurs nationaux exigeants.</p>
+      <ul class="offre-features">
+        <li>Plateforme multi-marques</li>
+        <li>Vidéos illimitées Higgsfield</li>
+        <li>Espace client & espace agent</li>
+        <li>Intégration systèmes existants</li>
+        <li>SLA garanti & support dédié</li>
+      </ul>
+      <a href="#contact" class="btn-outline" style="display:inline-block;text-align:center;width:100%">Nous contacter</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section" id="contact">
+  <h2>Prêt à passer<br><strong>au niveau supérieur ?</strong></h2>
+  <p>
+    Obtenez un audit digital gratuit de votre présence actuelle
+    et un prototype de votre futur site en 48 heures.
+  </p>
+  <div class="cta-buttons">
+    <a href="mailto:contact@aeon-digital.com" class="btn-primary">Audit gratuit — sans engagement</a>
+    <a href="tel:+33600000000" class="btn-outline">Appel découverte 30 min</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Æ<span>ON</span></div>
+  <div class="footer-text">© 2026 ÆEON Digital. Tous droits réservés.</div>
+  <div class="footer-links">
+    <a href="#">Mentions légales</a>
+    <a href="#">RGPD</a>
+    <a href="#">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // ─── PARTICULES HERO ───
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 60; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 3 + 1;
+    p.style.cssText = `
+      left: ${Math.random() * 100}%;
+      width: ${size}px;
+      height: ${size}px;
+      animation-duration: ${Math.random() * 15 + 10}s;
+      animation-delay: ${Math.random() * 10}s;
+    `;
+    container.appendChild(p);
+  }
+
+  // ─── INTERSECTION OBSERVER ───
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.stat, .service-card, .step, .offre-card').forEach(el => observer.observe(el));
+
+  // ─── COMPTEUR STATS ───
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const nums = e.target.querySelectorAll('.stat-number[data-target]');
+        nums.forEach(num => {
+          const target = +num.dataset.target;
+          const suffix = target >= 100 ? '+' : (target === 3 ? '×' : '%');
+          let current = 0;
+          const step = target / 60;
+          const timer = setInterval(() => {
+            current = Math.min(current + step, target);
+            num.textContent = Math.floor(current) + (current >= target ? suffix : '');
+            if (current >= target) clearInterval(timer);
+          }, 25);
+        });
+        statObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+
+  statObserver.observe(document.getElementById('stats'));
+
+  // ─── NAV SCROLL ───
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.style.background = 'rgba(10,10,15,0.97)';
+      nav.style.backdropFilter = 'blur(20px)';
+      nav.style.borderBottom = '1px solid rgba(201,168,76,0.1)';
+    } else {
+      nav.style.background = 'linear-gradient(to bottom, rgba(10,10,15,0.95), transparent)';
+      nav.style.borderBottom = 'none';
+    }
+  });
+
+  // ─── PARALLAX LÉGER HERO ───
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    const hero = document.querySelector('.hero-content');
+    if (hero && y < window.innerHeight) {
+      hero.style.transform = `translateY(${y * 0.3}px)`;
+      hero.style.opacity = 1 - (y / window.innerHeight) * 1.5;
+    }
+  });
+</script>
+</body>
+</html>
