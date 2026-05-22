@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="OM'ASSURANCES SARL — Votre quiétude au quotidien, notre engagement. Assurance auto, santé, vie, maritime à Abidjan depuis 2007. Devis en 48h.">
+<meta name="keywords" content="assurance Côte d'Ivoire, assurance Abidjan, assurance auto, assurance maritime, OM ASSURANCES, CIMA">
+<meta property="og:title" content="OM'ASSURANCES — Votre quiétude au quotidien">
+<meta property="og:description" content="19 ans d'expertise en assurance à Abidjan. 8 branches, devis en 48h.">
+<title>OM'ASSURANCES — Votre quiétude au quotidien, notre engagement</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* === RESET & BASE === */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #1a1a1a;
+  line-height: 1.6;
+  overflow-x: hidden;
+  background: #fff;
+}
+img, svg { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; line-height: 1.2; letter-spacing: -0.5px; }
+
+:root {
+  --navy: #0D1F4E;
+  --navy-deep: #060F25;
+  --navy-light: #1E3A7B;
+  --gold: #C9A050;
+  --gold-light: #D9B470;
+  --white: #FFFFFF;
+  --gray-light: #F5F7FA;
+  --gray: #6b7280;
+  --gray-dark: #374151;
+}
+
+.container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+
+/* === NAV === */
+nav.main-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 1.25rem 0;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+nav.main-nav.scrolled {
+  background: rgba(13, 31, 78, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.85rem 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+.nav-inner {
+  display: flex; justify-content: space-between; align-items: center;
+  max-width: 1280px; margin: 0 auto; padding: 0 2rem;
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800; font-size: 1.5rem; color: #fff;
+  letter-spacing: 0.5px;
+}
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 2.25rem; align-items: center; list-style: none; }
+.nav-links a {
+  color: #fff; font-weight: 500; font-size: 0.95rem;
+  position: relative; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -6px; left: 0;
+  width: 0; height: 2px; background: var(--gold);
+  transition: width 0.3s ease;
+}
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  display: inline-block; padding: 0.75rem 1.5rem;
+  background: var(--gold); color: var(--navy) !important;
+  border-radius: 6px; font-weight: 600; font-size: 0.9rem;
+  transition: all 0.25s ease;
+}
+.nav-cta:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(201,160,80,0.4);
+}
+.nav-cta::after { display: none !important; }
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  width: 28px; height: 22px; justify-content: center;
+}
+.hamburger span {
+  display: block; width: 100%; height: 2px; background: #fff;
+  transition: all 0.3s ease;
+}
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* === HERO === */
+.hero {
+  background: linear-gradient(135deg, #0D1F4E 0%, #1E3A7B 100%);
+  color: #fff;
+  padding: 9rem 0 6rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -50%; right: -10%;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(201,160,80,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1.1fr 1fr;
+  align-items: center; gap: 4rem;
+  position: relative; z-index: 1;
+}
+.hero h1 {
+  font-size: 4rem; line-height: 1.05;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+.hero h1 .line2 {
+  display: block;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-subtitle {
+  font-size: 1.2rem; opacity: 0.9;
+  margin-bottom: 2.5rem; max-width: 520px;
+  line-height: 1.6;
+}
+.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn {
+  display: inline-block; padding: 1rem 2rem;
+  font-weight: 600; font-size: 1rem;
+  border-radius: 8px; transition: all 0.25s ease;
+  cursor: pointer; border: 2px solid transparent;
+}
+.btn-primary {
+  background: var(--gold); color: var(--navy);
+  box-shadow: 0 4px 16px rgba(201,160,80,0.3);
+}
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(201,160,80,0.45);
+}
+.btn-outline {
+  border-color: rgba(255,255,255,0.4); color: #fff;
+  background: transparent;
+}
+.btn-outline:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-3px);
+}
+.hero-visual { position: relative; }
+#lottie-hero {
+  width: 100%; max-width: 560px;
+  margin-left: auto;
+}
+.lottie-fallback {
+  width: 100%; max-width: 560px;
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 50% 50%, rgba(201,160,80,0.2), transparent 70%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10rem; opacity: 0.7;
+  margin-left: auto;
+}
+.cima-badge {
+  position: absolute; top: 1rem; right: 1rem;
+  background: rgba(255,255,255,0.95); color: var(--navy);
+  padding: 0.6rem 1.1rem; border-radius: 50px;
+  font-size: 0.85rem; font-weight: 600;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+.cima-badge::before { content: '✓ '; color: #1a8754; font-weight: 700; }
+
+/* === KPI STRIP === */
+.kpi-strip { background: #fff; padding: 4rem 0; }
+.kpi-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+  text-align: center;
+}
+.kpi-item { padding: 1.5rem; }
+.kpi-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem; font-weight: 800;
+  color: var(--gold); line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.kpi-label {
+  color: var(--gray); font-size: 0.95rem;
+  font-weight: 500; text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* === SECTIONS COMMON === */
+section.block { padding: 6rem 0; }
+.section-head { text-align: center; margin-bottom: 4rem; }
+.section-head h2 {
+  font-size: 2.75rem; color: var(--navy);
+  margin-bottom: 1rem;
+}
+.section-head.dark h2 { color: #fff; }
+.section-subtitle {
+  font-size: 1.15rem; color: var(--gray);
+  max-width: 600px; margin: 0 auto;
+}
+.section-head.dark .section-subtitle { color: rgba(255,255,255,0.75); }
+
+/* === PRODUITS === */
+.produits { background: var(--gray-light); }
+.products-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.75rem;
+}
+.product-card {
+  background: #fff; padding: 2rem 1.75rem;
+  border-radius: 14px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  display: flex; flex-direction: column;
+  box-shadow: 0 2px 8px rgba(13,31,78,0.04);
+}
+.product-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--gold);
+  box-shadow: 0 18px 40px rgba(13,31,78,0.12);
+}
+.product-icon {
+  font-size: 2.75rem; margin-bottom: 1.25rem;
+  display: block;
+}
+.product-card h3 {
+  font-size: 1.2rem; color: var(--navy);
+  margin-bottom: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+}
+.product-card p {
+  color: var(--gray); font-size: 0.95rem;
+  flex-grow: 1; margin-bottom: 1.25rem;
+}
+.product-link {
+  color: var(--gold); font-weight: 600; font-size: 0.9rem;
+  transition: gap 0.2s;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.product-card:hover .product-link { gap: 10px; }
+
+/* === POURQUOI === */
+.pourquoi {
+  background: var(--navy);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.pourquoi::before {
+  content: ''; position: absolute; top: 0; left: -10%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(201,160,80,0.12) 0%, transparent 70%);
+}
+.diff-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem;
+  margin-bottom: 5rem;
+  position: relative; z-index: 1;
+}
+.diff-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 2.5rem 2rem;
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+.diff-card:hover {
+  border-color: var(--gold);
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-4px);
+}
+.diff-icon {
+  font-size: 2.5rem; margin-bottom: 1.25rem;
+  display: inline-block;
+}
+.diff-card h3 {
+  font-size: 1.4rem; color: var(--gold);
+  margin-bottom: 0.75rem;
+  font-family: 'Playfair Display', serif;
+}
+.diff-card p {
+  color: rgba(255,255,255,0.8);
+  font-size: 1rem;
+}
+.testimonials-title {
+  text-align: center; font-size: 1.6rem;
+  color: var(--gold); margin-bottom: 2.5rem;
+  font-family: 'Playfair Display', serif;
+}
+.testimonials {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;
+  position: relative; z-index: 1;
+}
+.testimonial {
+  background: rgba(255,255,255,0.04);
+  border-left: 3px solid var(--gold);
+  padding: 1.75rem 2rem;
+  border-radius: 8px;
+  font-style: italic;
+}
+.testimonial p { color: rgba(255,255,255,0.9); margin-bottom: 1rem; font-size: 1.05rem; }
+.testimonial cite {
+  color: var(--gold); font-weight: 600; font-style: normal;
+  font-size: 0.9rem;
+}
+
+/* === AGENCES === */
+.agences { background: var(--gray-light); }
+.agence-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+  align-items: stretch;
+}
+.agence-card {
+  background: #fff; padding: 2.5rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(13,31,78,0.06);
+}
+.agence-card h3 {
+  font-size: 1.6rem; color: var(--navy);
+  margin-bottom: 1.5rem;
+  font-family: 'Playfair Display', serif;
+}
+.agence-info { list-style: none; }
+.agence-info li {
+  display: flex; align-items: flex-start; gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  color: var(--gray-dark);
+}
+.agence-info li:last-child { border-bottom: none; }
+.agence-info .ico {
+  font-size: 1.3rem; flex-shrink: 0;
+}
+.agence-info a { color: var(--navy); font-weight: 500; }
+.agence-info a:hover { color: var(--gold); }
+.map-placeholder {
+  background: linear-gradient(135deg, #e0e8f0 0%, #c8d4e3 100%);
+  border-radius: 14px; min-height: 320px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--navy); font-weight: 600;
+  position: relative; overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.map-placeholder:hover { transform: scale(1.01); box-shadow: 0 8px 24px rgba(13,31,78,0.15); }
+.map-placeholder::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(13,31,78,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13,31,78,0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+.map-text { position: relative; text-align: center; font-size: 1.1rem; }
+.map-text .pin { font-size: 2.5rem; display: block; margin-bottom: 0.5rem; }
+
+/* === DEVIS === */
+.devis {
+  background: var(--navy);
+  color: #fff;
+  position: relative;
+}
+.devis-grid {
+  display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem;
+  align-items: start;
+}
+.form-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 2.5rem;
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.form-group { margin-bottom: 1rem; }
+.form-group label {
+  display: block; font-size: 0.9rem; font-weight: 500;
+  margin-bottom: 0.5rem; color: rgba(255,255,255,0.85);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; padding: 0.85rem 1rem;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  color: #fff; font-size: 1rem; font-family: inherit;
+  transition: all 0.2s ease;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(255,255,255,0.4); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none; border-color: var(--gold);
+  background: rgba(255,255,255,0.12);
+  box-shadow: 0 0 0 3px rgba(201,160,80,0.15);
+}
+.form-group select option { background: var(--navy); color: #fff; }
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-submit {
+  width: 100%; padding: 1.1rem;
+  background: var(--gold); color: var(--navy);
+  border-radius: 8px; font-weight: 700; font-size: 1.05rem;
+  transition: all 0.25s ease;
+}
+.form-submit:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201,160,80,0.35);
+}
+.form-feedback {
+  margin-top: 1rem; padding: 1rem; border-radius: 8px;
+  background: rgba(26,135,84,0.15); border: 1px solid rgba(26,135,84,0.4);
+  color: #5dd39e; display: none; text-align: center;
+  font-weight: 500;
+}
+.form-feedback.show { display: block; animation: slideIn 0.4s ease; }
+.form-error {
+  color: #ff8a80; font-size: 0.85rem; margin-top: 0.3rem; display: none;
+}
+.form-error.show { display: block; }
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.contact-direct {
+  background: linear-gradient(135deg, rgba(201,160,80,0.15), rgba(201,160,80,0.05));
+  border: 1px solid rgba(201,160,80,0.3);
+  padding: 2rem; border-radius: 14px;
+}
+.contact-direct h3 {
+  font-size: 1.35rem; color: var(--gold);
+  margin-bottom: 1.25rem;
+  font-family: 'Playfair Display', serif;
+}
+.contact-line { display: flex; align-items: center; gap: 0.85rem; padding: 0.6rem 0; }
+.contact-line a { color: #fff; font-weight: 500; transition: color 0.2s; }
+.contact-line a:hover { color: var(--gold); }
+.contact-line .ico { font-size: 1.4rem; }
+.wa-direct {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  margin-top: 1rem; padding: 0.75rem 1.25rem;
+  background: #25D366; color: #fff !important;
+  border-radius: 50px; font-weight: 600; font-size: 0.95rem;
+  transition: transform 0.2s;
+}
+.wa-direct:hover { transform: scale(1.05); }
+
+/* === FOOTER === */
+footer {
+  background: var(--navy-deep);
+  color: rgba(255,255,255,0.7);
+  padding: 4rem 0 2rem;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 3rem; margin-bottom: 3rem;
+}
+.footer-brand h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; color: #fff;
+  margin-bottom: 0.75rem;
+}
+.footer-brand h3 span { color: var(--gold); }
+.footer-brand p { font-style: italic; color: rgba(255,255,255,0.6); margin-bottom: 1.5rem; }
+.footer-socials { display: flex; gap: 0.75rem; }
+.footer-socials a {
+  width: 38px; height: 38px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.08);
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+.footer-socials a:hover { background: var(--gold); transform: translateY(-2px); }
+.footer-socials svg { width: 18px; height: 18px; fill: #fff; }
+.footer-col h4 {
+  color: #fff; font-size: 1rem; margin-bottom: 1.25rem;
+  font-family: 'Inter', sans-serif; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.6rem; }
+.footer-col a {
+  color: rgba(255,255,255,0.65); font-size: 0.95rem;
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--gold); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 2rem; text-align: center;
+  font-size: 0.9rem;
+}
+.footer-bottom .agrement {
+  margin-bottom: 0.75rem; color: rgba(255,255,255,0.5);
+  font-size: 0.85rem;
+}
+
+/* === WHATSAPP FLOAT === */
+.wa-float {
+  position: fixed; bottom: 24px; right: 24px;
+  width: 60px; height: 60px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+  z-index: 999;
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+}
+.wa-float:hover { transform: scale(1.1); }
+.wa-float svg { width: 32px; height: 32px; fill: #fff; }
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 6px 20px rgba(37,211,102,0.4); }
+  50% { box-shadow: 0 6px 20px rgba(37,211,102,0.4), 0 0 0 12px rgba(37,211,102,0); }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+  .hero h1 { font-size: 3rem; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .container { padding: 0 1.25rem; }
+  .nav-links {
+    position: fixed; top: 0; right: -100%;
+    width: 80%; max-width: 320px; height: 100vh;
+    background: var(--navy);
+    flex-direction: column; padding: 6rem 2rem 2rem;
+    gap: 1.5rem; align-items: flex-start;
+    transition: right 0.35s ease;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.3);
+  }
+  .nav-links.active { right: 0; }
+  .nav-links a { font-size: 1.05rem; }
+  .nav-cta { padding: 0.75rem 1.25rem; }
+  .hamburger { display: flex; }
+  .hero { padding: 7rem 0 4rem; }
+  .hero-grid { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+  .hero h1 { font-size: 2.5rem; }
+  .hero-subtitle { margin-left: auto; margin-right: auto; }
+  .hero-ctas { justify-content: center; }
+  #lottie-hero, .lottie-fallback { margin: 0 auto; max-width: 380px; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .kpi-num { font-size: 2.75rem; }
+  section.block { padding: 4rem 0; }
+  .section-head h2 { font-size: 2rem; }
+  .diff-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .testimonials { grid-template-columns: 1fr; }
+  .agence-grid { grid-template-columns: 1fr; }
+  .devis-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+  .footer-socials { justify-content: center; }
+}
+@media (max-width: 480px) {
+  .products-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 2.1rem; }
+  .section-head h2 { font-size: 1.7rem; }
+  .kpi-num { font-size: 2.3rem; }
+  .nav-logo { font-size: 1.2rem; }
+  .btn { padding: 0.9rem 1.5rem; font-size: 0.95rem; }
+  .wa-float { width: 54px; height: 54px; bottom: 18px; right: 18px; }
+  .wa-float svg { width: 28px; height: 28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- === NAV === -->
+<nav class="main-nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">OM'<span>ASSURANCES</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#produits">Produits</a></li>
+      <li><a href="#pourquoi">Pourquoi nous</a></li>
+      <li><a href="#agences">Nos agences</a></li>
+      <li><a href="#devis">Devis</a></li>
+      <li><a href="#devis" class="nav-cta">Obtenir un devis</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- === HERO === -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <h1>
+          <span class="line1">Protégez ce qui</span>
+          <span class="line2">compte vraiment.</span>
+        </h1>
+        <p class="hero-subtitle">OM'ASSURANCES vous accompagne depuis 2007 avec expertise et proximité — assurance auto, santé, vie, maritime et bien plus.</p>
+        <div class="hero-ctas">
+          <a href="#devis" class="btn btn-primary">Obtenir un devis</a>
+          <a href="#produits" class="btn btn-outline">Découvrir nos produits</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="cima-badge">Agrément CIMA</div>
+        <div id="lottie-hero" aria-label="Animation protection assurance"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === KPI STRIP === -->
+<section class="kpi-strip" id="kpiStrip">
+  <div class="container">
+    <div class="kpi-grid">
+      <div class="kpi-item">
+        <div class="kpi-num" data-target="19" data-suffix="+">0</div>
+        <div class="kpi-label">Ans d'expérience</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-num" data-target="8">0</div>
+        <div class="kpi-label">Branches d'assurance</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-num" data-target="48" data-suffix="h">0</div>
+        <div class="kpi-label">Délai de traitement</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-num" data-target="1">0</div>
+        <div class="kpi-label">Agence à Abidjan</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === PRODUITS === -->
+<section class="block produits" id="produits">
+  <div class="container">
+    <div class="section-head">
+      <h2>Nos solutions d'assurance</h2>
+      <p class="section-subtitle">8 branches pour couvrir tous vos risques — particuliers comme entreprises</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <span class="product-icon" aria-hidden="true">🚢</span>
+        <h3>Assurance Maritime / Transport</h3>
+        <p>Protégez vos marchandises en transit, sur mer comme sur terre.</p>
+        <a href="#devis" class="product-link">En savoir plus →</a>
+      </div>
+      <div class="product-card">
+        <span class="product-icon" aria-hidden="true">🔒</span>
+        <h3>Cautionnement & Garanties</h3>
+        <p>Sécurisez vos contrats et marchés avec nos cautions sur mesure.</p>
+        <a href="#devis" class="product-link">En savoir plus →</a>
+      </div>
+      <div class="product-card">
+        <span class="product-icon" aria-hidden="true">💼</span>
+        <h3>Assurance Professionnelle / RC</h3>
+        <p>Couvrez votre responsabilité civile professionnelle en toute sérénité.</p>
+        <a href="#devis" class="product-link">En savoir plus →</a>
+      </div>
+      <div class="product-card">
+        <span class="product-icon" aria-hidden="true">✈️</span>
+        <h3>Assurance Voyage</h3>
+        <p>Voyagez l'esprit tranquille, partout dans le monde.</p>
+        <a href="#devis" class="product-link">En savoir plus →</a>
+      </div>
+      <div class="product-card">
+        <span class="product-icon" aria-hidden="true">🏥</span>
+        <h3>Assurance Santé</h3>
+        <p>Accès aux meilleurs soins pour vous et votre famille.</p>
+        <a href="#devis" class="product-link">En savoir plus →</a>
+      </div>
+      <div class="product-card">
+        <span class="product-icon" aria-hidden="true">🚗</span>
+        <h3>Assurance Auto</h3>
+        <p>Roulez serein, protégé à 100% sur toutes les routes ivoiriennes.</p>
+        <a href="#devis" class="product-link">En savoir plus →</a>
+      </div>
+      <div class="product-card">
+        <span class="product-icon" aria-hidden="true">🌱</span>
+        <h3>Assurance Vie</h3>
+        <p>Construisez l'avenir financier de ceux que vous aimez.</p>
+        <a href="#devis" class="product-link">En savoir plus →</a>
+      </div>
+      <div class="product-card">
+        <span class="product-icon" aria-hidden="true">🏠</span>
+        <h3>Assurance Habitation / Multirisque</h3>
+        <p>Votre foyer, notre priorité. Couverture complète des risques domestiques.</p>
+        <a href="#devis" class="product-link">En savoir plus →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === POURQUOI === -->
+<section class="block pourquoi" id="pourquoi">
+  <div class="container">
+    <div class="section-head dark">
+      <h2>Pourquoi choisir OM'ASSURANCES ?</h2>
+      <p class="section-subtitle">Trois engagements concrets qui font la différence</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card">
+        <span class="diff-icon" aria-hidden="true">⚡</span>
+        <h3>48h Chrono</h3>
+        <p>De votre demande à votre contrat : 48 heures maximum. Promesse tenue.</p>
+      </div>
+      <div class="diff-card">
+        <span class="diff-icon" aria-hidden="true">🤝</span>
+        <h3>Expertise locale</h3>
+        <p>19 ans au service des entreprises et particuliers ivoiriens. Nous connaissons vos réalités.</p>
+      </div>
+      <div class="diff-card">
+        <span class="diff-icon" aria-hidden="true">🛡️</span>
+        <h3>Multi-branches</h3>
+        <p>Une seule adresse pour tous vos besoins d'assurance. Simplifiez votre gestion.</p>
+      </div>
+    </div>
+    <h3 class="testimonials-title">Ils nous font confiance</h3>
+    <div class="testimonials">
+      <div class="testimonial">
+        <p>"OM'ASSURANCES a géré mon sinistre auto en moins de 48h. Professionnel et réactif."</p>
+        <cite>— Koné A., Chef d'entreprise</cite>
+      </div>
+      <div class="testimonial">
+        <p>"Leur assurance maritime nous a sauvé lors d'un transit risqué. Partenaire de confiance."</p>
+        <cite>— Diabaté M., Importateur</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === AGENCES === -->
+<section class="block agences" id="agences">
+  <div class="container">
+    <div class="section-head">
+      <h2>Notre présence à Abidjan</h2>
+      <p class="section-subtitle">Une agence proche de vous, prête à vous accueillir</p>
+    </div>
+    <div class="agence-grid">
+      <div class="agence-card">
+        <h3>Agence Abobo Ndotré</h3>
+        <ul class="agence-info">
+          <li><span class="ico">📍</span><span>Abobo Ndotré, face supermarché Corridor<br>Abidjan, Côte d'Ivoire</span></li>
+          <li><span class="ico">📞</span><a href="tel:+2250709578752">07 09 57 87 52</a></li>
+          <li><span class="ico">✉️</span><a href="mailto:omassur.assurances@gmail.com">omassur.assurances@gmail.com</a></li>
+          <li><span class="ico">🕐</span><span>Lun-Ven : 8h - 17h<br>Sam : 9h - 12h</span></li>
+        </ul>
+      </div>
+      <a href="https://www.google.com/maps/search/Abobo+Ndotr%C3%A9+Corridor+Abidjan" target="_blank" rel="noopener" class="map-placeholder" aria-label="Voir sur Google Maps">
+        <div class="map-text">
+          <span class="pin">📍</span>
+          Voir sur Google Maps
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- === DEVIS === -->
+<section class="block devis" id="devis">
+  <div class="container">
+    <div class="section-head dark">
+      <h2>Obtenez votre devis en 2 minutes</h2>
+      <p class="section-subtitle">Remplissez ce formulaire — notre équipe vous contacte sous 48h</p>
+    </div>
+    <div class="devis-grid">
+      <form class="form-card" id="devisForm" novalidate>
+        <div class="form-group">
+          <label for="type">Type d'assurance *</label>
+          <select id="type" name="type" required>
+            <option value="">— Sélectionnez —</option>
+            <option>Assurance Maritime / Transport</option>
+            <option>Cautionnement & Garanties</option>
+            <option>Assurance Professionnelle / RC</option>
+            <option>Assurance Voyage</option>
+            <option>Assurance Santé</option>
+            <option>Assurance Auto</option>
+            <option>Assurance Vie</option>
+            <option>Assurance Habitation / Multirisque</option>
+          </select>
+          <div class="form-error" id="err-type">Veuillez sélectionner un type d'assurance</div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nom">Nom complet *</label>
+            <input type="text" id="nom" name="nom" placeholder="Jean Konan" required>
+            <div class="form-error" id="err-nom">Veuillez entrer votre nom</div>
+          </div>
+          <div class="form-group">
+            <label for="tel">Téléphone *</label>
+            <input type="tel" id="tel" name="tel" placeholder="07-09-57-87-52" required>
+            <div class="form-error" id="err-tel">Format attendu : XX-XX-XX-XX-XX</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="vous@exemple.com">
+        </div>
+        <div class="form-group">
+          <label for="message">Décrivez votre besoin (optionnel)</label>
+          <textarea id="message" name="message" placeholder="Précisez vos attentes, le bien à assurer, etc."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Envoyer ma demande →</button>
+        <div class="form-feedback" id="formFeedback">
+          ✅ Merci ! Votre demande a bien été enregistrée. Nous vous contactons sous 48h.
+        </div>
+      </form>
+      <aside class="contact-direct">
+        <h3>Contact direct</h3>
+        <div class="contact-line">
+          <span class="ico">📞</span>
+          <a href="tel:+2250709578752">07 09 57 87 52</a>
+        </div>
+        <div class="contact-line">
+          <span class="ico">✉️</span>
+          <a href="mailto:omassur.assurances@gmail.com">omassur.assurances@gmail.com</a>
+        </div>
+        <div class="contact-line">
+          <span class="ico">📍</span>
+          <span style="color: rgba(255,255,255,0.85);">Abobo Ndotré, face Corridor</span>
+        </div>
+        <a href="https://wa.me/2250709578752" target="_blank" rel="noopener" class="wa-direct">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.2-.5.1-.2 0-.4 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 .9-1 2.3 0 1.4 1 2.7 1.1 2.9.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4 0-.1-.2-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.5 0-3-.4-4.3-1.1l-.3-.2-3.1.8.8-3.1-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8z"/></svg>
+          WhatsApp direct
+        </a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- === FOOTER === -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>OM'<span>ASSURANCES</span></h3>
+        <p>"Votre quiétude au quotidien, notre engagement."</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Produits</h4>
+        <ul>
+          <li><a href="#produits">Assurance Auto</a></li>
+          <li><a href="#produits">Assurance Santé</a></li>
+          <li><a href="#produits">Assurance Vie</a></li>
+          <li><a href="#produits">Maritime / Transport</a></li>
+          <li><a href="#produits">Voir tout</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+2250709578752">07 09 57 87 52</a></li>
+          <li><a href="mailto:omassur.assurances@gmail.com">omassur.assurances@gmail.com</a></li>
+          <li><a href="#agences">Abobo Ndotré</a></li>
+          <li><a href="https://wa.me/2250709578752" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">Confidentialité</a></li>
+          <li><a href="#">CGV</a></li>
+          <li><a href="#">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="agrement">Agrément CIMA N°[À COMPLÉTER] • Société agréée par la Conférence Interafricaine des Marchés d'Assurances</div>
+      © 2026 OM'ASSURANCES SARL. Tous droits réservés.
+    </div>
+  </div>
+</footer>
+
+<!-- === WHATSAPP FLOAT === -->
+<a href="https://wa.me/2250709578752" target="_blank" rel="noopener" class="wa-float" aria-label="Contactez-nous sur WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.2-.5.1-.2 0-.4 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 .9-1 2.3 0 1.4 1 2.7 1.1 2.9.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4 0-.1-.2-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.5 0-3-.4-4.3-1.1l-.3-.2-3.1.8.8-3.1-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8z"/></svg>
+</a>
+
+<!-- === LOTTIE === -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+
+<script>
+(function() {
+  'use strict';
+
+  // === NAV SCROLL ===
+  const nav = document.getElementById('mainNav');
+  const handleScroll = () => {
+    if (window.scrollY > 30) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+
+  // === MOBILE MENU ===
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
+    });
+  });
+
+  // === LOTTIE WITH FALLBACK ===
+  const lottieContainer = document.getElementById('lottie-hero');
+  const lottieUrls = [
+    'https://assets2.lottiefiles.com/packages/lf20_jbb3ij7r.json',
+    'https://assets9.lottiefiles.com/packages/lf20_kxsd2ytq.json'
+  ];
+  function loadLottie(index) {
+    if (typeof lottie === 'undefined' || index >= lottieUrls.length) {
+      lottieContainer.outerHTML = '<div class="lottie-fallback" aria-hidden="true">🛡️</div>';
+      return;
+    }
+    try {
+      const anim = lottie.loadAnimation({
+        container: lottieContainer,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: lottieUrls[index]
+      });
+      anim.addEventListener('data_failed', () => {
+        lottieContainer.innerHTML = '';
+        loadLottie(index + 1);
+      });
+    } catch (e) {
+      loadLottie(index + 1);
+    }
+  }
+  setTimeout(() => loadLottie(0), 100);
+
+  // === KPI COUNTER ANIMATION ===
+  const kpiNums = document.querySelectorAll('.kpi-num');
+  const animateCounter = (el) => {
+    const target = parseInt(el.dataset.target, 10);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    const start = performance.now();
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+      const value = Math.round(target * eased);
+      el.textContent = value + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  const kpiObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        kpiObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  kpiNums.forEach(el => kpiObserver.observe(el));
+
+  // === FORM VALIDATION ===
+  const form = document.getElementById('devisForm');
+  const feedback = document.getElementById('formFeedback');
+  const phoneRegex = /^(\+?225[-\s]?)?(\d{2}[-\s]?){4}\d{2}$/;
+
+  const showError = (id, show) => {
+    const errEl = document.getElementById('err-' + id);
+    if (errEl) errEl.classList.toggle('show', show);
+  };
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let valid = true;
+    const type = form.type.value.trim();
+    const nom = form.nom.value.trim();
+    const tel = form.tel.value.trim();
+
+    if (!type) { showError('type', true); valid = false; } else showError('type', false);
+    if (nom.length < 2) { showError('nom', true); valid = false; } else showError('nom', false);
+    if (!phoneRegex.test(tel)) { showError('tel', true); valid = false; } else showError('tel', false);
+
+    if (valid) {
+      feedback.classList.add('show');
+      form.reset();
+      setTimeout(() => feedback.classList.remove('show'), 6000);
+      feedback.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  });
+
+  // Live-clear errors on input
+  ['type', 'nom', 'tel'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', () => showError(id, false));
+    if (el && el.tagName === 'SELECT') el.addEventListener('change', () => showError(id, false));
+  });
+
+})();
+</script>
+
+</body>
+</html>
