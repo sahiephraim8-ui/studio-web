@@ -3,47 +3,110 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="OM'ASSURANCES SARL — Votre quiétude au quotidien, notre engagement. Assurance auto, santé, vie, maritime à Abidjan depuis 2007. Devis en 48h.">
-<meta name="keywords" content="assurance Côte d'Ivoire, assurance Abidjan, assurance auto, assurance maritime, OM ASSURANCES, CIMA">
-<meta property="og:title" content="OM'ASSURANCES — Votre quiétude au quotidien">
-<meta property="og:description" content="19 ans d'expertise en assurance à Abidjan. 8 branches, devis en 48h.">
-<title>OM'ASSURANCES — Votre quiétude au quotidien, notre engagement</title>
+<meta name="description" content="OM'ASSURANCES SARL — Votre quiétude au quotidien, notre engagement. Assurance auto, santé, vie, maritime, RC Pro à Abidjan depuis 2007. Agrément CIMA. Devis sous 48h.">
+<meta name="keywords" content="assurance Abidjan, assurance Côte d'Ivoire, assurance auto Abidjan, assurance maritime Côte d'Ivoire, assurance santé CIMA, OM ASSURANCES, courtier assurance Abidjan">
+<meta name="author" content="OM'ASSURANCES SARL">
+<meta property="og:title" content="OM'ASSURANCES — Votre quiétude au quotidien, notre engagement">
+<meta property="og:description" content="19 ans d'expertise en assurance à Abidjan. 8 branches couvertes. Devis sous 48h. Agrément CIMA.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_CI">
+<title>OM'ASSURANCES — Votre quiétude au quotidien, notre engagement | Abidjan</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 
 <style>
-/* === RESET & BASE === */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* ============================================
+   OM'ASSURANCES — BRAND SYSTEM
+   ============================================ */
+
+:root {
+  --navy: #0D1F4E;
+  --navy-deep: #07122E;
+  --navy-mid: #172B66;
+  --gold: #C9A050;
+  --gold-hover: #B8903F;
+  --white: #FFFFFF;
+  --off-white: #F8F9FC;
+  --text-dark: #1C2B4A;
+  --text-muted: #5A6A8A;
+  --success: #10B981;
+  --border: #E2E8F0;
+  --shadow-sm: 0 2px 8px rgba(13,31,78,0.06);
+  --shadow-md: 0 8px 24px rgba(13,31,78,0.10);
+  --shadow-lg: 0 16px 48px rgba(13,31,78,0.18);
+}
+
+/* === RESET === */
+*,*::before,*::after { margin:0; padding:0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  color: #1a1a1a;
-  line-height: 1.6;
+  color: var(--text-dark);
+  line-height: 1.65;
   overflow-x: hidden;
   background: #fff;
+  font-size: 16px;
 }
 img, svg { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
-h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; line-height: 1.2; letter-spacing: -0.5px; }
+ul { list-style: none; }
+input, select, textarea { font-family: inherit; font-size: 1rem; }
 
-:root {
-  --navy: #0D1F4E;
-  --navy-deep: #060F25;
-  --navy-light: #1E3A7B;
-  --gold: #C9A050;
-  --gold-light: #D9B470;
-  --white: #FFFFFF;
-  --gray-light: #F5F7FA;
-  --gray: #6b7280;
-  --gray-dark: #374151;
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  color: var(--navy);
 }
 
 .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+.gold { color: var(--gold); }
 
-/* === NAV === */
+/* === BUTTONS === */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--gold); color: var(--navy);
+  font-weight: 700; font-size: 0.95rem;
+  padding: 14px 28px; border-radius: 6px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background: var(--gold-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(201,160,80,0.4);
+}
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  border: 2px solid rgba(255,255,255,0.7);
+  color: #fff; background: transparent;
+  padding: 12px 26px; border-radius: 6px;
+  font-weight: 600; font-size: 0.95rem;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: #fff;
+}
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  border: 2px solid var(--navy);
+  color: var(--navy); background: transparent;
+  padding: 12px 26px; border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.btn-ghost:hover { background: var(--navy); color: #fff; }
+
+/* ============================================
+   NAV
+   ============================================ */
 nav.main-nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   padding: 1.25rem 0;
@@ -51,11 +114,11 @@ nav.main-nav {
   background: transparent;
 }
 nav.main-nav.scrolled {
-  background: rgba(13, 31, 78, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(13, 31, 78, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   padding: 0.85rem 0;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
 }
 .nav-inner {
   display: flex; justify-content: space-between; align-items: center;
@@ -63,11 +126,13 @@ nav.main-nav.scrolled {
 }
 .nav-logo {
   font-family: 'Playfair Display', serif;
-  font-weight: 800; font-size: 1.5rem; color: #fff;
+  font-weight: 800; font-size: 1.6rem; color: #fff;
   letter-spacing: 0.5px;
 }
 .nav-logo span { color: var(--gold); }
-.nav-links { display: flex; gap: 2.25rem; align-items: center; list-style: none; }
+.nav-links {
+  display: flex; gap: 2.25rem; align-items: center;
+}
 .nav-links a {
   color: #fff; font-weight: 500; font-size: 0.95rem;
   position: relative; transition: color 0.2s;
@@ -79,21 +144,22 @@ nav.main-nav.scrolled {
   transition: width 0.3s ease;
 }
 .nav-links a:hover::after { width: 100%; }
-.nav-cta {
-  display: inline-block; padding: 0.75rem 1.5rem;
+.nav-cta-btn {
   background: var(--gold); color: var(--navy) !important;
-  border-radius: 6px; font-weight: 600; font-size: 0.9rem;
+  padding: 0.7rem 1.4rem; border-radius: 6px;
+  font-weight: 700; font-size: 0.9rem;
   transition: all 0.25s ease;
 }
-.nav-cta:hover {
-  background: var(--gold-light);
+.nav-cta-btn:hover {
+  background: var(--gold-hover);
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(201,160,80,0.4);
 }
-.nav-cta::after { display: none !important; }
+.nav-cta-btn::after { display: none !important; }
 .hamburger {
   display: none; flex-direction: column; gap: 5px;
   width: 28px; height: 22px; justify-content: center;
+  cursor: pointer;
 }
 .hamburger span {
   display: block; width: 100%; height: 2px; background: #fff;
@@ -103,510 +169,838 @@ nav.main-nav.scrolled {
 .hamburger.active span:nth-child(2) { opacity: 0; }
 .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* === HERO === */
+/* ============================================
+   HERO
+   ============================================ */
 .hero {
-  background: linear-gradient(135deg, #0D1F4E 0%, #1E3A7B 100%);
-  color: #fff;
-  padding: 9rem 0 6rem;
   position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-mid) 100%);
+  color: #fff;
+  display: flex; align-items: center;
+  padding: 8rem 0 4rem;
   overflow: hidden;
 }
 .hero::before {
-  content: ''; position: absolute; top: -50%; right: -10%;
-  width: 700px; height: 700px;
-  background: radial-gradient(circle, rgba(201,160,80,0.15) 0%, transparent 70%);
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(201,160,80,0.12) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(201,160,80,0.08) 0%, transparent 50%);
   pointer-events: none;
 }
-.hero-grid {
-  display: grid; grid-template-columns: 1.1fr 1fr;
-  align-items: center; gap: 4rem;
-  position: relative; z-index: 1;
+.hero-inner {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1.2fr 1fr;
+  gap: 4rem; align-items: center;
+  max-width: 1280px; margin: 0 auto; padding: 0 2rem;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.85rem; font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.hero-eyebrow::before {
+  content: ''; display: block; width: 32px; height: 2px;
+  background: var(--gold);
 }
 .hero h1 {
-  font-size: 4rem; line-height: 1.05;
-  margin-bottom: 1.5rem;
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
   color: #fff;
+  margin-bottom: 1.75rem;
+  line-height: 1.05;
 }
-.hero h1 .line2 {
-  display: block;
-  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.hero h1 .gold { display: block; }
+.hero p.lead {
+  font-size: 1.15rem;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 2.5rem;
+  max-width: 560px;
+  line-height: 1.7;
 }
-.hero-subtitle {
-  font-size: 1.2rem; opacity: 0.9;
-  margin-bottom: 2.5rem; max-width: 520px;
-  line-height: 1.6;
+.hero-ctas {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  margin-bottom: 3rem;
 }
-.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
-.btn {
-  display: inline-block; padding: 1rem 2rem;
-  font-weight: 600; font-size: 1rem;
-  border-radius: 8px; transition: all 0.25s ease;
-  cursor: pointer; border: 2px solid transparent;
+.trust-bar {
+  display: flex; flex-wrap: wrap; gap: 1.75rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.15);
 }
-.btn-primary {
-  background: var(--gold); color: var(--navy);
-  box-shadow: 0 4px 16px rgba(201,160,80,0.3);
+.trust-item {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.9rem; color: rgba(255,255,255,0.9);
 }
-.btn-primary:hover {
-  background: var(--gold-light);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(201,160,80,0.45);
+.trust-item svg { color: var(--gold); flex-shrink: 0; }
+
+.hero-visual {
+  position: relative;
+  display: flex; justify-content: center; align-items: center;
 }
-.btn-outline {
-  border-color: rgba(255,255,255,0.4); color: #fff;
-  background: transparent;
+.shield-wrap {
+  position: relative;
+  width: 100%; max-width: 460px;
+  aspect-ratio: 1/1;
+  display: flex; justify-content: center; align-items: center;
 }
-.btn-outline:hover {
-  border-color: #fff;
-  background: rgba(255,255,255,0.08);
-  transform: translateY(-3px);
+.shield-svg {
+  width: 100%; height: 100%;
+  filter: drop-shadow(0 20px 60px rgba(201,160,80,0.25));
+  animation: shieldFloat 6s ease-in-out infinite;
 }
-.hero-visual { position: relative; }
-#lottie-hero {
-  width: 100%; max-width: 560px;
-  margin-left: auto;
-}
-.lottie-fallback {
-  width: 100%; max-width: 560px;
-  aspect-ratio: 1;
-  background: radial-gradient(circle at 50% 50%, rgba(201,160,80,0.2), transparent 70%);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 10rem; opacity: 0.7;
-  margin-left: auto;
+@keyframes shieldFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
 }
 .cima-badge {
-  position: absolute; top: 1rem; right: 1rem;
-  background: rgba(255,255,255,0.95); color: var(--navy);
-  padding: 0.6rem 1.1rem; border-radius: 50px;
-  font-size: 0.85rem; font-weight: 600;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.2);
-  z-index: 2;
+  position: absolute;
+  bottom: 10%; left: -2%;
+  background: #fff; color: var(--navy);
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow-lg);
+  display: flex; align-items: center; gap: 0.75rem;
+  animation: badgeFloat 4s ease-in-out infinite;
 }
-.cima-badge::before { content: '✓ '; color: #1a8754; font-weight: 700; }
+@keyframes badgeFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.cima-badge svg { color: var(--gold); }
+.cima-badge-text { font-size: 0.75rem; line-height: 1.3; }
+.cima-badge-text strong { display: block; font-size: 0.95rem; font-weight: 700; }
 
-/* === KPI STRIP === */
-.kpi-strip { background: #fff; padding: 4rem 0; }
+/* ============================================
+   KPI STRIP
+   ============================================ */
+.kpi-strip {
+  background: #fff;
+  padding: 4.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
 .kpi-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
   text-align: center;
 }
-.kpi-item { padding: 1.5rem; }
-.kpi-num {
+.kpi-item {
+  padding: 1rem;
+  border-right: 1px solid var(--border);
+}
+.kpi-item:last-child { border-right: none; }
+.kpi-number {
   font-family: 'Playfair Display', serif;
-  font-size: 3.5rem; font-weight: 800;
-  color: var(--gold); line-height: 1;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: var(--gold);
+  line-height: 1;
   margin-bottom: 0.5rem;
 }
 .kpi-label {
-  color: var(--gray); font-size: 0.95rem;
-  font-weight: 500; text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.3px;
 }
 
-/* === SECTIONS COMMON === */
-section.block { padding: 6rem 0; }
-.section-head { text-align: center; margin-bottom: 4rem; }
-.section-head h2 {
-  font-size: 2.75rem; color: var(--navy);
+/* ============================================
+   SECTION GLOBAL
+   ============================================ */
+section { padding: 6rem 0; }
+.section-eyebrow {
+  display: inline-block;
+  font-size: 0.8rem; font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 2px; text-transform: uppercase;
   margin-bottom: 1rem;
 }
-.section-head.dark h2 { color: #fff; }
-.section-subtitle {
-  font-size: 1.15rem; color: var(--gray);
-  max-width: 600px; margin: 0 auto;
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+  max-width: 760px;
 }
-.section-head.dark .section-subtitle { color: rgba(255,255,255,0.75); }
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 680px;
+  margin-bottom: 4rem;
+}
+.section-head { margin-bottom: 4rem; }
+.section-head.center { text-align: center; }
+.section-head.center .section-title,
+.section-head.center .section-subtitle { margin-left: auto; margin-right: auto; }
 
-/* === PRODUITS === */
-.produits { background: var(--gray-light); }
+/* ============================================
+   COMMENT ÇA MARCHE
+   ============================================ */
+.process {
+  background: var(--off-white);
+}
+.steps-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  position: relative;
+}
+.steps-grid::before {
+  content: ''; position: absolute;
+  top: 56px; left: 16.66%; right: 16.66%;
+  height: 2px;
+  background: repeating-linear-gradient(to right, var(--gold) 0 8px, transparent 8px 16px);
+  opacity: 0.4;
+}
+.step-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+.step-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+.step-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem; font-weight: 800;
+  color: var(--gold);
+  line-height: 1; margin-bottom: 1rem;
+}
+.step-icon {
+  width: 56px; height: 56px;
+  margin: 0 auto 1.5rem;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--navy);
+  background: rgba(201,160,80,0.12);
+  border-radius: 50%;
+}
+.step-card h3 {
+  font-size: 1.35rem;
+  margin-bottom: 0.75rem;
+}
+.step-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+/* ============================================
+   PRODUITS
+   ============================================ */
+.products {
+  background: var(--navy);
+  color: #fff;
+}
+.products .section-title, .products .section-eyebrow { color: #fff; }
+.products .section-eyebrow { color: var(--gold); }
+.products .section-subtitle { color: rgba(255,255,255,0.75); }
 .products-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.75rem;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
 }
 .product-card {
-  background: #fff; padding: 2rem 1.75rem;
-  border-radius: 14px;
-  border: 2px solid transparent;
-  transition: all 0.3s ease;
-  display: flex; flex-direction: column;
-  box-shadow: 0 2px 8px rgba(13,31,78,0.04);
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  cursor: pointer;
+  background: var(--navy-mid);
 }
-.product-card:hover {
-  transform: translateY(-8px);
-  border-color: var(--gold);
-  box-shadow: 0 18px 40px rgba(13,31,78,0.12);
-}
-.product-img {
-  width: calc(100% + 3.5rem);
-  margin: -2rem -1.75rem 1.5rem;
-  height: 185px;
+.product-card img {
+  width: 100%; height: 100%;
   object-fit: cover;
-  border-radius: 12px 12px 0 0;
-  display: block;
-  transition: transform 0.4s ease;
+  transition: transform 0.6s ease;
 }
-.product-card:hover .product-img {
-  transform: scale(1.04);
+.product-card:hover img { transform: scale(1.08); }
+.product-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(7,18,46,0.85) 70%, rgba(7,18,46,0.97) 100%);
+  padding: 1.5rem;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  transition: background 0.3s ease;
 }
-.product-card { overflow: hidden; }
+.product-card:hover .product-overlay {
+  background: linear-gradient(180deg, rgba(7,18,46,0.4) 0%, rgba(7,18,46,0.95) 100%);
+}
+.product-tag {
+  position: absolute; top: 1rem; left: 1rem;
+  background: var(--gold); color: var(--navy);
+  font-size: 0.7rem; font-weight: 700;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+.product-star {
+  position: absolute; top: 1rem; right: 1rem;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  font-size: 0.7rem; font-weight: 700; color: #fff;
+  padding: 0.3rem 0.6rem; border-radius: 4px;
+}
 .product-card h3 {
-  font-size: 1.2rem; color: var(--navy);
-  margin-bottom: 0.75rem;
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
+  color: #fff;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Playfair Display', serif;
 }
-.product-card p {
-  color: var(--gray); font-size: 0.95rem;
-  flex-grow: 1; margin-bottom: 1.25rem;
+.product-desc {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.85rem; line-height: 1.5;
+  max-height: 0; overflow: hidden;
+  opacity: 0;
+  transition: all 0.4s ease;
+  margin-bottom: 0;
+}
+.product-card:hover .product-desc {
+  max-height: 100px;
+  opacity: 1;
+  margin-bottom: 0.75rem;
 }
 .product-link {
-  color: var(--gold); font-weight: 600; font-size: 0.9rem;
-  transition: gap 0.2s;
-  display: inline-flex; align-items: center; gap: 4px;
+  color: var(--gold);
+  font-size: 0.85rem; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 0.3rem;
 }
-.product-card:hover .product-link { gap: 10px; }
 
-/* === POURQUOI === */
-.pourquoi {
-  background: var(--navy);
-  color: #fff;
+/* ============================================
+   HISTOIRE
+   ============================================ */
+.history {
+  background: var(--off-white);
+}
+.history-grid {
+  display: grid; grid-template-columns: 1.1fr 1fr;
+  gap: 4rem; align-items: center;
+}
+.history-text p {
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+.timeline {
   position: relative;
-  overflow: hidden;
+  padding-left: 2rem;
 }
-.pourquoi::before {
-  content: ''; position: absolute; top: 0; left: -10%;
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(201,160,80,0.12) 0%, transparent 70%);
+.timeline::before {
+  content: ''; position: absolute;
+  left: 8px; top: 8px; bottom: 8px;
+  width: 2px; background: var(--gold);
+  opacity: 0.3;
 }
-.diff-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem;
-  margin-bottom: 5rem;
-  position: relative; z-index: 1;
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
 }
-.diff-card {
+.timeline-item::before {
+  content: ''; position: absolute;
+  left: -2rem; top: 4px;
+  width: 18px; height: 18px;
+  background: var(--gold);
+  border-radius: 50%;
+  border: 3px solid var(--off-white);
+  box-shadow: 0 0 0 2px var(--gold);
+}
+.timeline-year {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800; font-size: 1.4rem;
+  color: var(--navy);
+}
+.timeline-label {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+}
+
+/* ============================================
+   TÉMOIGNAGES
+   ============================================ */
+.testimonials {
+  background: var(--navy-mid);
+  color: #fff;
+}
+.testimonials .section-title, .testimonials .section-eyebrow { color: #fff; }
+.testimonials .section-eyebrow { color: var(--gold); }
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+.testimonial-card {
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.1);
-  padding: 2.5rem 2rem;
-  border-radius: 14px;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  border-radius: 12px;
+  padding: 2.25rem;
+  position: relative;
+  backdrop-filter: blur(8px);
 }
-.diff-card:hover {
-  border-color: var(--gold);
-  background: rgba(255,255,255,0.08);
-  transform: translateY(-4px);
-}
-.diff-icon {
-  font-size: 2.5rem; margin-bottom: 1.25rem;
-  display: inline-block;
-}
-.diff-card h3 {
-  font-size: 1.4rem; color: var(--gold);
-  margin-bottom: 0.75rem;
+.testimonial-quote-mark {
+  position: absolute; top: 1rem; right: 1.5rem;
   font-family: 'Playfair Display', serif;
+  font-size: 4rem; line-height: 1;
+  color: var(--gold);
+  opacity: 0.3;
 }
-.diff-card p {
-  color: rgba(255,255,255,0.8);
-  font-size: 1rem;
-}
-.testimonials-title {
-  text-align: center; font-size: 1.6rem;
-  color: var(--gold); margin-bottom: 2.5rem;
+.testimonial-headline {
   font-family: 'Playfair Display', serif;
-}
-.testimonials {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;
-  position: relative; z-index: 1;
-}
-.testimonial {
-  background: rgba(255,255,255,0.04);
-  border-left: 3px solid var(--gold);
-  padding: 1.75rem 2rem;
-  border-radius: 8px;
+  color: var(--gold);
+  font-size: 1.15rem; font-weight: 700;
+  margin-bottom: 1rem;
   font-style: italic;
 }
-.testimonial p { color: rgba(255,255,255,0.9); margin-bottom: 1rem; font-size: 1.05rem; }
-.testimonial cite {
-  color: var(--gold); font-weight: 600; font-style: normal;
-  font-size: 0.9rem;
-}
-
-/* === AGENCES === */
-.agences { background: var(--gray-light); }
-.agence-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
-  align-items: stretch;
-}
-.agence-card {
-  background: #fff; padding: 2.5rem;
-  border-radius: 14px;
-  box-shadow: 0 4px 20px rgba(13,31,78,0.06);
-}
-.agence-card h3 {
-  font-size: 1.6rem; color: var(--navy);
+.testimonial-body {
+  color: rgba(255,255,255,0.88);
+  font-size: 0.97rem;
+  line-height: 1.7;
   margin-bottom: 1.5rem;
-  font-family: 'Playfair Display', serif;
+  font-style: italic;
 }
-.agence-info { list-style: none; }
-.agence-info li {
-  display: flex; align-items: flex-start; gap: 1rem;
-  padding: 0.85rem 0;
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  color: var(--gray-dark);
+.testimonial-author {
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255,255,255,0.15);
 }
-.agence-info li:last-child { border-bottom: none; }
-.agence-info .ico {
-  font-size: 1.3rem; flex-shrink: 0;
+.testimonial-author strong {
+  display: block;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-style: normal;
 }
-.agence-info a { color: var(--navy); font-weight: 500; }
-.agence-info a:hover { color: var(--gold); }
-.map-placeholder {
-  background: linear-gradient(135deg, #e0e8f0 0%, #c8d4e3 100%);
-  border-radius: 14px; min-height: 320px;
+.testimonial-author span {
+  color: rgba(255,255,255,0.65);
+  font-size: 0.85rem;
+  font-style: normal;
+}
+.partners-strip {
+  margin-top: 2rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
+}
+.partners-strip-label {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.partners-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.partner-logo {
+  height: 60px;
+  background: rgba(255,255,255,0.05);
+  border: 1px dashed rgba(255,255,255,0.2);
+  border-radius: 6px;
   display: flex; align-items: center; justify-content: center;
-  color: var(--navy); font-weight: 600;
-  position: relative; overflow: hidden;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  color: rgba(255,255,255,0.4);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
 }
-.map-placeholder:hover { transform: scale(1.01); box-shadow: 0 8px 24px rgba(13,31,78,0.15); }
-.map-placeholder::before {
-  content: ''; position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(13,31,78,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(13,31,78,0.05) 1px, transparent 1px);
-  background-size: 30px 30px;
-}
-.map-text { position: relative; text-align: center; font-size: 1.1rem; }
-.map-text .pin { font-size: 2.5rem; display: block; margin-bottom: 0.5rem; }
 
-/* === DEVIS === */
-.devis {
-  background: var(--navy);
+/* ============================================
+   FORMULAIRE DEVIS
+   ============================================ */
+.quote {
+  background: var(--navy-deep);
   color: #fff;
   position: relative;
 }
-.devis-grid {
-  display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem;
-  align-items: start;
+.quote .section-title, .quote .section-eyebrow { color: #fff; }
+.quote .section-eyebrow { color: var(--gold); }
+.quote .section-subtitle { color: rgba(255,255,255,0.7); }
+.quote-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.stepper {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+.stepper-label {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.progress-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--gold);
+  width: 33%;
+  transition: width 0.4s ease;
+  border-radius: 3px;
 }
 .form-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  padding: 2.5rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 14px;
+  padding: 2.5rem;
   backdrop-filter: blur(10px);
 }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
-.form-group { margin-bottom: 1rem; }
-.form-group label {
-  display: block; font-size: 0.9rem; font-weight: 500;
-  margin-bottom: 0.5rem; color: rgba(255,255,255,0.85);
-}
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%; padding: 0.85rem 1rem;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 8px;
-  color: #fff; font-size: 1rem; font-family: inherit;
-  transition: all 0.2s ease;
-}
-.form-group input::placeholder,
-.form-group textarea::placeholder { color: rgba(255,255,255,0.4); }
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  outline: none; border-color: var(--gold);
-  background: rgba(255,255,255,0.12);
-  box-shadow: 0 0 0 3px rgba(201,160,80,0.15);
-}
-.form-group select option { background: var(--navy); color: #fff; }
-.form-group textarea { resize: vertical; min-height: 100px; }
-.form-submit {
-  width: 100%; padding: 1.1rem;
-  background: var(--gold); color: var(--navy);
-  border-radius: 8px; font-weight: 700; font-size: 1.05rem;
-  transition: all 0.25s ease;
-}
-.form-submit:hover {
-  background: var(--gold-light);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(201,160,80,0.35);
-}
-.form-feedback {
-  margin-top: 1rem; padding: 1rem; border-radius: 8px;
-  background: rgba(26,135,84,0.15); border: 1px solid rgba(26,135,84,0.4);
-  color: #5dd39e; display: none; text-align: center;
-  font-weight: 500;
-}
-.form-feedback.show { display: block; animation: slideIn 0.4s ease; }
-.form-error {
-  color: #ff8a80; font-size: 0.85rem; margin-top: 0.3rem; display: none;
-}
-.form-error.show { display: block; }
-@keyframes slideIn {
-  from { opacity: 0; transform: translateY(-10px); }
+.step-pane { display: none; animation: fadeIn 0.4s ease; }
+.step-pane.active { display: block; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-.contact-direct {
-  background: linear-gradient(135deg, rgba(201,160,80,0.15), rgba(201,160,80,0.05));
-  border: 1px solid rgba(201,160,80,0.3);
-  padding: 2rem; border-radius: 14px;
+.step-pane h3 {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
-.contact-direct h3 {
-  font-size: 1.35rem; color: var(--gold);
+.step-desc {
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+.field {
   margin-bottom: 1.25rem;
-  font-family: 'Playfair Display', serif;
 }
-.contact-line { display: flex; align-items: center; gap: 0.85rem; padding: 0.6rem 0; }
-.contact-line a { color: #fff; font-weight: 500; transition: color 0.2s; }
-.contact-line a:hover { color: var(--gold); }
-.contact-line .ico { font-size: 1.4rem; }
-.wa-direct {
+.field label {
+  display: block;
+  font-size: 0.85rem; font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.3px;
+}
+.field label .req { color: var(--gold); }
+.field input, .field select, .field textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+.field input::placeholder { color: rgba(255,255,255,0.4); }
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: rgba(255,255,255,0.1);
+}
+.field select option { background: var(--navy-deep); color: #fff; }
+.field-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.field-error {
+  color: #FCA5A5;
+  font-size: 0.8rem;
+  margin-top: 0.4rem;
+  display: none;
+}
+.field.error input, .field.error select { border-color: #FCA5A5; }
+.field.error .field-error { display: block; }
+.checkbox-field {
+  display: flex; align-items: center; gap: 0.5rem;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.checkbox-field input { width: auto; }
+.form-actions {
+  display: flex; gap: 1rem; justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.form-actions .btn-secondary { padding: 12px 24px; }
+.summary-block {
+  background: rgba(201,160,80,0.08);
+  border: 1px solid rgba(201,160,80,0.3);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.summary-row {
+  display: flex; justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-size: 0.95rem;
+}
+.summary-row:last-child { border-bottom: none; }
+.summary-label { color: rgba(255,255,255,0.7); }
+.summary-value { color: #fff; font-weight: 600; }
+.success-icon {
+  width: 72px; height: 72px;
+  background: rgba(16,185,129,0.15);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.5rem;
+  color: var(--success);
+}
+.confirmation {
+  text-align: center;
+  padding: 1rem 0;
+}
+.confirmation p {
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.whatsapp-btn {
   display: inline-flex; align-items: center; gap: 0.5rem;
-  margin-top: 1rem; padding: 0.75rem 1.25rem;
-  background: #25D366; color: #fff !important;
-  border-radius: 50px; font-weight: 600; font-size: 0.95rem;
-  transition: transform 0.2s;
+  background: #25D366; color: #fff;
+  padding: 14px 28px;
+  border-radius: 6px;
+  font-weight: 700;
+  transition: all 0.25s ease;
 }
-.wa-direct:hover { transform: scale(1.05); }
+.whatsapp-btn:hover {
+  background: #20BA5A;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37,211,102,0.4);
+}
 
-/* === FOOTER === */
+/* ============================================
+   FAQ
+   ============================================ */
+.faq {
+  background: var(--off-white);
+}
+.faq-list {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.faq-item {
+  background: #fff;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.faq-item.open {
+  box-shadow: var(--shadow-md);
+}
+.faq-question {
+  width: 100%;
+  padding: 1.5rem 1.75rem;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--navy);
+  text-align: left;
+  background: transparent;
+}
+.faq-toggle {
+  flex-shrink: 0;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(201,160,80,0.15);
+  color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.3s ease;
+  margin-left: 1rem;
+}
+.faq-item.open .faq-toggle { transform: rotate(45deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.faq-answer-inner {
+  padding: 0 1.75rem 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.97rem;
+  line-height: 1.75;
+}
+.faq-item.open .faq-answer { max-height: 400px; }
+
+/* ============================================
+   FOOTER
+   ============================================ */
 footer {
   background: var(--navy-deep);
   color: rgba(255,255,255,0.7);
-  padding: 4rem 0 2rem;
+  padding: 5rem 0 2rem;
 }
 .footer-grid {
   display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: 3rem; margin-bottom: 3rem;
+  gap: 3rem;
+  margin-bottom: 3rem;
 }
-.footer-brand h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem; color: #fff;
-  margin-bottom: 0.75rem;
+.footer-brand .nav-logo {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
 }
-.footer-brand h3 span { color: var(--gold); }
-.footer-brand p { font-style: italic; color: rgba(255,255,255,0.6); margin-bottom: 1.5rem; }
-.footer-socials { display: flex; gap: 0.75rem; }
+.footer-tagline {
+  font-style: italic;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+.footer-desc {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+.footer-socials {
+  display: flex; gap: 0.75rem;
+}
 .footer-socials a {
   width: 38px; height: 38px;
-  display: flex; align-items: center; justify-content: center;
   background: rgba(255,255,255,0.08);
-  border-radius: 8px;
-  transition: all 0.2s;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  transition: all 0.25s ease;
 }
-.footer-socials a:hover { background: var(--gold); transform: translateY(-2px); }
-.footer-socials svg { width: 18px; height: 18px; fill: #fff; }
+.footer-socials a:hover {
+  background: var(--gold);
+  color: var(--navy);
+  transform: translateY(-3px);
+}
 .footer-col h4 {
-  color: #fff; font-size: 1rem; margin-bottom: 1.25rem;
-  font-family: 'Inter', sans-serif; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 0.5px;
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
 }
-.footer-col ul { list-style: none; }
-.footer-col li { margin-bottom: 0.6rem; }
+.footer-col ul li {
+  margin-bottom: 0.65rem;
+}
 .footer-col a {
-  color: rgba(255,255,255,0.65); font-size: 0.95rem;
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.7);
   transition: color 0.2s;
 }
 .footer-col a:hover { color: var(--gold); }
-.footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.08);
-  padding-top: 2rem; text-align: center;
-  font-size: 0.9rem;
+.cima-mention {
+  background: rgba(201,160,80,0.08);
+  border: 1px solid rgba(201,160,80,0.25);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  color: var(--gold);
+  text-align: center;
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
 }
-.footer-bottom .agrement {
-  margin-bottom: 0.75rem; color: rgba(255,255,255,0.5);
+.footer-bottom {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1rem;
   font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
 }
 
-/* === WHATSAPP FLOAT === */
-.wa-float {
-  position: fixed; bottom: 24px; right: 24px;
+/* ============================================
+   WHATSAPP FLOAT
+   ============================================ */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px; right: 24px;
   width: 60px; height: 60px;
   background: #25D366;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(37,211,102,0.4);
   z-index: 999;
-  transition: all 0.3s ease;
-  animation: pulse 2s infinite;
+  transition: transform 0.3s ease;
+  animation: pulse 2.2s ease-in-out infinite;
 }
-.wa-float:hover { transform: scale(1.1); }
-.wa-float svg { width: 32px; height: 32px; fill: #fff; }
+.whatsapp-float:hover { transform: scale(1.1); }
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 6px 20px rgba(37,211,102,0.4); }
-  50% { box-shadow: 0 6px 20px rgba(37,211,102,0.4), 0 0 0 12px rgba(37,211,102,0); }
+  0%, 100% { box-shadow: 0 8px 24px rgba(37,211,102,0.4), 0 0 0 0 rgba(37,211,102,0.7); }
+  50% { box-shadow: 0 8px 24px rgba(37,211,102,0.4), 0 0 0 18px rgba(37,211,102,0); }
 }
 
-/* === RESPONSIVE === */
+/* ============================================
+   RESPONSIVE
+   ============================================ */
 @media (max-width: 1024px) {
-  .hero h1 { font-size: 3rem; }
+  .hero-inner { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+  .hero-eyebrow { justify-content: center; }
+  .hero-ctas { justify-content: center; }
+  .trust-bar { justify-content: center; }
+  .hero-visual { order: -1; }
+  .shield-wrap { max-width: 320px; }
   .products-grid { grid-template-columns: repeat(2, 1fr); }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .history-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  .steps-grid::before { display: none; }
 }
 @media (max-width: 768px) {
-  .container { padding: 0 1.25rem; }
+  section { padding: 4.5rem 0; }
   .nav-links {
-    position: fixed; top: 0; right: -100%;
-    width: 80%; max-width: 320px; height: 100vh;
-    background: var(--navy);
-    flex-direction: column; padding: 6rem 2rem 2rem;
-    gap: 1.5rem; align-items: flex-start;
-    transition: right 0.35s ease;
-    box-shadow: -10px 0 30px rgba(0,0,0,0.3);
+    position: fixed;
+    top: 0; right: -100%;
+    width: 80%; max-width: 320px;
+    height: 100vh;
+    background: var(--navy-deep);
+    flex-direction: column;
+    padding: 6rem 2rem 2rem;
+    gap: 1.75rem;
+    transition: right 0.3s ease;
+    align-items: flex-start;
   }
   .nav-links.active { right: 0; }
-  .nav-links a { font-size: 1.05rem; }
-  .nav-cta { padding: 0.75rem 1.25rem; }
-  .hamburger { display: flex; }
-  .hero { padding: 7rem 0 4rem; }
-  .hero-grid { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
-  .hero h1 { font-size: 2.5rem; }
-  .hero-subtitle { margin-left: auto; margin-right: auto; }
-  .hero-ctas { justify-content: center; }
-  #lottie-hero, .lottie-fallback { margin: 0 auto; max-width: 380px; }
+  .hamburger { display: flex; z-index: 1001; }
   .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-  .kpi-num { font-size: 2.75rem; }
-  section.block { padding: 4rem 0; }
-  .section-head h2 { font-size: 2rem; }
-  .diff-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-  .testimonials { grid-template-columns: 1fr; }
-  .agence-grid { grid-template-columns: 1fr; }
-  .devis-grid { grid-template-columns: 1fr; }
-  .form-row { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
-  .footer-socials { justify-content: center; }
+  .kpi-item { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
+  .kpi-item:nth-child(3), .kpi-item:nth-child(4) { border-bottom: none; padding-bottom: 0; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .products-grid { grid-template-columns: 1fr 1fr; }
+  .partners-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .field-row { grid-template-columns: 1fr; }
+  .form-card { padding: 1.75rem; }
+  .form-actions { flex-direction: column-reverse; }
+  .form-actions button { width: 100%; justify-content: center; }
+  .cima-badge { left: 0; bottom: 0; padding: 0.75rem 1rem; }
 }
 @media (max-width: 480px) {
+  .container { padding: 0 1.25rem; }
+  .hero { padding: 7rem 0 3rem; }
+  .hero h1 { font-size: 2.25rem; }
+  .hero p.lead { font-size: 1rem; }
+  .hero-ctas { flex-direction: column; align-items: stretch; }
+  .btn-primary, .btn-secondary { justify-content: center; }
   .products-grid { grid-template-columns: 1fr; }
-  .hero h1 { font-size: 2.1rem; }
-  .section-head h2 { font-size: 1.7rem; }
-  .kpi-num { font-size: 2.3rem; }
-  .nav-logo { font-size: 1.2rem; }
-  .btn { padding: 0.9rem 1.5rem; font-size: 0.95rem; }
-  .wa-float { width: 54px; height: 54px; bottom: 18px; right: 18px; }
-  .wa-float svg { width: 28px; height: 28px; }
+  .section-title { font-size: 1.85rem; }
+  .form-card { padding: 1.5rem; }
+  .testimonial-card { padding: 1.75rem; }
 }
+
 </style>
 </head>
 <body>
 
-<!-- === NAV === -->
+<!-- ============================================
+     NAV
+     ============================================ -->
 <nav class="main-nav" id="mainNav">
   <div class="nav-inner">
     <a href="#" class="nav-logo">OM'<span>ASSURANCES</span></a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#produits">Produits</a></li>
-      <li><a href="#pourquoi">Pourquoi nous</a></li>
-      <li><a href="#agences">Nos agences</a></li>
+      <li><a href="#histoire">À propos</a></li>
       <li><a href="#devis">Devis</a></li>
-      <li><a href="#devis" class="nav-cta">Obtenir un devis</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#devis" class="nav-cta-btn">Obtenir un devis</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -614,426 +1008,923 @@ footer {
   </div>
 </nav>
 
-<!-- === HERO === -->
+<!-- ============================================
+     HERO
+     ============================================ -->
 <section class="hero">
-  <div class="container">
-    <div class="hero-grid">
-      <div class="hero-text">
-        <h1>
-          <span class="line1">Protégez ce qui</span>
-          <span class="line2">compte vraiment.</span>
-        </h1>
-        <p class="hero-subtitle">OM'ASSURANCES vous accompagne depuis 2007 avec expertise et proximité — assurance auto, santé, vie, maritime et bien plus.</p>
-        <div class="hero-ctas">
-          <a href="#devis" class="btn btn-primary">Obtenir un devis</a>
-          <a href="#produits" class="btn btn-outline">Découvrir nos produits</a>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Depuis 2007 · Abidjan</div>
+      <h1>Protégez l'essentiel.<span class="gold">Avancez serein.</span></h1>
+      <p class="lead">
+        Depuis 2007, OM'ASSURANCES accompagne les entrepreneurs, familles et entreprises d'Abidjan avec des solutions d'assurance sur mesure. CIMA agréé, nous vous offrons réactivité, expertise et proximité — en 48h chrono.
+      </p>
+      <div class="hero-ctas">
+        <a href="#devis" class="btn-primary">
+          Obtenir mon devis
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#produits" class="btn-secondary">Nos solutions</a>
+      </div>
+      <div class="trust-bar">
+        <div class="trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Agrément CIMA
+        </div>
+        <div class="trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          19 ans d'expertise
+        </div>
+        <div class="trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Devis sous 48h
         </div>
       </div>
-      <div class="hero-visual">
-        <div class="cima-badge">Agrément CIMA</div>
-        <div id="lottie-hero" aria-label="Animation protection assurance"></div>
+    </div>
+    <div class="hero-visual">
+      <div class="shield-wrap">
+        <svg class="shield-svg" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#C9A050" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#B8903F" stop-opacity="0.5"/>
+            </linearGradient>
+            <linearGradient id="shieldInner" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#172B66"/>
+              <stop offset="100%" stop-color="#0D1F4E"/>
+            </linearGradient>
+          </defs>
+          <!-- Outer ring -->
+          <circle cx="100" cy="110" r="98" fill="none" stroke="#C9A050" stroke-opacity="0.15" stroke-width="1"/>
+          <circle cx="100" cy="110" r="85" fill="none" stroke="#C9A050" stroke-opacity="0.25" stroke-width="1" stroke-dasharray="4 6"/>
+          <!-- Shield body -->
+          <path d="M100 20 L170 50 L170 110 Q170 170 100 200 Q30 170 30 110 L30 50 Z" fill="url(#shieldInner)" stroke="url(#shieldGrad)" stroke-width="3"/>
+          <path d="M100 35 L155 60 L155 110 Q155 160 100 185 Q45 160 45 110 L45 60 Z" fill="none" stroke="#C9A050" stroke-opacity="0.4" stroke-width="1"/>
+          <!-- Check mark -->
+          <polyline points="72 110 92 130 130 90" fill="none" stroke="#C9A050" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- OM monogram top -->
+          <text x="100" y="75" text-anchor="middle" font-family="Playfair Display, serif" font-size="22" font-weight="800" fill="#C9A050">OM'</text>
+        </svg>
+        <div class="cima-badge">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+          <div class="cima-badge-text">
+            <strong>CIMA</strong>
+            Société agréée
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- === KPI STRIP === -->
-<section class="kpi-strip" id="kpiStrip">
+<!-- ============================================
+     KPI STRIP
+     ============================================ -->
+<section class="kpi-strip" style="padding: 4.5rem 0;">
   <div class="container">
     <div class="kpi-grid">
       <div class="kpi-item">
-        <div class="kpi-num" data-target="19" data-suffix="+">0</div>
+        <div class="kpi-number" data-target="19" data-suffix="+">0</div>
         <div class="kpi-label">Ans d'expérience</div>
       </div>
       <div class="kpi-item">
-        <div class="kpi-num" data-target="8">0</div>
+        <div class="kpi-number" data-target="8" data-suffix="">0</div>
         <div class="kpi-label">Branches d'assurance</div>
       </div>
       <div class="kpi-item">
-        <div class="kpi-num" data-target="48" data-suffix="h">0</div>
-        <div class="kpi-label">Délai de traitement</div>
+        <div class="kpi-number" data-target="48" data-suffix="h">0</div>
+        <div class="kpi-label">Délai garanti</div>
       </div>
       <div class="kpi-item">
-        <div class="kpi-num" data-target="1">0</div>
-        <div class="kpi-label">Agence à Abidjan</div>
+        <div class="kpi-number" data-target="1000" data-suffix="+">0</div>
+        <div class="kpi-label">Clients protégés</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- === PRODUITS === -->
-<section class="block produits" id="produits">
+<!-- ============================================
+     COMMENT ÇA MARCHE
+     ============================================ -->
+<section class="process">
   <div class="container">
-    <div class="section-head">
-      <h2>Nos solutions d'assurance</h2>
-      <p class="section-subtitle">8 branches pour couvrir tous vos risques — particuliers comme entreprises</p>
+    <div class="section-head center">
+      <div class="section-eyebrow">Notre processus</div>
+      <h2 class="section-title">De votre demande à votre contrat — en 3 étapes</h2>
+      <p class="section-subtitle">Un parcours simple, transparent et rapide. Vous êtes accompagné par un conseiller dédié à chaque étape.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+        </div>
+        <h3>Contactez-nous</h3>
+        <p>Appelez, écrivez ou remplissez notre formulaire. Notre équipe vous répond en moins de 2h ouvrées.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            <line x1="8" y1="11" x2="14" y2="11"/>
+            <line x1="11" y1="8" x2="11" y2="14"/>
+          </svg>
+        </div>
+        <h3>Étude personnalisée</h3>
+        <p>Nous analysons votre besoin et vous proposons la couverture optimale, au meilleur prix du marché CIMA.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+        </div>
+        <h3>Souscription &amp; Suivi</h3>
+        <p>Contrat émis sous 48h. Nous restons votre interlocuteur unique pour tout sinistre ou renouvellement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PRODUITS
+     ============================================ -->
+<section class="products" id="produits">
+  <div class="container">
+    <div class="section-head center">
+      <div class="section-eyebrow">Nos solutions</div>
+      <h2 class="section-title">Nos 8 branches d'assurance</h2>
+      <p class="section-subtitle">Particuliers, entreprises, professions libérales — nous couvrons tous vos risques avec des solutions sur mesure et compétitives.</p>
     </div>
     <div class="products-grid">
-      <div class="product-card">
-        <img class="product-img" src="https://images.pexels.com/photos/1554646/pexels-photo-1554646.jpeg?auto=compress&cs=tinysrgb&w=600&h=370&fit=crop" alt="Cargo ship at port — Assurance Maritime">
-        <h3>Assurance Maritime / Transport</h3>
-        <p>Protégez vos marchandises en transit, sur mer comme sur terre.</p>
-        <a href="#devis" class="product-link">En savoir plus →</a>
-      </div>
-      <div class="product-card">
-        <img class="product-img" src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=600&h=370&fit=crop" alt="Business handshake — Cautionnement et Garanties">
-        <h3>Cautionnement & Garanties</h3>
-        <p>Sécurisez vos contrats et marchés avec nos cautions sur mesure.</p>
-        <a href="#devis" class="product-link">En savoir plus →</a>
-      </div>
-      <div class="product-card">
-        <img class="product-img" src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600&h=370&fit=crop" alt="Professional office team — Assurance RC Pro">
-        <h3>Assurance Professionnelle / RC</h3>
-        <p>Couvrez votre responsabilité civile professionnelle en toute sérénité.</p>
-        <a href="#devis" class="product-link">En savoir plus →</a>
-      </div>
-      <div class="product-card">
-        <img class="product-img" src="https://images.pexels.com/photos/358319/pexels-photo-358319.jpeg?auto=compress&cs=tinysrgb&w=600&h=370&fit=crop" alt="Airplane in flight — Assurance Voyage">
-        <h3>Assurance Voyage</h3>
-        <p>Voyagez l'esprit tranquille, partout dans le monde.</p>
-        <a href="#devis" class="product-link">En savoir plus →</a>
-      </div>
-      <div class="product-card">
-        <img class="product-img" src="https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&w=600&h=370&fit=crop" alt="Doctor with patient — Assurance Santé">
-        <h3>Assurance Santé</h3>
-        <p>Accès aux meilleurs soins pour vous et votre famille.</p>
-        <a href="#devis" class="product-link">En savoir plus →</a>
-      </div>
-      <div class="product-card">
-        <img class="product-img" src="https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg?auto=compress&cs=tinysrgb&w=600&h=370&fit=crop" alt="Car on road — Assurance Auto">
-        <h3>Assurance Auto</h3>
-        <p>Roulez serein, protégé à 100% sur toutes les routes ivoiriennes.</p>
-        <a href="#devis" class="product-link">En savoir plus →</a>
-      </div>
-      <div class="product-card">
-        <img class="product-img" src="https://images.pexels.com/photos/1128318/pexels-photo-1128318.jpeg?auto=compress&cs=tinysrgb&w=600&h=370&fit=crop" alt="Happy family — Assurance Vie">
-        <h3>Assurance Vie</h3>
-        <p>Construisez l'avenir financier de ceux que vous aimez.</p>
-        <a href="#devis" class="product-link">En savoir plus →</a>
-      </div>
-      <div class="product-card">
-        <img class="product-img" src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=600&h=370&fit=crop" alt="Beautiful home exterior — Assurance Habitation">
-        <h3>Assurance Habitation / Multirisque</h3>
-        <p>Votre foyer, notre priorité. Couverture complète des risques domestiques.</p>
-        <a href="#devis" class="product-link">En savoir plus →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- === POURQUOI === -->
-<section class="block pourquoi" id="pourquoi">
-  <div class="container">
-    <div class="section-head dark">
-      <h2>Pourquoi choisir OM'ASSURANCES ?</h2>
-      <p class="section-subtitle">Trois engagements concrets qui font la différence</p>
-    </div>
-    <div class="diff-grid">
-      <div class="diff-card">
-        <span class="diff-icon" aria-hidden="true">⚡</span>
-        <h3>48h Chrono</h3>
-        <p>De votre demande à votre contrat : 48 heures maximum. Promesse tenue.</p>
-      </div>
-      <div class="diff-card">
-        <span class="diff-icon" aria-hidden="true">🤝</span>
-        <h3>Expertise locale</h3>
-        <p>19 ans au service des entreprises et particuliers ivoiriens. Nous connaissons vos réalités.</p>
-      </div>
-      <div class="diff-card">
-        <span class="diff-icon" aria-hidden="true">🛡️</span>
-        <h3>Multi-branches</h3>
-        <p>Une seule adresse pour tous vos besoins d'assurance. Simplifiez votre gestion.</p>
-      </div>
-    </div>
-    <h3 class="testimonials-title">Ils nous font confiance</h3>
-    <div class="testimonials">
-      <div class="testimonial">
-        <p>"OM'ASSURANCES a géré mon sinistre auto en moins de 48h. Professionnel et réactif."</p>
-        <cite>— Koné A., Chef d'entreprise</cite>
-      </div>
-      <div class="testimonial">
-        <p>"Leur assurance maritime nous a sauvé lors d'un transit risqué. Partenaire de confiance."</p>
-        <cite>— Diabaté M., Importateur</cite>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- === AGENCES === -->
-<section class="block agences" id="agences">
-  <div class="container">
-    <div class="section-head">
-      <h2>Notre présence à Abidjan</h2>
-      <p class="section-subtitle">Une agence proche de vous, prête à vous accueillir</p>
-    </div>
-    <div class="agence-grid">
-      <div class="agence-card">
-        <h3>Agence Abobo Ndotré</h3>
-        <ul class="agence-info">
-          <li><span class="ico">📍</span><span>Abobo Ndotré, face supermarché Corridor<br>Abidjan, Côte d'Ivoire</span></li>
-          <li><span class="ico">📞</span><a href="tel:+2250709578752">07 09 57 87 52</a></li>
-          <li><span class="ico">✉️</span><a href="mailto:omassur.assurances@gmail.com">omassur.assurances@gmail.com</a></li>
-          <li><span class="ico">🕐</span><span>Lun-Ven : 8h - 17h<br>Sam : 9h - 12h</span></li>
-        </ul>
-      </div>
-      <a href="https://www.google.com/maps/search/Abobo+Ndotr%C3%A9+Corridor+Abidjan" target="_blank" rel="noopener" class="map-placeholder" aria-label="Voir sur Google Maps">
-        <div class="map-text">
-          <span class="pin">📍</span>
-          Voir sur Google Maps
+      <a href="#devis" class="product-card">
+        <img src="https://images.pexels.com/photos/1554646/pexels-photo-1554646.jpeg?auto=compress&cs=tinysrgb&w=600&h=370&fit=crop" alt="Assurance Maritime et Transport">
+        <span class="product-tag">B2B</span>
+        <div class="product-overlay">
+          <h3>Maritime / Transport</h3>
+          <p class="product-desc">Couverture cargo, ferry, transport routier. Indemnisation rapide pour importateurs et logisticiens.</p>
+          <span class="product-link">Obtenir un devis →</span>
+        </div>
+      </a>
+      <a href="#devis" class="product-card">
+        <img src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=600&h=370&fit=crop" alt="Cautionnement et Garanties">
+        <span class="product-tag">B2B</span>
+        <div class="product-overlay">
+          <h3>Cautionnement &amp; Garanties</h3>
+          <p class="product-desc">Garanties de marché, soumission, bonne exécution. Pour répondre aux appels d'offres publics et privés.</p>
+          <span class="product-link">Obtenir un devis →</span>
+        </div>
+      </a>
+      <a href="#devis" class="product-card">
+        <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600&h=370&fit=crop" alt="RC Professionnelle">
+        <span class="product-tag">B2B + B2C</span>
+        <div class="product-overlay">
+          <h3>RC Professionnelle</h3>
+          <p class="product-desc">Protégez votre activité contre les dommages causés à des tiers. Médecins, avocats, consultants, artisans.</p>
+          <span class="product-link">Obtenir un devis →</span>
+        </div>
+      </a>
+      <a href="#devis" class="product-card">
+        <img src="https://images.pexels.com/photos/358319/pexels-photo-358319.jpeg?auto=compress&cs=tinysrgb&w=600&h=370&fit=crop" alt="Assurance Voyage">
+        <span class="product-tag">B2C</span>
+        <div class="product-overlay">
+          <h3>Voyage</h3>
+          <p class="product-desc">Assistance médicale internationale, annulation, perte de bagages. Schengen, Amériques, Asie.</p>
+          <span class="product-link">Obtenir un devis →</span>
+        </div>
+      </a>
+      <a href="#devis" class="product-card">
+        <img src="https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&w=600&h=370&fit=crop" alt="Assurance Santé">
+        <span class="product-tag">B2B + B2C</span>
+        <div class="product-overlay">
+          <h3>Santé</h3>
+          <p class="product-desc">Mutuelle complémentaire individuelle, famille ou collective. Consultations, hospitalisations, dentaire, optique.</p>
+          <span class="product-link">Obtenir un devis →</span>
+        </div>
+      </a>
+      <a href="#devis" class="product-card">
+        <img src="https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg?auto=compress&cs=tinysrgb&w=600&h=370&fit=crop" alt="Assurance Auto">
+        <span class="product-tag">B2C</span>
+        <span class="product-star">★ Phare</span>
+        <div class="product-overlay">
+          <h3>Auto</h3>
+          <p class="product-desc">RC obligatoire, tous risques, vol et incendie. Traitement sinistre en 36h en moyenne.</p>
+          <span class="product-link">Obtenir un devis →</span>
+        </div>
+      </a>
+      <a href="#devis" class="product-card">
+        <img src="https://images.pexels.com/photos/1128318/pexels-photo-1128318.jpeg?auto=compress&cs=tinysrgb&w=600&h=370&fit=crop" alt="Assurance Vie">
+        <span class="product-tag">B2C</span>
+        <div class="product-overlay">
+          <h3>Vie</h3>
+          <p class="product-desc">Épargne, prévoyance, capital décès. Protégez l'avenir de vos proches et construisez votre patrimoine.</p>
+          <span class="product-link">Obtenir un devis →</span>
+        </div>
+      </a>
+      <a href="#devis" class="product-card">
+        <img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=600&h=370&fit=crop" alt="Assurance Habitation">
+        <span class="product-tag">B2C</span>
+        <div class="product-overlay">
+          <h3>Habitation / Multirisque</h3>
+          <p class="product-desc">Incendie, vol, dégât des eaux, responsabilité civile habitation. Propriétaires et locataires.</p>
+          <span class="product-link">Obtenir un devis →</span>
         </div>
       </a>
     </div>
   </div>
 </section>
 
-<!-- === DEVIS === -->
-<section class="block devis" id="devis">
+<!-- ============================================
+     HISTOIRE
+     ============================================ -->
+<section class="history" id="histoire">
   <div class="container">
-    <div class="section-head dark">
-      <h2>Obtenez votre devis en 2 minutes</h2>
-      <p class="section-subtitle">Remplissez ce formulaire — notre équipe vous contacte sous 48h</p>
-    </div>
-    <div class="devis-grid">
-      <form class="form-card" id="devisForm" novalidate>
-        <div class="form-group">
-          <label for="type">Type d'assurance *</label>
-          <select id="type" name="type" required>
-            <option value="">— Sélectionnez —</option>
-            <option>Assurance Maritime / Transport</option>
-            <option>Cautionnement & Garanties</option>
-            <option>Assurance Professionnelle / RC</option>
-            <option>Assurance Voyage</option>
-            <option>Assurance Santé</option>
-            <option>Assurance Auto</option>
-            <option>Assurance Vie</option>
-            <option>Assurance Habitation / Multirisque</option>
-          </select>
-          <div class="form-error" id="err-type">Veuillez sélectionner un type d'assurance</div>
+    <div class="history-grid">
+      <div class="history-text">
+        <div class="section-eyebrow">Notre histoire</div>
+        <h2 class="section-title">OM'ASSURANCES depuis 2007</h2>
+        <p>Fondée à Abidjan en 2007, OM'ASSURANCES SARL est née d'une conviction simple : les entreprises et familles ivoiriennes méritent un partenaire d'assurance réactif, transparent et véritablement à l'écoute.</p>
+        <p>En 19 ans, nous avons construit notre réputation autour d'un seul engagement : traiter chaque dossier comme si c'était le nôtre. De l'assurance auto pour un particulier d'Abobo à la couverture maritime pour un importateur du port d'Abidjan, notre équipe délivre expertise et sérénité.</p>
+        <p>Agréé par la CIMA (Conférence Interafricaine des Marchés d'Assurances), nous opérons dans le cadre légal le plus strict — votre protection est notre engagement contractuel.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">2007</div>
+          <div class="timeline-label">Fondation à Abidjan, Abobo Ndotré</div>
         </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="nom">Nom complet *</label>
-            <input type="text" id="nom" name="nom" placeholder="Jean Konan" required>
-            <div class="form-error" id="err-nom">Veuillez entrer votre nom</div>
-          </div>
-          <div class="form-group">
-            <label for="tel">Téléphone *</label>
-            <input type="tel" id="tel" name="tel" placeholder="07-09-57-87-52" required>
-            <div class="form-error" id="err-tel">Format attendu : XX-XX-XX-XX-XX</div>
-          </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2012</div>
+          <div class="timeline-label">Obtention de l'agrément CIMA</div>
         </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="vous@exemple.com">
+        <div class="timeline-item">
+          <div class="timeline-year">2018</div>
+          <div class="timeline-label">Extension à 8 branches d'assurance</div>
         </div>
-        <div class="form-group">
-          <label for="message">Décrivez votre besoin (optionnel)</label>
-          <textarea id="message" name="message" placeholder="Précisez vos attentes, le bien à assurer, etc."></textarea>
+        <div class="timeline-item">
+          <div class="timeline-year">2024</div>
+          <div class="timeline-label">Digitalisation des services et WhatsApp 24/7</div>
         </div>
-        <button type="submit" class="form-submit">Envoyer ma demande →</button>
-        <div class="form-feedback" id="formFeedback">
-          ✅ Merci ! Votre demande a bien été enregistrée. Nous vous contactons sous 48h.
-        </div>
-      </form>
-      <aside class="contact-direct">
-        <h3>Contact direct</h3>
-        <div class="contact-line">
-          <span class="ico">📞</span>
-          <a href="tel:+2250709578752">07 09 57 87 52</a>
-        </div>
-        <div class="contact-line">
-          <span class="ico">✉️</span>
-          <a href="mailto:omassur.assurances@gmail.com">omassur.assurances@gmail.com</a>
-        </div>
-        <div class="contact-line">
-          <span class="ico">📍</span>
-          <span style="color: rgba(255,255,255,0.85);">Abobo Ndotré, face Corridor</span>
-        </div>
-        <a href="https://wa.me/2250709578752" target="_blank" rel="noopener" class="wa-direct">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.2-.5.1-.2 0-.4 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 .9-1 2.3 0 1.4 1 2.7 1.1 2.9.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4 0-.1-.2-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.5 0-3-.4-4.3-1.1l-.3-.2-3.1.8.8-3.1-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8z"/></svg>
-          WhatsApp direct
-        </a>
-      </aside>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- === FOOTER === -->
+<!-- ============================================
+     TÉMOIGNAGES
+     ============================================ -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-head center">
+      <div class="section-eyebrow">Témoignages</div>
+      <h2 class="section-title">Ce que disent nos clients</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-quote-mark">"</div>
+        <div class="testimonial-headline">Mon sinistre auto traité en 36h</div>
+        <p class="testimonial-body">J'avais eu un accident sur la voie expresse. En moins de 36h, OM'ASSURANCES avait ouvert mon dossier et contacté le garage partenaire. Je n'aurais pas cru que c'était possible.</p>
+        <div class="testimonial-author">
+          <strong>Adama K.</strong>
+          <span>Gérant transport · Yopougon</span>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote-mark">"</div>
+        <div class="testimonial-headline">Notre cargo assuré sans paperasse</div>
+        <p class="testimonial-body">Pour notre activité maritime, la rapidité de souscription est critique. OM'ASSURANCES nous a proposé une couverture complète en 48h avec un interlocuteur dédié. Partenariat renouvelé 4 fois.</p>
+        <div class="testimonial-author">
+          <strong>Moussa D.</strong>
+          <span>Importateur · Port d'Abidjan</span>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote-mark">"</div>
+        <div class="testimonial-headline">Assurance santé famille enfin adaptée</div>
+        <p class="testimonial-body">Avec 3 enfants, j'avais besoin d'une couverture sérieuse au-delà de la CNPS. OM'ASSURANCES m'a proposé un package famille réaliste pour mon budget. Très professionnel.</p>
+        <div class="testimonial-author">
+          <strong>Aya N.</strong>
+          <span>Chef de famille · Cocody</span>
+        </div>
+      </div>
+    </div>
+    <div class="partners-strip">
+      <div class="partners-strip-label">Assureurs partenaires</div>
+      <div class="partners-grid">
+        <div class="partner-logo">PARTENAIRE ASSUREUR</div>
+        <div class="partner-logo">PARTENAIRE ASSUREUR</div>
+        <div class="partner-logo">PARTENAIRE ASSUREUR</div>
+        <div class="partner-logo">PARTENAIRE ASSUREUR</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     DEVIS
+     ============================================ -->
+<section class="quote" id="devis">
+  <div class="container">
+    <div class="section-head center">
+      <div class="section-eyebrow">Devis gratuit · 48h</div>
+      <h2 class="section-title">Obtenez votre devis personnalisé</h2>
+      <p class="section-subtitle">3 étapes simples. Un conseiller dédié vous contacte sous 48h maximum avec votre proposition.</p>
+    </div>
+    <div class="quote-wrap">
+      <div class="stepper">
+        <div class="stepper-label" id="stepperLabel">Étape 1 sur 3</div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      </div>
+
+      <form id="quoteForm" class="form-card" novalidate>
+
+        <!-- STEP 1 -->
+        <div class="step-pane active" id="step1">
+          <h3>Vos informations</h3>
+          <p class="step-desc">Pour vous proposer le devis le plus adapté.</p>
+
+          <div class="field" data-required>
+            <label>Type d'assurance <span class="req">*</span></label>
+            <select name="type" id="insuranceType">
+              <option value="">— Sélectionnez —</option>
+              <option value="auto">Auto</option>
+              <option value="maritime">Maritime / Transport</option>
+              <option value="sante">Santé</option>
+              <option value="voyage">Voyage</option>
+              <option value="vie">Vie</option>
+              <option value="habitation">Habitation / Multirisque</option>
+              <option value="rcpro">RC Professionnelle</option>
+              <option value="cautionnement">Cautionnement &amp; Garanties</option>
+            </select>
+            <div class="field-error">Veuillez sélectionner un type d'assurance.</div>
+          </div>
+
+          <div class="field" data-required>
+            <label>Nom complet <span class="req">*</span></label>
+            <input type="text" name="fullname" placeholder="Ex. Konan Yao Pascal">
+            <div class="field-error">Votre nom est requis.</div>
+          </div>
+
+          <div class="field-row">
+            <div class="field" data-required>
+              <label>Téléphone (CI) <span class="req">*</span></label>
+              <input type="tel" name="phone" placeholder="07-09-57-87-52">
+              <div class="field-error">Téléphone requis.</div>
+            </div>
+            <div class="field">
+              <label>Email</label>
+              <input type="email" name="email" placeholder="vous@exemple.com">
+              <div class="field-error">Email invalide.</div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <span></span>
+            <button type="button" class="btn-primary" onclick="nextStep(1)">
+              Suivant
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step-pane" id="step2">
+          <h3>Détails de votre besoin</h3>
+          <p class="step-desc">Ces informations nous permettent de chiffrer précisément votre couverture.</p>
+
+          <div id="dynamicFields"></div>
+
+          <div class="form-actions">
+            <button type="button" class="btn-secondary" onclick="prevStep(2)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+              Retour
+            </button>
+            <button type="button" class="btn-primary" onclick="nextStep(2)">
+              Suivant
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step-pane" id="step3">
+          <div class="confirmation">
+            <div class="success-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <h3 style="font-size: 1.7rem; margin-bottom: 0.5rem;">Demande enregistrée</h3>
+            <p id="confirmMessage">Votre demande de devis a été enregistrée.</p>
+
+            <div class="summary-block" id="summaryBlock"></div>
+
+            <a href="https://wa.me/2250709578752" class="whatsapp-btn" target="_blank" rel="noopener">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+              </svg>
+              Ou appelez-nous maintenant
+            </a>
+
+            <div style="margin-top: 2rem;">
+              <button type="button" class="btn-secondary" onclick="resetForm()">Nouvelle demande</button>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FAQ
+     ============================================ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-head center">
+      <div class="section-eyebrow">FAQ</div>
+      <h2 class="section-title">Questions fréquentes</h2>
+      <p class="section-subtitle">Tout ce que vous devez savoir avant de souscrire.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Comment se passe la prise en charge en cas de sinistre auto ?</span>
+          <span class="faq-toggle">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          Appelez-nous immédiatement au <strong>07-09-57-87-52</strong> ou envoyez un message WhatsApp. Nous ouvrons votre dossier sous 2h. Nos équipes coordonnent directement avec le garage et les experts — vous n'avez qu'un seul interlocuteur. Délai moyen de traitement : 5 jours ouvrés.
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Quelle différence entre la CNPS et une assurance santé privée ?</span>
+          <span class="faq-toggle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          La CNPS couvre les accidents du travail et les maladies professionnelles, mais son périmètre est limité. Une assurance santé privée complète couvre les consultations, hospitalisations, soins dentaires et optiques, avec des délais de remboursement bien plus rapides et un choix libre de médecin.
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Quels documents pour une assurance auto ?</span>
+          <span class="faq-toggle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          Carte grise du véhicule, permis de conduire, pièce d'identité, et si vous avez un ancien assureur : relevé de sinistres. Tout peut nous être envoyé par WhatsApp. Nous vous confirmons la souscription sous 24h.
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>OM'ASSURANCES est-il agréé par la CIMA ?</span>
+          <span class="faq-toggle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          Oui. OM'ASSURANCES SARL est agréée par la Conférence Interafricaine des Marchés d'Assurances (CIMA), l'autorité de régulation des assurances en Afrique subsaharienne. Notre numéro d'agrément est disponible sur demande et visible sur tous nos contrats.
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Proposez-vous des assurances pour les entreprises ?</span>
+          <span class="faq-toggle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          Absolument. Nous sommes spécialisés B2B avec des solutions RC Professionnelle, Maritime/Transport, Cautionnement &amp; Garanties. Nous travaillons avec des PME, importateurs, cabinets et professions libérales. Un conseiller dédié est attribué à chaque entreprise cliente.
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Comment est calculé le tarif de mon assurance ?</span>
+          <span class="faq-toggle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          Chaque assurance est calculée selon vos risques spécifiques : pour l'auto, la valeur et l'usage du véhicule ; pour la santé, le nombre de bénéficiaires et la formule ; pour le maritime, la nature et valeur des marchandises. Nous comparons les offres de nos assureurs partenaires pour vous proposer le meilleur rapport qualité/prix du marché.
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
 <footer>
   <div class="container">
+    <div class="cima-mention">
+      Agrément CIMA N°[À COMPLÉTER] · Société agréée par la Conférence Interafricaine des Marchés d'Assurances
+    </div>
     <div class="footer-grid">
       <div class="footer-brand">
-        <h3>OM'<span>ASSURANCES</span></h3>
-        <p>"Votre quiétude au quotidien, notre engagement."</p>
+        <div class="nav-logo">OM'<span>ASSURANCES</span></div>
+        <div class="footer-tagline">Votre quiétude au quotidien, notre engagement.</div>
+        <p class="footer-desc">
+          Depuis 2007, OM'ASSURANCES SARL accompagne particuliers, professionnels et entreprises avec des solutions d'assurance sur mesure dans tout Abidjan.
+        </p>
         <div class="footer-socials">
-          <a href="#" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
-          </a>
-          <a href="#" aria-label="Facebook">
-            <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
-          </a>
+          <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="https://wa.me/2250709578752" aria-label="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg></a>
         </div>
       </div>
       <div class="footer-col">
         <h4>Produits</h4>
         <ul>
-          <li><a href="#produits">Assurance Auto</a></li>
-          <li><a href="#produits">Assurance Santé</a></li>
-          <li><a href="#produits">Assurance Vie</a></li>
-          <li><a href="#produits">Maritime / Transport</a></li>
-          <li><a href="#produits">Voir tout</a></li>
+          <li><a href="#produits">Auto</a></li>
+          <li><a href="#produits">Santé</a></li>
+          <li><a href="#produits">Maritime</a></li>
+          <li><a href="#produits">RC Pro</a></li>
+          <li><a href="#produits">Vie</a></li>
+          <li><a href="#produits">Habitation</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
         <ul>
-          <li><a href="tel:+2250709578752">07 09 57 87 52</a></li>
+          <li><a href="tel:+2250709578752">07-09-57-87-52</a></li>
+          <li><a href="https://wa.me/2250709578752">WhatsApp 24/7</a></li>
           <li><a href="mailto:omassur.assurances@gmail.com">omassur.assurances@gmail.com</a></li>
-          <li><a href="#agences">Abobo Ndotré</a></li>
-          <li><a href="https://wa.me/2250709578752" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li>Abobo Ndotré, face supermarché Corridor, Abidjan</li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Légal</h4>
         <ul>
           <li><a href="#">Mentions légales</a></li>
-          <li><a href="#">Confidentialité</a></li>
-          <li><a href="#">CGV</a></li>
-          <li><a href="#">Cookies</a></li>
+          <li><a href="#">Politique de confidentialité</a></li>
+          <li><a href="#">Conditions générales</a></li>
+          <li><a href="#faq">FAQ</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="agrement">Agrément CIMA N°[À COMPLÉTER] • Société agréée par la Conférence Interafricaine des Marchés d'Assurances</div>
-      © 2026 OM'ASSURANCES SARL. Tous droits réservés.
+      <div>© 2026 OM'ASSURANCES SARL. Tous droits réservés.</div>
+      <div>RCCM Abidjan · Agrément CIMA</div>
     </div>
   </div>
 </footer>
 
-<!-- === WHATSAPP FLOAT === -->
-<a href="https://wa.me/2250709578752" target="_blank" rel="noopener" class="wa-float" aria-label="Contactez-nous sur WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.2-.5.1-.2 0-.4 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 .9-1 2.3 0 1.4 1 2.7 1.1 2.9.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4 0-.1-.2-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.5 0-3-.4-4.3-1.1l-.3-.2-3.1.8.8-3.1-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8z"/></svg>
+<!-- WhatsApp float -->
+<a href="https://wa.me/2250709578752" class="whatsapp-float" aria-label="WhatsApp" target="_blank" rel="noopener">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+  </svg>
 </a>
-
-<!-- === LOTTIE === -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 
 <script>
 (function() {
   'use strict';
 
-  // === NAV SCROLL ===
-  const nav = document.getElementById('mainNav');
-  const handleScroll = () => {
-    if (window.scrollY > 30) nav.classList.add('scrolled');
-    else nav.classList.remove('scrolled');
-  };
-  window.addEventListener('scroll', handleScroll, { passive: true });
-  handleScroll();
+  /* ===== NAV SCROLL ===== */
+  var nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+  // initial
+  if (window.scrollY > 50) nav.classList.add('scrolled');
 
-  // === MOBILE MENU ===
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
+  /* ===== HAMBURGER ===== */
+  var hamb = document.getElementById('hamburger');
+  var navLinks = document.getElementById('navLinks');
+  hamb.addEventListener('click', function() {
+    hamb.classList.toggle('active');
     navLinks.classList.toggle('active');
   });
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('active');
+  navLinks.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      hamb.classList.remove('active');
       navLinks.classList.remove('active');
     });
   });
 
-  // === LOTTIE WITH FALLBACK ===
-  const lottieContainer = document.getElementById('lottie-hero');
-  const lottieUrls = [
-    'https://assets2.lottiefiles.com/packages/lf20_jbb3ij7r.json',
-    'https://assets9.lottiefiles.com/packages/lf20_kxsd2ytq.json'
-  ];
-  function loadLottie(index) {
-    if (typeof lottie === 'undefined' || index >= lottieUrls.length) {
-      lottieContainer.outerHTML = '<div class="lottie-fallback" aria-hidden="true">🛡️</div>';
-      return;
+  /* ===== KPI COUNTERS ===== */
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+  function animateCounter(el) {
+    var target = parseInt(el.dataset.target, 10);
+    var suffix = el.dataset.suffix || '';
+    var duration = 1800;
+    var start = performance.now();
+    function tick(now) {
+      var p = Math.min((now - start) / duration, 1);
+      var v = Math.floor(easeOutCubic(p) * target);
+      el.textContent = v + (p === 1 ? suffix : '');
+      if (p < 1) requestAnimationFrame(tick);
     }
-    try {
-      const anim = lottie.loadAnimation({
-        container: lottieContainer,
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: lottieUrls[index]
-      });
-      anim.addEventListener('data_failed', () => {
-        lottieContainer.innerHTML = '';
-        loadLottie(index + 1);
-      });
-    } catch (e) {
-      loadLottie(index + 1);
-    }
-  }
-  setTimeout(() => loadLottie(0), 100);
-
-  // === KPI COUNTER ANIMATION ===
-  const kpiNums = document.querySelectorAll('.kpi-num');
-  const animateCounter = (el) => {
-    const target = parseInt(el.dataset.target, 10);
-    const suffix = el.dataset.suffix || '';
-    const duration = 1800;
-    const start = performance.now();
-    const tick = (now) => {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
-      const value = Math.round(target * eased);
-      el.textContent = value + suffix;
-      if (progress < 1) requestAnimationFrame(tick);
-    };
     requestAnimationFrame(tick);
-  };
-  const kpiObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        kpiObserver.unobserve(entry.target);
+  }
+  var kpis = document.querySelectorAll('.kpi-number');
+  var kpiObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        animateCounter(e.target);
+        kpiObs.unobserve(e.target);
       }
     });
   }, { threshold: 0.4 });
-  kpiNums.forEach(el => kpiObserver.observe(el));
+  kpis.forEach(function(k) { kpiObs.observe(k); });
 
-  // === FORM VALIDATION ===
-  const form = document.getElementById('devisForm');
-  const feedback = document.getElementById('formFeedback');
-  const phoneRegex = /^(\+?225[-\s]?)?(\d{2}[-\s]?){4}\d{2}$/;
-
-  const showError = (id, show) => {
-    const errEl = document.getElementById('err-' + id);
-    if (errEl) errEl.classList.toggle('show', show);
-  };
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    let valid = true;
-    const type = form.type.value.trim();
-    const nom = form.nom.value.trim();
-    const tel = form.tel.value.trim();
-
-    if (!type) { showError('type', true); valid = false; } else showError('type', false);
-    if (nom.length < 2) { showError('nom', true); valid = false; } else showError('nom', false);
-    if (!phoneRegex.test(tel)) { showError('tel', true); valid = false; } else showError('tel', false);
-
-    if (valid) {
-      feedback.classList.add('show');
-      form.reset();
-      setTimeout(() => feedback.classList.remove('show'), 6000);
-      feedback.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
+  /* ===== FAQ ACCORDION ===== */
+  document.querySelectorAll('.faq-item').forEach(function(item) {
+    var q = item.querySelector('.faq-question');
+    q.addEventListener('click', function() {
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(o) {
+        o.classList.remove('open');
+      });
+      if (!isOpen) item.classList.add('open');
+    });
   });
 
-  // Live-clear errors on input
-  ['type', 'nom', 'tel'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.addEventListener('input', () => showError(id, false));
-    if (el && el.tagName === 'SELECT') el.addEventListener('change', () => showError(id, false));
+  /* ===== MULTI-STEP FORM ===== */
+  var currentStep = 1;
+  var formData = {};
+
+  var conseillers = {
+    auto: 'Kofi',
+    maritime: 'Moussa',
+    sante: 'Aminata',
+    voyage: 'Sandrine',
+    vie: 'Adjoua',
+    habitation: 'Kouassi',
+    rcpro: 'Yao',
+    cautionnement: 'Brahima'
+  };
+
+  var typeLabels = {
+    auto: 'Auto',
+    maritime: 'Maritime / Transport',
+    sante: 'Santé',
+    voyage: 'Voyage',
+    vie: 'Vie',
+    habitation: 'Habitation / Multirisque',
+    rcpro: 'RC Professionnelle',
+    cautionnement: 'Cautionnement & Garanties'
+  };
+
+  var step2Templates = {
+    auto: '\
+      <div class="field-row">\
+        <div class="field" data-required><label>Marque <span class="req">*</span></label>\
+          <select name="marque"><option value="">— Choisir —</option><option>Toyota</option><option>Kia</option><option>Hyundai</option><option>Mercedes</option><option>BMW</option><option>Peugeot</option><option>Renault</option><option>Autre</option></select>\
+          <div class="field-error">Requis.</div></div>\
+        <div class="field"><label>Modèle</label><input type="text" name="modele" placeholder="Ex. Corolla"></div>\
+      </div>\
+      <div class="field-row">\
+        <div class="field"><label>Année</label><select name="annee"><option value="">— Année —</option>' + yearOptions() + '</select></div>\
+        <div class="field" data-required><label>Usage <span class="req">*</span></label>\
+          <select name="usage"><option value="">— Usage —</option><option>Privé</option><option>Professionnel</option><option>Mixte</option></select>\
+          <div class="field-error">Requis.</div></div>\
+      </div>\
+      <div class="field" data-required><label>Valeur du véhicule <span class="req">*</span></label>\
+        <select name="valeur"><option value="">— Valeur —</option><option>Moins de 5M FCFA</option><option>5 à 15M FCFA</option><option>Plus de 15M FCFA</option></select>\
+        <div class="field-error">Requis.</div></div>\
+      <label class="checkbox-field"><input type="checkbox" name="dejaAssure"> Déjà assuré ailleurs</label>',
+
+    maritime: '\
+      <div class="field" data-required><label>Type de marchandises <span class="req">*</span></label>\
+        <select name="marchandises"><option value="">— Choisir —</option><option>Produits alimentaires</option><option>Électronique</option><option>Matériaux de construction</option><option>Textile</option><option>Autres</option></select>\
+        <div class="field-error">Requis.</div></div>\
+      <div class="field" data-required><label>Valeur cargo (FCFA) <span class="req">*</span></label>\
+        <input type="text" name="valeurCargo" placeholder="Ex. 25 000 000"><div class="field-error">Requis.</div></div>\
+      <div class="field-row">\
+        <div class="field"><label>Origine</label><input type="text" name="origine" placeholder="Ex. Shanghai"></div>\
+        <div class="field"><label>Destination</label><input type="text" name="destination" placeholder="Ex. Port d\'Abidjan"></div>\
+      </div>\
+      <div class="field" data-required><label>Fréquence <span class="req">*</span></label>\
+        <select name="frequence"><option value="">— Choisir —</option><option>Ponctuel</option><option>Mensuel</option><option>Hebdomadaire</option></select>\
+        <div class="field-error">Requis.</div></div>',
+
+    sante: '\
+      <div class="field" data-required><label>Nombre de personnes <span class="req">*</span></label>\
+        <select name="nbPersonnes"><option value="">— Choisir —</option><option>1</option><option>2 à 3</option><option>4 à 5</option><option>6 et plus</option></select>\
+        <div class="field-error">Requis.</div></div>\
+      <div class="field"><label>Couverture actuelle</label>\
+        <select name="couvertureActuelle"><option value="">— Choisir —</option><option>CNPS seul</option><option>Aucune</option><option>Autre mutuelle</option></select></div>\
+      <div class="field" data-required><label>Formule souhaitée <span class="req">*</span></label>\
+        <select name="formule"><option value="">— Choisir —</option><option>Basique</option><option>Standard</option><option>Premium</option></select>\
+        <div class="field-error">Requis.</div></div>',
+
+    voyage: '\
+      <div class="field" data-required><label>Destination <span class="req">*</span></label>\
+        <input type="text" name="destinationVoyage" placeholder="Ex. France, USA, Dubaï"><div class="field-error">Requis.</div></div>\
+      <div class="field-row">\
+        <div class="field" data-required><label>Départ <span class="req">*</span></label>\
+          <input type="date" name="depart"><div class="field-error">Requis.</div></div>\
+        <div class="field" data-required><label>Retour <span class="req">*</span></label>\
+          <input type="date" name="retour"><div class="field-error">Requis.</div></div>\
+      </div>\
+      <div class="field-row">\
+        <div class="field"><label>Nb voyageurs</label>\
+          <select name="nbVoyageurs"><option>1</option><option>2</option><option>3</option><option>4+</option></select></div>\
+        <div class="field" data-required><label>Type de voyage <span class="req">*</span></label>\
+          <select name="typeVoyage"><option value="">— Choisir —</option><option>Loisirs</option><option>Affaires</option><option>Études</option></select>\
+          <div class="field-error">Requis.</div></div>\
+      </div>',
+
+    vie: '\
+      <div class="field" data-required><label>Âge de l\'assuré principal <span class="req">*</span></label>\
+        <select name="age"><option value="">— Choisir —</option><option>18-30 ans</option><option>31-45 ans</option><option>46-60 ans</option></select>\
+        <div class="field-error">Requis.</div></div>\
+      <div class="field" data-required><label>Capital souhaité (FCFA) <span class="req">*</span></label>\
+        <input type="text" name="capital" placeholder="Ex. 10 000 000"><div class="field-error">Requis.</div></div>\
+      <div class="field"><label>Bénéficiaire principal</label>\
+        <select name="beneficiaire"><option value="">— Choisir —</option><option>Conjoint</option><option>Enfants</option><option>Autre</option></select></div>',
+
+    habitation: '\
+      <div class="field" data-required><label>Statut <span class="req">*</span></label>\
+        <select name="statut"><option value="">— Choisir —</option><option>Propriétaire</option><option>Locataire</option></select>\
+        <div class="field-error">Requis.</div></div>\
+      <div class="field-row">\
+        <div class="field"><label>Surface (m²)</label><input type="number" name="surface" placeholder="Ex. 120"></div>\
+        <div class="field" data-required><label>Valeur du bien <span class="req">*</span></label>\
+          <select name="valeurBien"><option value="">— Valeur —</option><option>Moins de 20M FCFA</option><option>20 à 50M FCFA</option><option>Plus de 50M FCFA</option></select>\
+          <div class="field-error">Requis.</div></div>\
+      </div>\
+      <div class="field"><label>Risques à couvrir</label>\
+        <div style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-top:0.4rem;">\
+          <label class="checkbox-field"><input type="checkbox" name="risque" value="Incendie">Incendie</label>\
+          <label class="checkbox-field"><input type="checkbox" name="risque" value="Vol">Vol</label>\
+          <label class="checkbox-field"><input type="checkbox" name="risque" value="Dégât des eaux">Dégât des eaux</label>\
+          <label class="checkbox-field"><input type="checkbox" name="risque" value="Tous risques">Tous risques</label>\
+        </div></div>',
+
+    rcpro: '\
+      <div class="field" data-required><label>Secteur d\'activité <span class="req">*</span></label>\
+        <input type="text" name="secteur" placeholder="Ex. Cabinet juridique, BTP, Santé"><div class="field-error">Requis.</div></div>\
+      <div class="field" data-required><label>CA annuel (FCFA) <span class="req">*</span></label>\
+        <input type="text" name="ca" placeholder="Ex. 50 000 000"><div class="field-error">Requis.</div></div>\
+      <div class="field" data-required><label>Nombre d\'employés <span class="req">*</span></label>\
+        <select name="nbEmployes"><option value="">— Choisir —</option><option>1 à 5</option><option>6 à 20</option><option>21 et plus</option></select>\
+        <div class="field-error">Requis.</div></div>',
+
+    cautionnement: '\
+      <div class="field" data-required><label>Type de marché <span class="req">*</span></label>\
+        <select name="typeMarche"><option value="">— Choisir —</option><option>Public</option><option>Privé</option><option>International</option></select>\
+        <div class="field-error">Requis.</div></div>\
+      <div class="field" data-required><label>Montant du marché (FCFA) <span class="req">*</span></label>\
+        <input type="text" name="montantMarche" placeholder="Ex. 100 000 000"><div class="field-error">Requis.</div></div>\
+      <div class="field"><label>Durée du marché</label>\
+        <input type="text" name="dureeMarche" placeholder="Ex. 12 mois"></div>'
+  };
+
+  function yearOptions() {
+    var s = '';
+    for (var y = 2024; y >= 2000; y--) s += '<option>' + y + '</option>';
+    return s;
+  }
+
+  function updateProgress(step) {
+    var pct = step === 1 ? 33 : step === 2 ? 66 : 100;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('stepperLabel').textContent = 'Étape ' + step + ' sur 3';
+  }
+
+  function showStep(n) {
+    document.querySelectorAll('.step-pane').forEach(function(p) { p.classList.remove('active'); });
+    document.getElementById('step' + n).classList.add('active');
+    updateProgress(n);
+    currentStep = n;
+    // smooth scroll vers form
+    document.getElementById('devis').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function validateStep(n) {
+    var pane = document.getElementById('step' + n);
+    var ok = true;
+    pane.querySelectorAll('.field[data-required]').forEach(function(f) {
+      var input = f.querySelector('input, select, textarea');
+      f.classList.remove('error');
+      if (!input || !input.value || !input.value.trim()) {
+        f.classList.add('error');
+        ok = false;
+      }
+    });
+    // email pattern si rempli
+    var email = pane.querySelector('input[name="email"]');
+    if (email && email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+      email.closest('.field').classList.add('error');
+      ok = false;
+    }
+    return ok;
+  }
+
+  function collectStep(n) {
+    var pane = document.getElementById('step' + n);
+    pane.querySelectorAll('input, select, textarea').forEach(function(el) {
+      if (!el.name) return;
+      if (el.type === 'checkbox') {
+        if (el.value === 'on' || !el.value) {
+          formData[el.name] = el.checked;
+        } else {
+          if (el.checked) {
+            formData[el.name] = (formData[el.name] || []);
+            if (Array.isArray(formData[el.name])) formData[el.name].push(el.value);
+          }
+        }
+      } else {
+        formData[el.name] = el.value;
+      }
+    });
+  }
+
+  function renderStep2() {
+    var type = formData.type;
+    document.getElementById('dynamicFields').innerHTML = step2Templates[type] || '<p style="color:rgba(255,255,255,0.7);">Veuillez d\'abord sélectionner un type d\'assurance à l\'étape 1.</p>';
+  }
+
+  function renderSummary() {
+    var summary = document.getElementById('summaryBlock');
+    var rows = [
+      ['Nom', formData.fullname],
+      ['Type', typeLabels[formData.type] || formData.type],
+      ['Téléphone', formData.phone]
+    ];
+    if (formData.email) rows.push(['Email', formData.email]);
+
+    // ajouter quelques détails clés step 2 selon type
+    var detailKeys = {
+      auto: ['marque', 'modele', 'usage', 'valeur'],
+      maritime: ['marchandises', 'valeurCargo', 'destination'],
+      sante: ['nbPersonnes', 'formule'],
+      voyage: ['destinationVoyage', 'depart', 'retour'],
+      vie: ['age', 'capital'],
+      habitation: ['statut', 'valeurBien'],
+      rcpro: ['secteur', 'ca', 'nbEmployes'],
+      cautionnement: ['typeMarche', 'montantMarche']
+    };
+    var labelMap = {
+      marque: 'Marque', modele: 'Modèle', usage: 'Usage', valeur: 'Valeur véhicule',
+      marchandises: 'Marchandises', valeurCargo: 'Valeur cargo', destination: 'Destination',
+      nbPersonnes: 'Nb personnes', formule: 'Formule',
+      destinationVoyage: 'Destination', depart: 'Départ', retour: 'Retour',
+      age: 'Âge', capital: 'Capital',
+      statut: 'Statut', valeurBien: 'Valeur bien',
+      secteur: 'Secteur', ca: 'CA annuel', nbEmployes: 'Employés',
+      typeMarche: 'Type marché', montantMarche: 'Montant'
+    };
+    (detailKeys[formData.type] || []).forEach(function(k) {
+      if (formData[k]) rows.push([labelMap[k] || k, formData[k]]);
+    });
+
+    summary.innerHTML = rows.map(function(r) {
+      return '<div class="summary-row"><span class="summary-label">' + r[0] + '</span><span class="summary-value">' + r[1] + '</span></div>';
+    }).join('');
+
+    var conseiller = conseillers[formData.type] || 'notre équipe';
+    var prenom = formData.fullname ? formData.fullname.split(' ')[0] : '';
+    document.getElementById('confirmMessage').innerHTML =
+      'Merci ' + (prenom ? '<strong>' + prenom + '</strong>, ' : '') +
+      'votre demande de devis a été enregistrée. ' +
+      'Notre conseiller <strong style="color:var(--gold);">' + conseiller + '</strong> vous contacte sous <strong>48h maximum</strong>.';
+  }
+
+  window.nextStep = function(from) {
+    if (!validateStep(from)) return;
+    collectStep(from);
+    if (from === 1) {
+      renderStep2();
+      showStep(2);
+    } else if (from === 2) {
+      renderSummary();
+      showStep(3);
+    }
+  };
+
+  window.prevStep = function(from) {
+    if (from === 2) showStep(1);
+    else if (from === 3) showStep(2);
+  };
+
+  window.resetForm = function() {
+    formData = {};
+    document.getElementById('quoteForm').reset();
+    document.getElementById('dynamicFields').innerHTML = '';
+    showStep(1);
+  };
+
+  /* ===== SMOOTH ANCHOR ===== */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var id = this.getAttribute('href');
+      if (id === '#' || id.length < 2) return;
+      var t = document.querySelector(id);
+      if (t) {
+        e.preventDefault();
+        var offset = 80;
+        var top = t.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    });
   });
 
 })();
