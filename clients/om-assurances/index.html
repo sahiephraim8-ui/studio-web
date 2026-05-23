@@ -11,15 +11,20 @@
 <style>
   :root {
     --black: #000000;
-    --dark: #111111;
-    --dark-warm: #1a1715;
-    --warm-gray: #f0ede8;
+    --dark: #0D0D0D;
+    --dark-warm: #111009;
+    --warm-gray: #F5F0E8;
     --mid-gray: #888888;
     --light-gray: #e8e3dc;
-    --text: #1a1a1a;
-    --text-muted: #666666;
-    --white: #ffffff;
     --gold: #C9A050;
+    --gold-light: #DDB96A;
+    --gold-dark: #A8823C;
+    --gold-bg: #1A1408;
+    --terracotta: #8B3A2A;
+    --cream: #FAF7F0;
+    --text: #111111;
+    --text-muted: #777777;
+    --white: #ffffff;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,81 +44,104 @@
   .container { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
 
   /* NAV */
-  .nav { position: fixed; top: 0; left: 0; right: 0; height: 70px; background: var(--black); z-index: 1000; display: flex; align-items: center; }
+  .nav { position: fixed; top: 0; left: 0; right: 0; height: 70px; background: var(--black); z-index: 1000; display: flex; align-items: center; transition: border-color 0.3s ease; border-bottom: 1px solid transparent; }
+  .nav.scrolled { border-bottom: 1px solid rgba(201, 160, 80, 0.3); }
   .nav-inner { width: 100%; padding: 0 5%; display: flex; align-items: center; justify-content: space-between; }
   .nav-logo { color: var(--white); font-size: 14px; font-weight: 700; letter-spacing: 2px; display: flex; align-items: center; }
   .nav-logo .logo-full { display: inline-block; }
   .nav-logo .logo-mono { display: none; }
   .nav.scrolled .logo-full { display: none; }
   .nav.scrolled .logo-mono { display: inline-flex; align-items: center; }
-  .logo-mono svg { width: 38px; height: 38px; }
+  .logo-mono svg { width: 44px; height: 44px; }
   .nav-links { display: flex; gap: 60px; list-style: none; }
-  .nav-links a { color: var(--white); font-size: 12px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; transition: opacity 0.2s ease; }
-  .nav-links a:hover { opacity: 0.65; }
+  .nav-links a { color: var(--white); font-size: 12px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; transition: color 0.2s ease; }
+  .nav-links a:hover { color: var(--gold); }
   .nav-icons { display: flex; align-items: center; gap: 22px; }
-  .nav-icons svg { width: 18px; height: 18px; stroke: var(--white); fill: none; stroke-width: 1.5; cursor: pointer; transition: opacity 0.2s ease; }
-  .nav-icons svg:hover { opacity: 0.65; }
+  .nav-icons svg { width: 18px; height: 18px; stroke: var(--white); fill: none; stroke-width: 1.5; cursor: pointer; transition: stroke 0.2s ease; }
+  .nav-icons svg:hover { stroke: var(--gold); }
   .hamburger { display: none; }
 
   /* HERO */
   .hero { position: relative; height: 100vh; width: 100%; overflow: hidden; background: #000; }
   .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
-  .hero-overlay { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.45); z-index: 2; }
-  .hero-content { position: absolute; bottom: 15%; left: 5%; z-index: 3; color: var(--white); max-width: 900px; }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.2) 100%); z-index: 2; }
+  .hero-content { position: absolute; bottom: 15%; left: 5%; z-index: 3; color: var(--white); max-width: 900px; border-left: 3px solid var(--gold); padding-left: 28px; }
   .hero h1 { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(42px, 6vw, 90px); line-height: 1.1; color: var(--white); margin-bottom: 36px; }
+  .hero h1 .accent-gold { color: var(--gold); font-style: italic; }
+  .hero-cta { display: inline-flex; align-items: center; gap: 10px; color: var(--white); font-size: 12px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; padding-bottom: 6px; border-bottom: 1px solid rgba(201,160,80,0.5); transition: border-color 0.3s ease, letter-spacing 0.3s ease, gap 0.3s ease; }
+  .hero-cta:hover { border-color: var(--gold); letter-spacing: 4px; gap: 16px; }
   .text-cta { display: inline-flex; align-items: center; gap: 10px; color: var(--white); font-size: 12px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; padding-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.4); transition: border-color 0.3s ease, gap 0.3s ease; }
-  .text-cta:hover { border-color: var(--white); gap: 16px; }
-  .hero-badge { position: absolute; top: 110px; right: 5%; z-index: 3; color: var(--white); font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; opacity: 0.85; border: 1px solid rgba(255,255,255,0.3); padding: 10px 20px; }
+  .text-cta:hover { border-color: var(--gold); gap: 16px; color: var(--gold); }
+  .hero-badge { position: absolute; top: 110px; right: 5%; z-index: 3; color: var(--white); font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; opacity: 0.9; border: 1px solid rgba(201,160,80,0.5); padding: 10px 20px; background: rgba(0,0,0,0.3); }
+  .hero-badge .b-gold { color: var(--gold); }
 
   /* ABOUT */
-  .about { background: var(--white); padding: 120px 0; }
+  .about { background: var(--cream); padding: 120px 0; }
   .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
   .label { font-size: 11px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 28px; display: block; }
+  .label-gold { color: var(--gold); }
   .about h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(32px, 3.5vw, 48px); line-height: 1.15; color: var(--text); }
+  .about hr { border-top-color: rgba(201,160,80,0.4); max-width: 80px; margin: 22px 0 0; }
   .about-body p { font-size: 15px; color: var(--text-muted); line-height: 1.8; margin-bottom: 32px; }
-  .text-cta-dark { display: inline-flex; align-items: center; gap: 10px; color: var(--text); font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; padding-bottom: 6px; border-bottom: 1px solid var(--text); transition: gap 0.3s ease; }
-  .text-cta-dark:hover { gap: 16px; }
+  .about-image { width: 100%; height: 100%; min-height: 380px; object-fit: cover; margin-top: 32px; }
+  .text-cta-dark { display: inline-flex; align-items: center; gap: 10px; color: var(--text); font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; padding-bottom: 6px; border-bottom: 1px solid var(--gold); transition: gap 0.3s ease, color 0.3s ease; }
+  .text-cta-dark:hover { gap: 16px; color: var(--gold); }
+
+  /* KPI STRIP */
+  .kpi-strip { background: var(--black); padding: 70px 0; border-top: 1px solid rgba(201,160,80,0.2); border-bottom: 1px solid rgba(201,160,80,0.2); }
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; text-align: center; }
+  .kpi-item { padding: 0 20px; position: relative; }
+  .kpi-item + .kpi-item::before { content: ''; position: absolute; left: 0; top: 20%; bottom: 20%; width: 1px; background: rgba(201,160,80,0.25); }
+  .kpi-num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; font-size: 52px; color: var(--gold); line-height: 1; margin-bottom: 12px; }
+  .kpi-label { font-size: 11px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.8); }
 
   /* SECTION HEADER */
   .section-header { text-align: center; margin-bottom: 70px; }
   .section-header .label { margin-bottom: 18px; }
   .section-header h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(36px, 4vw, 56px); color: var(--text); line-height: 1.1; }
+  .section-header hr { max-width: 60px; margin: 22px auto 0; border-top-color: rgba(201,160,80,0.5); }
 
   /* PRODUCTS */
-  .products { background: var(--white); padding: 60px 0 120px; }
+  .products { background: var(--cream); padding: 100px 0 120px; }
   .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-  .card { overflow: hidden; background: var(--white); }
-  .card-img-wrap { overflow: hidden; height: 280px; }
+  .card { overflow: hidden; background: var(--cream); border-bottom: 3px solid transparent; transition: border-color 0.4s ease; }
+  .card:hover { border-bottom-color: var(--gold); }
+  .card-img-wrap { overflow: hidden; height: 280px; position: relative; }
   .card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-  .card:hover img { transform: scale(1.03); }
+  .card:hover img { transform: scale(1.05); }
+  .card-badge { position: absolute; top: 16px; left: 16px; background: var(--gold); color: #000; font-size: 10px; font-weight: 700; letter-spacing: 2px; padding: 6px 12px; text-transform: uppercase; z-index: 2; }
   .card-body { padding: 24px 4px 36px; }
   .card-title { font-size: 16px; font-weight: 500; letter-spacing: 0.5px; color: var(--text); margin-bottom: 8px; }
-  .card-price { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 12px; }
+  .card-price { font-size: 18px; font-weight: 700; color: var(--gold); margin-bottom: 12px; }
   .card-stats { font-size: 12px; color: var(--text-muted); letter-spacing: 1px; }
   .center-cta { text-align: center; margin-top: 70px; }
-  .btn-solid { display: inline-block; background: var(--black); color: var(--white); font-size: 12px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; padding: 18px 44px; transition: background 0.3s ease; }
-  .btn-solid:hover { background: var(--gold); }
+  .btn-solid { display: inline-block; background: var(--black); color: var(--white); font-size: 12px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; padding: 18px 44px; transition: background 0.3s ease, color 0.3s ease; }
+  .btn-solid:hover { background: var(--gold); color: #000; }
+  .btn-gold { display: inline-block; background: var(--gold); color: #000; font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 18px 44px; transition: background 0.3s ease; }
+  .btn-gold:hover { background: var(--gold-light); }
 
   /* RESULTS */
-  .results { background: var(--dark-warm); color: var(--white); }
+  .results { background: var(--gold-bg); color: var(--white); }
   .results-grid { display: grid; grid-template-columns: 60% 40%; min-height: 600px; }
   .results-img { width: 100%; height: 100%; object-fit: cover; min-height: 600px; }
   .results-text { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; }
-  .results-text .label { color: rgba(255,255,255,0.6); }
+  .results-text .label { color: var(--gold); }
   .results-text h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(28px, 2.8vw, 40px); line-height: 1.2; margin-bottom: 12px; color: var(--white); }
+  .results-text hr { border-top-color: rgba(201,160,80,0.4); max-width: 60px; margin: 18px 0 22px; }
   .results-subtitle { font-size: 13px; color: rgba(255,255,255,0.65); letter-spacing: 1.5px; margin-bottom: 40px; }
-  .btn-outline { display: inline-flex; align-items: center; justify-content: space-between; border: 1px solid rgba(255,255,255,0.6); color: var(--white); font-size: 12px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; padding: 18px 28px; margin-bottom: 14px; transition: background 0.3s ease, color 0.3s ease; max-width: 360px; }
-  .btn-outline:hover { background: var(--white); color: var(--black); }
+  .btn-outline { display: inline-flex; align-items: center; justify-content: space-between; border: 1px solid rgba(201,160,80,0.6); color: var(--white); font-size: 12px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; padding: 18px 28px; margin-bottom: 14px; transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease; max-width: 360px; }
+  .btn-outline:hover { background: var(--gold); color: #000; border-color: var(--gold); }
 
   /* PROCESS */
   .process { background: var(--warm-gray); padding: 120px 0; }
   .process-top { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; margin-bottom: 80px; }
   .process-left h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(40px, 5vw, 64px); line-height: 1.05; margin-bottom: 4px; }
-  .process-left hr { border-top-color: rgba(0,0,0,0.2); margin: 22px 0 28px; max-width: 380px; }
+  .process-left hr { border-top-color: rgba(201,160,80,0.5); margin: 22px 0 28px; max-width: 80px; }
   .process-left p { font-size: 15px; color: #555; max-width: 380px; margin-bottom: 36px; line-height: 1.8; }
   .process-img { width: 100%; height: 400px; object-fit: cover; }
-  .process-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; padding-top: 60px; border-top: 1px solid rgba(0,0,0,0.12); }
-  .step-num { font-family: 'Cormorant Garamond', serif; font-size: 14px; font-weight: 600; letter-spacing: 4px; color: var(--text); margin-bottom: 16px; text-transform: uppercase; }
+  .process-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; padding-top: 60px; border-top: 1px solid rgba(201,160,80,0.25); }
+  .step-num { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 48px; color: var(--gold); margin-bottom: 8px; line-height: 1; }
+  .step-name { font-size: 13px; font-weight: 600; letter-spacing: 3px; color: var(--text); text-transform: uppercase; margin-bottom: 16px; }
   .step-text { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
 
   /* TESTIMONIALS */
@@ -121,49 +149,53 @@
   .testimonials-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 12px; }
   .testimonials-header .label { margin-bottom: 8px; }
   .testimonials-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(36px, 4.5vw, 60px); color: var(--text); line-height: 1; }
-  .testimonials-handle { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(28px, 3vw, 42px); color: var(--text); }
-  .testimonials hr { margin: 32px 0 60px; }
+  .testimonials-handle { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(28px, 3vw, 42px); color: var(--gold); }
+  .testimonials hr { margin: 32px 0 60px; border-top-color: rgba(201,160,80,0.3); }
   .testimonials-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+  .testi-card { background: var(--cream); border-left: 4px solid var(--gold); padding: 0 0 24px 0; overflow: hidden; }
   .testi-card img { width: 100%; height: 280px; object-fit: cover; filter: grayscale(15%) brightness(0.92); transition: filter 0.4s ease; }
   .testi-card:hover img { filter: grayscale(0%) brightness(1); }
-  .testi-card .who { font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 20px; margin-bottom: 10px; }
-  .testi-card .quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: var(--text-muted); line-height: 1.5; }
+  .testi-card .who { font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin: 20px 20px 10px; }
+  .testi-card .quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: var(--text-muted); line-height: 1.5; margin: 0 20px; }
 
   /* QUOTE */
-  .quote { background: var(--black); color: var(--white); padding: 120px 0; text-align: center; }
-  .quote .label { color: rgba(255,255,255,0.6); }
-  .quote h2 { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(36px, 4.5vw, 60px); max-width: 800px; margin: 0 auto 50px; line-height: 1.2; }
-  .quote-form { display: flex; max-width: 520px; margin: 0 auto; border-bottom: 1px solid rgba(255,255,255,0.3); }
+  .quote { background: var(--gold-bg); color: var(--white); padding: 120px 0; text-align: center; }
+  .quote .label { color: var(--gold); }
+  .quote-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 22px; color: var(--gold); margin-bottom: 24px; }
+  .quote h2 { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(36px, 4.5vw, 60px); max-width: 800px; margin: 0 auto 50px; line-height: 1.2; color: var(--white); text-transform: uppercase; letter-spacing: 4px; }
+  .quote-form { display: flex; max-width: 520px; margin: 0 auto; border-bottom: 1px solid rgba(201,160,80,0.5); }
   .quote-form input { flex: 1; background: transparent; border: none; color: var(--white); padding: 16px 0; font-family: inherit; font-size: 14px; letter-spacing: 1px; outline: none; }
   .quote-form input::placeholder { color: rgba(255,255,255,0.5); }
-  .quote-form button { color: var(--white); font-size: 12px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; padding: 16px 0 16px 30px; transition: opacity 0.3s ease; }
-  .quote-form button:hover { opacity: 0.7; }
+  .quote-form button { color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 16px 0 16px 30px; transition: color 0.3s ease; }
+  .quote-form button:hover { color: var(--gold-light); }
+  .quote-cta-wrap { margin-top: 32px; }
   .quote-legal { font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 1px; margin-top: 20px; text-transform: uppercase; }
 
   /* FOOTER */
   .footer { background: var(--black); color: var(--white); padding: 100px 0 30px; }
   .footer-grid { display: grid; grid-template-columns: 1.2fr 1.3fr 1fr 1fr; gap: 60px; }
-  .footer-col h4 { font-size: 11px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 28px; }
+  .footer-col h4 { font-size: 11px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; }
   .footer-mono { display: flex; flex-direction: column; gap: 18px; }
-  .footer-mono .brand { font-size: 13px; letter-spacing: 3px; font-weight: 600; }
-  .footer-mono svg { width: 70px; height: 70px; }
+  .footer-mono .brand { font-size: 13px; letter-spacing: 3px; font-weight: 600; color: var(--gold); }
+  .footer-mono svg { width: 80px; height: 80px; }
   .footer-contact .line { display: flex; align-items: center; gap: 14px; font-size: 13px; color: rgba(255,255,255,0.75); margin-bottom: 14px; line-height: 1.5; }
-  .footer-contact svg { width: 14px; height: 14px; fill: none; stroke: rgba(255,255,255,0.7); stroke-width: 1.5; flex-shrink: 0; }
-  .footer-contact hr { border-top-color: rgba(255,255,255,0.15); margin: 20px 0; }
+  .footer-contact svg { width: 14px; height: 14px; fill: none; stroke: var(--gold); stroke-width: 1.5; flex-shrink: 0; }
+  .footer-contact hr { border-top-color: rgba(201,160,80,0.3); margin: 20px 0; }
   .socials { display: flex; gap: 18px; }
   .socials svg { width: 18px; height: 18px; fill: rgba(255,255,255,0.75); cursor: pointer; transition: fill 0.3s ease; }
   .socials svg:hover { fill: var(--gold); }
   .footer-nav ul { list-style: none; }
   .footer-nav li { margin-bottom: 14px; }
   .footer-nav a { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.75); transition: color 0.3s ease; }
-  .footer-nav a:hover { color: var(--white); }
-  .footer-badge { border: 1px solid rgba(255,255,255,0.3); padding: 24px; text-align: center; }
-  .footer-badge .badge-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; margin-bottom: 8px; }
+  .footer-nav a:hover { color: var(--gold); }
+  .footer-badge { border: 1px solid rgba(201,160,80,0.4); padding: 24px; text-align: center; }
+  .footer-badge .badge-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; margin-bottom: 8px; color: var(--gold); }
   .footer-badge .badge-text { font-size: 11px; color: rgba(255,255,255,0.65); letter-spacing: 1.5px; line-height: 1.6; }
-  .footer-bottom { margin-top: 80px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.15); text-align: center; }
-  .footer-tagline { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 14px; }
+  .footer-bottom { margin-top: 80px; padding-top: 30px; border-top: 1px solid rgba(201,160,80,0.2); text-align: center; }
+  .footer-tagline { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
   .footer-copy { font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 1px; }
-  .footer-copy a { margin-left: 16px; }
+  .footer-copy a { margin-left: 16px; transition: color 0.3s; }
+  .footer-copy a:hover { color: var(--gold); }
 
   /* WhatsApp */
   .wa-float { position: fixed; bottom: 24px; right: 24px; width: 58px; height: 58px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(37,211,102,0.4); z-index: 999; transition: transform 0.3s ease; }
@@ -171,9 +203,9 @@
   .wa-float svg { width: 30px; height: 30px; fill: var(--white); }
 
   /* Mobile menu */
-  .mobile-menu { position: fixed; top: 70px; left: 0; right: 0; background: var(--black); padding: 30px 5%; display: none; flex-direction: column; gap: 20px; z-index: 999; }
+  .mobile-menu { position: fixed; top: 70px; left: 0; right: 0; background: var(--black); padding: 30px 5%; display: none; flex-direction: column; gap: 20px; z-index: 999; border-bottom: 1px solid rgba(201,160,80,0.3); }
   .mobile-menu.open { display: flex; }
-  .mobile-menu a { color: var(--white); font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .mobile-menu a { color: var(--white); font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase; padding: 8px 0; border-bottom: 1px solid rgba(201,160,80,0.15); }
 
   /* RESPONSIVE */
   @media (max-width: 980px) {
@@ -188,12 +220,16 @@
     .testimonials-header { flex-direction: column; align-items: flex-start; gap: 16px; }
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
     .nav-icons .icon-search, .nav-icons .icon-mail { display: none; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+    .kpi-item + .kpi-item::before { display: none; }
   }
   @media (max-width: 600px) {
     .cards-grid, .testimonials-grid, .footer-grid { grid-template-columns: 1fr; }
     .hero h1 { font-size: 38px; }
     .about, .process, .testimonials, .quote { padding: 80px 0; }
     .hero-badge { display: none; }
+    .kpi-grid { grid-template-columns: 1fr; gap: 30px; }
+    .kpi-num { font-size: 42px; }
   }
 </style>
 </head>
@@ -202,13 +238,17 @@
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="#" class="nav-logo">
-      <span class="logo-full">OM'ASSURANCES</span>
+      <span class="logo-full"><span style="color:#C9A050">OM'</span>ASSURANCES</span>
       <span class="logo-mono" aria-label="OM monogram">
-        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2" y="2" width="56" height="56" fill="none" stroke="#fff" stroke-width="1.5"/>
-          <circle cx="20" cy="30" r="9" fill="none" stroke="#fff" stroke-width="1.5"/>
-          <path d="M33 39 L33 21 L40 33 L47 21 L47 39" fill="none" stroke="#fff" stroke-width="1.5" stroke-linejoin="miter"/>
-          <line x1="2" y1="48" x2="58" y2="48" stroke="#fff" stroke-width="0.5"/>
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="22" cy="22" r="21" stroke="#C9A050" stroke-width="0.8"/>
+          <circle cx="22" cy="22" r="17" stroke="#C9A050" stroke-width="0.3" opacity="0.5"/>
+          <path d="M10 22C10 15.37 15.37 10 22 10" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M22 34C15.37 34 10 28.63 10 22" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M22 13V31" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M22 13L30 20" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M30 20V31" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M22 20L27 15" stroke="#C9A050" stroke-width="1.2" stroke-linecap="round"/>
         </svg>
       </span>
     </a>
@@ -235,12 +275,12 @@
 </div>
 
 <section class="hero">
-  <img class="hero-img" src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop" alt="OM'ASSURANCES Abidjan" />
+  <img class="hero-img" src="https://images.pexels.com/photos/8090137/pexels-photo-8090137.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop" alt="OM'ASSURANCES Abidjan" />
   <div class="hero-overlay"></div>
-  <div class="hero-badge">Agrément CIMA · Depuis 2007</div>
+  <div class="hero-badge"><span class="b-gold">Agrément CIMA</span> · Depuis 2007</div>
   <div class="hero-content">
-    <h1>La Courtière Multi-Branches<br>de Référence à Abidjan.</h1>
-    <a href="#devis" class="text-cta">Obtenir un Devis <span aria-hidden="true">›</span></a>
+    <h1>La Courtière Multi-Branches<br>de Référence à <span class="accent-gold">Abidjan.</span></h1>
+    <a href="#devis" class="hero-cta">Obtenir un Devis <span aria-hidden="true">›</span></a>
   </div>
 </section>
 
@@ -248,12 +288,37 @@
   <div class="container">
     <div class="about-grid">
       <div class="about-left">
-        <span class="label">Fondée en 2007</span>
+        <span class="label label-gold">Fondée en 2007</span>
         <h2>La compagnie d'assurance<br>de confiance en Côte d'Ivoire</h2>
+        <hr />
       </div>
       <div class="about-body">
         <p>Fondée à Abidjan en 2007 par une équipe d'experts en assurance, OM'ASSURANCES SARL s'est imposée comme la référence multi-branches pour les entreprises et particuliers ivoiriens. Agréée CIMA, nous couvrons 8 branches d'assurance avec un engagement unique&nbsp;: votre dossier traité en 48 heures.</p>
         <a href="#histoire" class="text-cta-dark">En savoir plus <span aria-hidden="true">›</span></a>
+        <img class="about-image" src="https://images.pexels.com/photos/5668473/pexels-photo-5668473.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&fit=crop" alt="Équipe OM'ASSURANCES Abidjan" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="kpi-strip">
+  <div class="container">
+    <div class="kpi-grid">
+      <div class="kpi-item">
+        <div class="kpi-num">19+</div>
+        <div class="kpi-label">Années d'Expérience</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-num">8</div>
+        <div class="kpi-label">Branches Couvertes</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-num">48h</div>
+        <div class="kpi-label">Délai Chrono</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-num">1000+</div>
+        <div class="kpi-label">Clients Protégés</div>
       </div>
     </div>
   </div>
@@ -262,12 +327,16 @@
 <section class="products" id="produits">
   <div class="container">
     <div class="section-header">
-      <span class="label">Nos Solutions</span>
+      <span class="label label-gold">Nos Solutions</span>
       <h2>Branches d'Assurance</h2>
+      <hr />
     </div>
     <div class="cards-grid">
       <article class="card">
-        <div class="card-img-wrap"><img src="https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg?auto=compress&cs=tinysrgb&w=600&h=370&fit=crop" alt="Assurance Auto" /></div>
+        <div class="card-img-wrap">
+          <span class="card-badge">B2C</span>
+          <img src="https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Assurance Auto" />
+        </div>
         <div class="card-body">
           <div class="card-title">Assurance Auto | Abidjan</div>
           <div class="card-price">Couverture complète</div>
@@ -275,7 +344,10 @@
         </div>
       </article>
       <article class="card">
-        <div class="card-img-wrap"><img src="https://images.pexels.com/photos/1554646/pexels-photo-1554646.jpeg?auto=compress&cs=tinysrgb&w=600&h=370&fit=crop" alt="Assurance Maritime" /></div>
+        <div class="card-img-wrap">
+          <span class="card-badge">B2B</span>
+          <img src="https://images.pexels.com/photos/1554646/pexels-photo-1554646.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Assurance Maritime" />
+        </div>
         <div class="card-body">
           <div class="card-title">Maritime / Transport | Abidjan</div>
           <div class="card-price">Protection cargo</div>
@@ -283,7 +355,10 @@
         </div>
       </article>
       <article class="card">
-        <div class="card-img-wrap"><img src="https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&w=600&h=370&fit=crop" alt="Assurance Santé" /></div>
+        <div class="card-img-wrap">
+          <span class="card-badge">B2B + B2C</span>
+          <img src="https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Assurance Santé" />
+        </div>
         <div class="card-body">
           <div class="card-title">Assurance Santé | Abidjan</div>
           <div class="card-price">Couverture médicale</div>
@@ -291,7 +366,10 @@
         </div>
       </article>
       <article class="card">
-        <div class="card-img-wrap"><img src="https://images.pexels.com/photos/1128318/pexels-photo-1128318.jpeg?auto=compress&cs=tinysrgb&w=600&h=370&fit=crop" alt="Assurance Vie" /></div>
+        <div class="card-img-wrap">
+          <span class="card-badge">B2C</span>
+          <img src="https://images.pexels.com/photos/4226122/pexels-photo-4226122.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Assurance Vie" />
+        </div>
         <div class="card-body">
           <div class="card-title">Assurance Vie | Côte d'Ivoire</div>
           <div class="card-price">Capital garanti</div>
@@ -299,7 +377,10 @@
         </div>
       </article>
       <article class="card">
-        <div class="card-img-wrap"><img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600&h=370&fit=crop" alt="RC Professionnelle" /></div>
+        <div class="card-img-wrap">
+          <span class="card-badge">B2B</span>
+          <img src="https://images.pexels.com/photos/7821685/pexels-photo-7821685.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="RC Professionnelle" />
+        </div>
         <div class="card-body">
           <div class="card-title">RC Professionnelle | Abidjan</div>
           <div class="card-price">Responsabilité civile</div>
@@ -307,7 +388,10 @@
         </div>
       </article>
       <article class="card">
-        <div class="card-img-wrap"><img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=600&h=370&fit=crop" alt="Assurance Habitation" /></div>
+        <div class="card-img-wrap">
+          <span class="card-badge">B2C</span>
+          <img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Assurance Habitation" />
+        </div>
         <div class="card-body">
           <div class="card-title">Assurance Habitation | Abidjan</div>
           <div class="card-price">Multirisque habitation</div>
@@ -323,10 +407,11 @@
 
 <section class="results" id="solutions">
   <div class="results-grid">
-    <img class="results-img" src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&fit=crop" alt="Dossier traité OM'ASSURANCES" />
+    <img class="results-img" src="https://images.pexels.com/photos/6626999/pexels-photo-6626999.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&fit=crop" alt="Dossier traité OM'ASSURANCES" />
     <div class="results-text">
       <span class="label">Dossier Traité</span>
       <h2>Sinistre Auto Résolu<br>en 36 Heures</h2>
+      <hr />
       <div class="results-subtitle">Abobo, Abidjan, Côte d'Ivoire</div>
       <a href="#" class="btn-outline">Voir le témoignage <span aria-hidden="true">›</span></a>
       <a href="#" class="btn-outline">Tous nos résultats <span aria-hidden="true">›</span></a>
@@ -338,25 +423,28 @@
   <div class="container">
     <div class="process-top">
       <div class="process-left">
-        <span class="label">Notre Processus</span>
+        <span class="label label-gold">Notre Processus</span>
         <h2>Comment<br>Ça Marche</h2>
         <hr />
         <p>De votre demande à votre contrat en 48 heures. Une équipe dédiée, un interlocuteur unique, une promesse tenue.</p>
         <a href="#devis" class="btn-solid">Obtenir un devis ›</a>
       </div>
-      <img class="process-img" src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop" alt="Processus OM'ASSURANCES" />
+      <img class="process-img" src="https://images.pexels.com/photos/3771045/pexels-photo-3771045.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop" alt="Processus OM'ASSURANCES" />
     </div>
     <div class="process-steps">
       <div class="step">
-        <div class="step-num">01 · Contact</div>
+        <div class="step-num">01</div>
+        <div class="step-name">Contact</div>
         <div class="step-text">Appelez ou écrivez. Réponse sous 2h ouvrées par un conseiller dédié.</div>
       </div>
       <div class="step">
-        <div class="step-num">02 · Étude</div>
+        <div class="step-num">02</div>
+        <div class="step-name">Étude</div>
         <div class="step-text">Analyse de vos besoins. Proposition personnalisée sous 24h.</div>
       </div>
       <div class="step">
-        <div class="step-num">03 · Contrat</div>
+        <div class="step-num">03</div>
+        <div class="step-name">Contrat</div>
         <div class="step-text">Souscription et remise du contrat. Sous 48h garanties.</div>
       </div>
     </div>
@@ -367,7 +455,7 @@
   <div class="container">
     <div class="testimonials-header">
       <div>
-        <span class="label">Ils nous font confiance</span>
+        <span class="label label-gold">Ils nous font confiance</span>
         <div class="testimonials-title">Témoignages</div>
       </div>
       <div class="testimonials-handle">@omassurances</div>
@@ -375,22 +463,22 @@
     <hr />
     <div class="testimonials-grid">
       <div class="testi-card">
-        <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Adama K." />
+        <img src="https://images.pexels.com/photos/2220342/pexels-photo-2220342.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Adama K." />
         <div class="who">Adama K., Gérant transport</div>
         <div class="quote">"Dossier sinistre traité en 36 heures. Du jamais vu sur la place d'Abidjan."</div>
       </div>
       <div class="testi-card">
-        <img src="https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Moussa D." />
+        <img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Moussa D." />
         <div class="who">Moussa D., Importateur Port d'Abidjan</div>
         <div class="quote">"Une équipe qui comprend les enjeux du commerce maritime. Indispensables."</div>
       </div>
       <div class="testi-card">
-        <img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Aya N." />
+        <img src="https://images.pexels.com/photos/6290024/pexels-photo-6290024.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Aya N." />
         <div class="who">Aya N., Chef de famille, Cocody</div>
         <div class="quote">"Conseil clair, sans jargon. Ma famille est protégée comme il faut."</div>
       </div>
       <div class="testi-card">
-        <img src="https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Ibrahim S." />
+        <img src="https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Ibrahim S." />
         <div class="who">Ibrahim S., Chef d'entreprise, Plateau</div>
         <div class="quote">"RC Pro et flotte auto sous le même toit. Gain de temps colossal."</div>
       </div>
@@ -400,12 +488,16 @@
 
 <section class="quote" id="devis">
   <div class="container">
-    <span class="label">Demandez votre devis</span>
-    <h2>Obtenez votre offre personnalisée en 48 heures</h2>
+    <span class="label">Devis Personnalisé</span>
+    <div class="quote-sub">Sur mesure pour vous</div>
+    <h2>Demandez Votre Devis</h2>
     <form class="quote-form" onsubmit="event.preventDefault(); alert('Demande envoyée — un conseiller vous rappelle sous 2h.');">
       <input type="text" placeholder="Votre téléphone ou email" required />
       <button type="submit">Envoyer ›</button>
     </form>
+    <div class="quote-cta-wrap">
+      <a href="https://wa.me/2250709578752" target="_blank" rel="noopener" class="btn-gold">Parler à un conseiller ›</a>
+    </div>
     <div class="quote-legal">Vos données sont confidentielles · Conformité CIMA</div>
   </div>
 </section>
@@ -414,11 +506,15 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-col footer-mono">
-        <svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg" aria-label="OM monogram">
-          <rect x="2" y="2" width="66" height="66" fill="none" stroke="#fff" stroke-width="1"/>
-          <circle cx="22" cy="35" r="11" fill="none" stroke="#fff" stroke-width="1.2"/>
-          <path d="M38 47 L38 23 L48 39 L58 23 L58 47" fill="none" stroke="#fff" stroke-width="1.2" stroke-linejoin="miter"/>
-          <line x1="2" y1="56" x2="68" y2="56" stroke="#fff" stroke-width="0.4"/>
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="OM monogram">
+          <circle cx="40" cy="40" r="38" stroke="#C9A050" stroke-width="1"/>
+          <circle cx="40" cy="40" r="32" stroke="#C9A050" stroke-width="0.4" opacity="0.4"/>
+          <path d="M18 40C18 27.85 27.85 18 40 18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M40 62C27.85 62 18 52.15 18 40" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M40 23V57" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M40 23L54 35" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M54 35V57" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M40 35L49 26" stroke="#C9A050" stroke-width="1.8" stroke-linecap="round"/>
         </svg>
         <div class="brand">OM'ASSURANCES</div>
       </div>
@@ -495,7 +591,7 @@
       }
     });
   }, { threshold: 0.1 });
-  document.querySelectorAll('.card, .testi-card, .step').forEach(el => {
+  document.querySelectorAll('.card, .testi-card, .step, .kpi-item').forEach(el => {
     el.style.opacity = 0;
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
